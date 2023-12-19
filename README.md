@@ -1,0 +1,1 @@
+# license-comparison-reasoner
