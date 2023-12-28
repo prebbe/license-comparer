@@ -15,3 +15,9 @@ After connecting to it, use the SQL-scripts in the data-folder to create and pop
 .read data/values.sql
 .quit
 ```
+
+### Run the scripts
+
+```pwsh
+.\run.ps1 src/{filename}.l {predicate}
+```
