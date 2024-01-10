@@ -39,3 +39,12 @@ CREATE TABLE Duties(
     FOREIGN KEY (ActionId) REFERENCES Actions(Id),
     FOREIGN KEY (LicenseId) REFERENCES Licenses(Id)
 );
+
+CREATE TABLE ShareAlikes(
+    Id INTEGER PRIMARY KEY,
+    LicenseId1 INTEGER,
+    LicenseId2 INTEGER,
+    Description TEXT,
+    FOREIGN KEY (LicenseId1) REFERENCES Licenses(Id)
+    FOREIGN KEY (LicenseId2) REFERENCES Licenses(Id)
+)

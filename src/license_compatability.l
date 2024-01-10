@@ -2,13 +2,17 @@
 @DefineFlag("database_file");
 @AttachDatabase("db", "data/backend.sqlite");
 
-# Predicate LicensePermissions -> Aggregates the actions a license permits
+# Predicate Licenses -> Returns all the license
+License(name:) :- licenses(name:);
+
+# Predicate LicensePermission -> Returns the actions a license permits
 LicensePermission(license_name:, action_name:) distinct :- 
     licenses(id: license_id, name:license_name), 
     actions(id:action_id, name: action_name), 
     permissions(actionid:permissions_action_id, licenseid: permissions_license_id), 
     (license_id ==permissions_license_id, action_id == permissions_action_id);
 
+# Predicate LicensePermissions -> Aggregates the actions a license permits
 LicensePermissions(license_name:, action_names? List= action_name) distinct :- 
     LicensePermission(license_name:, action_name:);
 
@@ -19,12 +23,22 @@ LicenseProhibitions(license_name:, action_names? List= action_name) distinct :-
     prohibitions(actionid: prohibitions_action_id, licenseid: prohibitions_license_id),
     (license_id == prohibitions_license_id, action_id == prohibitions_action_id);
 
-# Predicate LicenseDuties -> Aggregates the actions a license requires
-LicenseDuties(license_name:, action_names? List= action_name) distinct :-
+# Predicate LicenseShareAlike -> Returns the licenses that are ShareAlike to the given license
+LicenseShareAlike(license_name:, license_sharealike:) distinct :-
+    licenses(id: license_id1, name: license_name),
+    licenses(id: license_id2, name: license_sharealike),
+    sharealikes(licenseid1: license_id1, licenseid2: license_id2);
+
+# Predicate LicenseDuties -> Returns the actions a license requires
+LicenseDuty(license_name:, action_name:) distinct :-
     licenses(id: license_id, name:license_name),
     actions(id:action_id, name: action_name),
     duties(actionid:duties_action_id, licenseid: duties_license_id),
     (license_id == duties_license_id, action_id == duties_action_id);
+
+# Predicate LicenseDuties -> Aggregates the actions a license requires
+LicenseDuties(license_name:, action_names? List= action_name) distinct :-
+    LicenseDuty(license_name:, action_name:);
 
 # Predicate AreEqual -> Checks if two items are the same
 AreEqual(array1, array2) = result :- result == (array1 == array2);
@@ -72,6 +86,30 @@ HaveCommonDutiesAndProhibitions(license1:, license2:) distinct :-
     duty in duties,
     prohibition in prohibitions;
 
+# Predicate ShareAlikeLicenses -> Returns all the licenses that require share-alike
+ShareAlikeLicenses(license:) distinct :-
+    LicenseDuty(license_name: license, action_name: duty),
+    Constraint(duty == "ShareAlike");
+
+# Predicate NonShareAlikeLicenses -> Returns all the licenses that do not require share-alike
+NonShareAlikeLicenses(license:) distinct :-
+    License(name: license),
+    ~ShareAlikeLicenses(license:);
+
+# Predicate DoNotFallUnderShareAlike -> All license combinations, that do not fall under share alike
+DoNotFallUnderShareAlike(license1:, license2:) distinct :-
+    NonShareAlikeLicenses(license: license1),
+    NonShareAlikeLicenses(license: license2);
+
+# Predicate DoNotFallUnderShareAlike -> Wrapper for LicenseShareAlike with better naming
+AreAlike(license1:, license2:) distinct :-
+    LicenseShareAlike(license_name: license1, license_sharealike: license2);
+
+# Predicate ConformToShareAlike -> Returns all combinations that conform to the requirement of share-alike
+ConformToShareAlike(license1:, license2:) distinct :-
+    DoNotFallUnderShareAlike(license1:, license2:) | 
+    AreAlike(license1:, license2:);
+
 # Predicate AreCompatible -> Checks if two licenses are compatible according to the defined rules
 AreCompatible(license1:, license2:) distinct :- 
     PermissionsAreCompatible(license1:, license2:),
@@ -79,4 +117,5 @@ AreCompatible(license1:, license2:) distinct :-
     ~HaveCommonPermissionsAndProhibitions(license1:, license2:),
     ~HaveCommonPermissionsAndProhibitions(license2:, license1:),
     ~HaveCommonDutiesAndProhibitions(license1:, license2:),
-    ~HaveCommonDutiesAndProhibitions(license2:, license1:);
+    ~HaveCommonDutiesAndProhibitions(license2:, license1:),
+    ConformToShareAlike(license1:, license2:);

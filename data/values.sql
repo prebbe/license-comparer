@@ -52,6 +52,12 @@ VALUES
     (17, 'Community Data License Agreement - Permissive - Version 2.0', 'CDLA-Permissive-2.0', 'https://cdla.dev/permissive-2-0/'),
     (18, 'Community Data License Agreement - Sharing - Version 1.0', 'CDLA-Sharing-1.0', 'https://cdla.dev/sharing-1-0/');
 
+INSERT INTO ShareAlikes(Id, LicenseId1, LicenseId2)
+VALUES
+    (0,1,1),
+    (1,4,4),
+    (2,9,9);
+
 /*Permissions, Prohibitions and Duties for CC-BY-4.0*/
 INSERT INTO Permissions(LicenseId, ActionId)
 VALUES 
