@@ -1,9 +1,15 @@
 @Engine("sqlite");
 @DefineFlag("database_file");
-@AttachDatabase("db", "data/backend.sqlite");
+@AttachDatabase("db", "${database_file}");
+# @AttachDatabase("db", "data/backend.sqlite");
 
 # Predicate Licenses -> Returns all the license
 License(name:) :- licenses(name:);
+
+# Predicate AllLicenseCombinations -> Returns all license-combinations
+AllLicenseCombinations(license1:, license2:) distinct :-
+    License(name: license1),
+    License(name: license2);
 
 # Predicate LicensePermission -> Returns the actions a license permits
 LicensePermission(license_name:, action_name:) distinct :- 
