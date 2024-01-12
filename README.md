@@ -27,8 +27,7 @@ After connecting to it, use the SQL-scripts in the data-folder to create and pop
 .quit
 ```
 
-## Run the scripts
-
-```pwsh
-.\run.ps1 src/{filename}.l {predicate}
-```
+## Testing the different artifacts
+Each artifact has its own READMe.md that describes the necessary steps to run it and also contains the notebooks that were used to evaluate its results.
+* [Artifact 1](/artifact_01/)
+* [Artifact 2](/artifact_02/)
