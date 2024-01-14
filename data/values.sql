@@ -172,8 +172,7 @@ VALUES
     (3,19),
     (3,21),
     (3,22),
-    (3,23),
-    (3,27);
+    (3,23);
 
 INSERT INTO Duties(LicenseId, ActionId)
 VALUES
