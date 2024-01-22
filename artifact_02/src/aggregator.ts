@@ -1,4 +1,4 @@
-const db = require('./dataAccess');
+import * as db from './dataAccess';
 
 async function combinePermissions(license1: string, license2: string) {
     let permissions1 = await db.loadPermissionsByName(license1);
@@ -88,9 +88,7 @@ function cleanPermissions(permissions: any[], prohibitions: any[]) {
     return result;
 }
 
-
-
-export async function aggregateLicense(license1: string, license1short: string, license2: string, license2short: string) {
+async function aggregateLicense(license1: string, license1short: string, license2: string, license2short: string) {
     let prohibitions = await combineProhibitions(license1, license2);
     let duties = await combineDuties(license1, license2);
 
@@ -99,3 +97,5 @@ export async function aggregateLicense(license1: string, license1short: string, 
 
     return { license1short, license2short, permissions, prohibitions, duties };
 }
+
+export { aggregateLicense }

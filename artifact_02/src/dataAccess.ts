@@ -1,10 +1,10 @@
-const sqlite3 = require('sqlite3').verbose();
-const sqlite = require('sqlite');
+import * as sqlite3 from 'sqlite3';
+import * as sqlite from 'sqlite';
 
 const db_path = '../../data/backend.sqlite'; 
 
 // Disabled to ensure compilation, integrate again later
-export type License = {
+type License = {
     id: number,
     name: string,
     shortName: string,
@@ -12,19 +12,19 @@ export type License = {
     description: string
 };
 
-export type Action = {
+type Action = {
     id: number,
     origin: string,
     name: string,
     description: string
 };
 
-export type LicenseAction = {
+type LicenseAction = {
     id: number,
     name: string
 }
 
-export type ShareAlikes = {
+type ShareAlikes = {
     id: number,
     licenseId1: number,
     licenseName1: string,
@@ -34,7 +34,7 @@ export type ShareAlikes = {
     licenseShortName2: string,
 }
 
-export type LicenseSummary = {
+type LicenseSummary = {
     metaInformation : License,
     permissions : LicenseAction[],
     prohibitions : LicenseAction[],
@@ -42,7 +42,7 @@ export type LicenseSummary = {
     shareAlikes : ShareAlikes[]
 }
 
-export async function loadLicenses(): Promise<License[]> {
+async function loadLicenses(): Promise<License[]> {
     let db = await sqlite.open({filename: db_path, driver:sqlite3.Database});
 
     let sql = 'SELECT id, name, shortName, sourceLink, description FROM Licenses';
@@ -63,7 +63,7 @@ export async function loadLicenses(): Promise<License[]> {
     return result;
 }
 
-export async function loadActions(): Promise<Action[]> {
+async function loadActions(): Promise<Action[]> {
     let db = await sqlite.open({filename: db_path, driver:sqlite3.Database});
 
     let sql = 'SELECT id, origin, name, description FROM Actions';
@@ -84,7 +84,7 @@ export async function loadActions(): Promise<Action[]> {
     return result;
 }
 
-export async function loadPermissions(): Promise<LicenseAction[]> {
+async function loadPermissions(): Promise<LicenseAction[]> {
     let db = await sqlite.open({filename: db_path, driver:sqlite3.Database});
 
     let sql = `SELECT a.id aid, a.name aname
@@ -108,7 +108,7 @@ export async function loadPermissions(): Promise<LicenseAction[]> {
     return result;
 }
 
-export async function loadPermissionsByName(licenseName: string): Promise<LicenseAction[]> {
+async function loadPermissionsByName(licenseName: string): Promise<LicenseAction[]> {
     let db = await sqlite.open({filename: db_path, driver:sqlite3.Database});
 
     let sql = `SELECT a.id aid, a.name aname
@@ -133,7 +133,7 @@ export async function loadPermissionsByName(licenseName: string): Promise<Licens
     return result;
 }
 
-export async function loadProhibitions(): Promise<LicenseAction[]> {
+async function loadProhibitions(): Promise<LicenseAction[]> {
     let db = await sqlite.open({filename: db_path, driver:sqlite3.Database});
 
     let sql = `SELECT a.id aid, a.name aname
@@ -157,7 +157,7 @@ export async function loadProhibitions(): Promise<LicenseAction[]> {
     return result;
 }
 
-export async function loadProhibitionsByName(licenseName: string): Promise<LicenseAction[]> {
+async function loadProhibitionsByName(licenseName: string): Promise<LicenseAction[]> {
     let db = await sqlite.open({filename: db_path, driver:sqlite3.Database});
 
     let sql = `SELECT a.id aid, a.name aname
@@ -182,7 +182,7 @@ export async function loadProhibitionsByName(licenseName: string): Promise<Licen
     return result;
 }
 
-export async function loadDuties(): Promise<LicenseAction[]> {
+async function loadDuties(): Promise<LicenseAction[]> {
     let db = await sqlite.open({filename: db_path, driver:sqlite3.Database});
 
     let sql = `SELECT a.id aid, a.name aname
@@ -206,7 +206,7 @@ export async function loadDuties(): Promise<LicenseAction[]> {
     return result;
 }
 
-export async function loadDutiesByName(licenseName: string): Promise<LicenseAction[]> {
+async function loadDutiesByName(licenseName: string): Promise<LicenseAction[]> {
     let db = await sqlite.open({filename: db_path, driver:sqlite3.Database});
 
     let sql = `SELECT a.id aid, a.name aname
@@ -231,7 +231,7 @@ export async function loadDutiesByName(licenseName: string): Promise<LicenseActi
     return result;
 }
 
-export async function loadShareAlikes(): Promise<ShareAlikes[]> {
+async function loadShareAlikes(): Promise<ShareAlikes[]> {
     let db = await sqlite.open({filename: db_path, driver:sqlite3.Database});
 
     let sql = `SELECT s.id sid, l1.id lid1, l1.name lname1, l1.shortName lshortname1, l2.id lid2, l2.name lname2, l2.shortName lshortname2 
@@ -263,7 +263,7 @@ export async function loadShareAlikes(): Promise<ShareAlikes[]> {
     return result;
 }
 
-export async function loadShareAlikesByName(licenseName: string): Promise<ShareAlikes[]> {
+async function loadShareAlikesByName(licenseName: string): Promise<ShareAlikes[]> {
     let db = await sqlite.open({filename: db_path, driver:sqlite3.Database});
 
     let sql = `SELECT s.id sid, l1.id lid1, l1.name lname1, l1.shortName lshortname1, l2.id lid2, l2.name lname2, l2.shortName lshortname2 
@@ -296,7 +296,7 @@ export async function loadShareAlikesByName(licenseName: string): Promise<ShareA
     return result;
 }
 
-export function isSubsetOfLicenseActions(actions1: LicenseAction[], actions2: LicenseAction[]) {
+function isSubsetOfLicenseActions(actions1: LicenseAction[], actions2: LicenseAction[]) {
     let isFullyIncluded = true;
     let isPartiallyIncluded = false;
     actions1.forEach((action1) => {
@@ -315,7 +315,7 @@ export function isSubsetOfLicenseActions(actions1: LicenseAction[], actions2: Li
     return { isFullyIncluded, isPartiallyIncluded };
 }
 
-export async function licenseInformation(): Promise<LicenseSummary[]> {
+async function licenseInformation(): Promise<LicenseSummary[]> {
     let licenses = await loadLicenses();
 
     let result:LicenseSummary[] = new Array();
@@ -335,4 +335,27 @@ export async function licenseInformation(): Promise<LicenseSummary[]> {
     }
 
     return result;
+}
+
+export type {
+    License, 
+    Action, 
+    LicenseAction, 
+    ShareAlikes, 
+    LicenseSummary
+}
+
+export {
+    loadLicenses,
+    loadActions,
+    loadPermissions,
+    loadPermissionsByName,
+    loadProhibitions,
+    loadProhibitionsByName,
+    loadDuties,
+    loadDutiesByName,
+    loadShareAlikes,
+    loadShareAlikesByName,
+    isSubsetOfLicenseActions,
+    licenseInformation
 }

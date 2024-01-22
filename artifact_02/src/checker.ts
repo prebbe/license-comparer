@@ -1,4 +1,4 @@
-const db = require('./dataAccess');
+import * as db from './dataAccess';
 
 // Share Alike Check
 async function conformToShareAlike(license1: string, license2: string) {

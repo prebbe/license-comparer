@@ -1,10 +1,10 @@
 import { LicenseSummary } from "./dataAccess";
 
-const db = require('./dataAccess');
-const checker = require('./checker');
-const aggregator = require('./aggregator');
+import * as db from './dataAccess';
+import * as checker from './checker';
+import * as aggregator from './aggregator';
 
-export async function runFullCompatibilityCheck() {
+async function runFullCompatibilityCheck() {
     let licenses = await db.loadLicenses();
 
     let result = [];
@@ -20,7 +20,7 @@ export async function runFullCompatibilityCheck() {
     return result;
 }
 
-export async function runPartialCompatibilityCheck() {
+async function runPartialCompatibilityCheck() {
     let licenses = await db.loadLicenses();
 
     let result = [];
@@ -35,7 +35,7 @@ export async function runPartialCompatibilityCheck() {
     return result;
 }
 
-export async function runCompleteAggregation() {
+async function runCompleteAggregation() {
     let licenses = await db.loadLicenses();
 
     let result = [];
@@ -50,15 +50,13 @@ export async function runCompleteAggregation() {
     return result;
 }
 
-export function licenseInformation(): Promise<LicenseSummary[]> {
+function licenseInformation(): Promise<LicenseSummary[]> {
     return db.licenseInformation();
 }
 
-// Just for testing purposes
-// (async() => {
-//     let info = await licenseInformation();
-
-//     const json = JSON.stringify(info, null, 2);
-//     console.log(json);
-    
-// })();
+export {
+    licenseInformation,
+    runPartialCompatibilityCheck,
+    runFullCompatibilityCheck,
+    runCompleteAggregation
+};
