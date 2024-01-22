@@ -36,26 +36,35 @@ async function permissionsAreFullyCompatible(license1: string, license2: string)
     let license2Permissions = await db.loadPermissionsByName(license2);
 
     let subSetCheck1 = db.isSubsetOfLicenseActions(license1Permissions, license2Permissions);
+    let subSetCheck2 = db.isSubsetOfLicenseActions(license2Permissions, license1Permissions);
 
-    return subSetCheck1.isFullyIncluded;
+    return subSetCheck1.isFullyIncluded && subSetCheck2.isFullyIncluded;
 }
 
 async function prohibitionsAllowAllPermissions(license1: string, license2: string) {
     let license1Permissions = await db.loadPermissionsByName(license1);
+    let license2Permissions = await db.loadPermissionsByName(license2);
+
+    let license1Prohibitions = await db.loadProhibitionsByName(license1);
     let license2Prohibitions = await db.loadProhibitionsByName(license2);
 
-    let subSetCheck = db.isSubsetOfLicenseActions(license1Permissions, license2Prohibitions);
+    let subSetCheck1 = db.isSubsetOfLicenseActions(license1Permissions, license2Prohibitions);
+    let subSetCheck2 = db.isSubsetOfLicenseActions(license2Permissions, license1Prohibitions);
 
-    return !subSetCheck.isPartiallyIncluded;
+    return !subSetCheck1.isPartiallyIncluded && !subSetCheck2.isPartiallyIncluded;
 }
 
 async function prohibitionsAllowAllDuties(license1: string, license2: string) {
-    let license1duties = await db.loadDutiesByName(license1);
+    let license1Duties = await db.loadDutiesByName(license1);
+    let license2Duties = await db.loadDutiesByName(license2);
+
+    let license1Prohibitions = await db.loadProhibitionsByName(license1);
     let license2Prohibitions = await db.loadProhibitionsByName(license2);
 
-    let subSetCheck = db.isSubsetOfLicenseActions(license1duties, license2Prohibitions);
+    let subSetCheck1 = db.isSubsetOfLicenseActions(license1Duties, license2Prohibitions);
+    let subSetCheck2 = db.isSubsetOfLicenseActions(license2Duties, license1Prohibitions);
 
-    return !subSetCheck.isPartiallyIncluded;
+    return !subSetCheck1.isPartiallyIncluded && !subSetCheck2.isPartiallyIncluded;
 }
 
 export async function checkFullCompatibility(license1: string, license2: string) {
@@ -76,26 +85,35 @@ async function permissionsArePartiallyCompatible(license1: string, license2: str
     let license2Permissions = await db.loadPermissionsByName(license2);
 
     let subSetCheck1 = db.isSubsetOfLicenseActions(license1Permissions, license2Permissions);
+    let subSetCheck2 = db.isSubsetOfLicenseActions(license2Permissions, license1Permissions);
 
-    return subSetCheck1.isPartiallyIncluded;
+    return subSetCheck1.isPartiallyIncluded || subSetCheck2.isPartiallyIncluded;
 }
 
 async function prohibitionsAllowSomePermissions(license1: string, license2: string) {
     let license1Permissions = await db.loadPermissionsByName(license1);
+    let license2Permissions = await db.loadPermissionsByName(license1);
+
+    let license1Prohibitions = await db.loadProhibitionsByName(license1);
     let license2Prohibitions = await db.loadProhibitionsByName(license2);
 
-    let subSetCheck = db.isSubsetOfLicenseActions(license1Permissions, license2Prohibitions);
+    let subSetCheck1 = db.isSubsetOfLicenseActions(license1Permissions, license2Prohibitions);
+    let subSetCheck2 = db.isSubsetOfLicenseActions(license2Permissions, license1Prohibitions);
 
-    return !subSetCheck.isFullyIncluded;
+    return !subSetCheck1.isFullyIncluded || !subSetCheck2.isFullyIncluded;
 }
 
 async function prohibitionsAllowSomeDuties(license1: string, license2: string) {
-    let license1duties = await db.loadDutiesByName(license1);
+    let license1Duties = await db.loadDutiesByName(license1);
+    let license2Duties = await db.loadDutiesByName(license2);
+    
+    let license1Prohibitions = await db.loadProhibitionsByName(license1);
     let license2Prohibitions = await db.loadProhibitionsByName(license2);
 
-    let subSetCheck = db.isSubsetOfLicenseActions(license1duties, license2Prohibitions);
+    let subSetCheck1 = db.isSubsetOfLicenseActions(license1Duties, license2Prohibitions);
+    let subSetCheck2 = db.isSubsetOfLicenseActions(license2Duties, license1Prohibitions);
 
-    return !subSetCheck.isFullyIncluded;
+    return !subSetCheck1.isFullyIncluded || !subSetCheck2.isFullyIncluded;
 }
 
 export async function checkPartialCompatibility(license1: string, license2: string) {

@@ -1,3 +1,5 @@
+import { LicenseSummary } from "./dataAccess";
+
 const db = require('./dataAccess');
 const checker = require('./checker');
 const aggregator = require('./aggregator');
@@ -48,17 +50,15 @@ export async function runCompleteAggregation() {
     return result;
 }
 
+export function licenseInformation(): Promise<LicenseSummary[]> {
+    return db.licenseInformation();
+}
+
 // Just for testing purposes
 // (async() => {
-//     // var actions1 = await db.loadPermissionsByName('Creative Commons Attribution-NonCommercial License 4.0');
-//     // console.log(actions1);
+//     let info = await licenseInformation();
+
+//     const json = JSON.stringify(info, null, 2);
+//     console.log(json);
     
-
-//     var actions2 = await db.loadDutiesByName('Creative Commons Zero');
-//     console.log(actions2);
-
-//     // var result = await db.isSubsetOfLicenseActions(actions1, actions2);
-
-//     // var result = await checker.conformToShareAlike('Creative Commons Attribution-NonCommercial License 4.0', 'Creative Commons Attribution-NonCommercial License 4.0');
-//     // console.log(result);
 // })();

@@ -161,4 +161,9 @@ cython_debug/
 
 *.sqlite
 
-node_modules/
+node_modules
+
+/.cache
+/build
+/public/build
+.env

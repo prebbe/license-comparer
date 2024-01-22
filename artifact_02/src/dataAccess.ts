@@ -34,6 +34,14 @@ export type ShareAlikes = {
     licenseShortName2: string,
 }
 
+export type LicenseSummary = {
+    metaInformation : License,
+    permissions : LicenseAction[],
+    prohibitions : LicenseAction[],
+    duties : LicenseAction[],
+    shareAlikes : ShareAlikes[]
+}
+
 export async function loadLicenses(): Promise<License[]> {
     let db = await sqlite.open({filename: db_path, driver:sqlite3.Database});
 
@@ -305,4 +313,26 @@ export function isSubsetOfLicenseActions(actions1: LicenseAction[], actions2: Li
     });
 
     return { isFullyIncluded, isPartiallyIncluded };
+}
+
+export async function licenseInformation(): Promise<LicenseSummary[]> {
+    let licenses = await loadLicenses();
+
+    let result:LicenseSummary[] = new Array();
+    for (const license1 of licenses) {
+        let permissions = await loadPermissionsByName(license1.name);
+        let prohibitions = await loadProhibitionsByName(license1.name);
+        let duties = await loadDutiesByName(license1.name);
+        let shareAlikes = await loadShareAlikesByName(license1.name);
+
+        result.push({
+            metaInformation: license1,
+            permissions: permissions, 
+            prohibitions: prohibitions, 
+            duties: duties,
+            shareAlikes: shareAlikes
+         });
+    }
+
+    return result;
 }
