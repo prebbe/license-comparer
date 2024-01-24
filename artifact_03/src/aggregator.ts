@@ -1,5 +1,5 @@
 import * as db from './dataAccess';
-import DataAccess from './dataAccessV2';
+import DataAccess from './dataAccess';
 import { AggregatedLicense, License, LicenseAction } from './types';
 
 class Aggregator {

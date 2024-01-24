@@ -1,0 +1,38 @@
+{
+  "name": "jvalue-lc",
+  "version": "0.0.1",
+  "description": "A simple license-checker, that checks for compatibility and can create aggregated licenses",
+  "main": "/dist/index.js",
+  "type": "module",
+  "types": "/dist/index.d.ts",
+  "scripts": {
+    "build": "npx tsc --build --force"
+  },
+  "files": [
+    "/dist",
+    "data.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prebbe/license-comparison-reasoner.git"
+  },
+  "keywords": [
+    "license",
+    "license-compatibility"
+  ],
+  "author": "Philip Rebbe",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/prebbe/license-comparison-reasoner/issues"
+  },
+  "homepage": "https://github.com/prebbe/license-comparison-reasoner#readme",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}

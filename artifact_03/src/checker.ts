@@ -1,4 +1,4 @@
-import DataAccess from './dataAccessV2';
+import DataAccess from './dataAccess';
 import { isSubsetOf } from './helpers';
 import { Rules } from './rules';
 import { LicenseSummary, LicenseCompatibilityCheckResult } from './types';
