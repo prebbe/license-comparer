@@ -1,4 +1,4 @@
-import { LicenseSummary } from "./dataAccess";
+import { LicenseSummary } from "./types";
 
 import * as db from './dataAccess';
 import * as checker from './checker';

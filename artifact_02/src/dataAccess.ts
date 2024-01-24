@@ -1,46 +1,12 @@
 import * as sqlite3 from 'sqlite3';
 import * as sqlite from 'sqlite';
 
+import {License, Action, LicenseAction, ShareAlikes, LicenseSummary} from './types';
+
 const db_path = '../../data/backend.sqlite'; 
 
 // Disabled to ensure compilation, integrate again later
-type License = {
-    id: number,
-    name: string,
-    shortName: string,
-    sourceLink: string,
-    description: string
-};
 
-type Action = {
-    id: number,
-    origin: string,
-    name: string,
-    description: string
-};
-
-type LicenseAction = {
-    id: number,
-    name: string
-}
-
-type ShareAlikes = {
-    id: number,
-    licenseId1: number,
-    licenseName1: string,
-    licenseShortName1: string,
-    licenseId2: number,
-    licenseName2: string,
-    licenseShortName2: string,
-}
-
-type LicenseSummary = {
-    metaInformation : License,
-    permissions : LicenseAction[],
-    prohibitions : LicenseAction[],
-    duties : LicenseAction[],
-    shareAlikes : ShareAlikes[]
-}
 
 async function loadLicenses(): Promise<License[]> {
     let db = await sqlite.open({filename: db_path, driver:sqlite3.Database});
@@ -335,14 +301,6 @@ async function licenseInformation(): Promise<LicenseSummary[]> {
     }
 
     return result;
-}
-
-export type {
-    License, 
-    Action, 
-    LicenseAction, 
-    ShareAlikes, 
-    LicenseSummary
 }
 
 export {
