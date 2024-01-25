@@ -1,0 +1,79 @@
+.license-metainformation {
+    border: 1px solid black;
+    border-radius: 5px 6px;
+
+    padding: 0.5em;
+    margin: 0.5em;    
+    background-color: lightblue;
+}
+
+.license-actions {
+    padding: 0.5em;
+    margin: 0.5em;
+}
+
+.license-actions-display {
+    display: grid;
+    gap: 1em;
+    grid-template-columns: auto auto auto;
+}
+
+.license-actions-display-column {
+    grid-column: span 1;
+}
+
+.license-permission {
+    color: green;
+}
+
+.license-permission::marker {
+    content: '✓  ';
+}
+
+.license-prohibition {
+    color: darkred;
+}
+
+.license-prohibition::marker {
+    content: '✕  ';
+}
+
+.license-duty {
+    color: orange;
+}
+
+.license-duty::marker {
+    content: '!  ';
+}
+
+.license-compatibility-table {
+    border-collapse: collapse;
+
+    text-align: center;
+    vertical-align: middle;
+}
+
+.license-compatibility-table-entry {
+    border: 1px solid lightgrey;
+}
+
+.license-compatibility-table-unknown {
+    background-color: lightblue;
+}
+
+.license-compatibility-table-valid {
+    background-color: lightgreen;
+}
+
+.license-compatibility-table-invalid {
+    background-color: lightsalmon;
+}
+
+a.go-back-link {
+    background: hsl(224, 98%, 58%);
+    color: #fff;
+
+    padding: 0.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+}

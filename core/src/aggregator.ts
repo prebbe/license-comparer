@@ -1,4 +1,3 @@
-import * as db from './dataAccess';
 import DataAccess from './dataAccess';
 import { AggregatedLicense, License, LicenseAction } from './types';
 
@@ -132,6 +131,31 @@ class Aggregator {
         let permissions = this.cleanPermissions(combinedPermissions, prohibitions);
     
         return { license1, license2, permissions, prohibitions, duties };
+    }
+
+    runFullAggregation(): AggregatedLicense[] {
+        let licenses = this.db.loadLicenses();
+
+        let results: AggregatedLicense[] = [];
+        for(let i = 0; i < licenses.length; i++) {
+            let license1 = licenses[i];
+
+            if (license1 == null) {
+                throw new Error("License1 is missing");
+            }
+
+            for(let j = 0; j < licenses.length; j++) {
+                let license2 = licenses[j];
+                if (license2 == null) {
+                    throw new Error("License1 is missing");
+                }
+
+                let result = this.aggregateLicense(license1.metaInformation, license2.metaInformation);
+                results.push(result);
+            }    
+        }
+
+        return results;
     }
 }
 

@@ -1,12 +1,15 @@
-# Artifact 03 - License-Checker with Web-Frontend
-The idea for this artifact was to write a small TypeScript program using the logic described under [../logic](../logic), that includes a web-frontend to display the results.
+# Core
+This folder contains the core-module for the license-checker. This includes license compatibility checking and license aggregation.
 
 ## Technologies used
 * Typescript
 
+## Install the dependencies
+```pwsh
+npm install
+```
 
-## Run the scripts
-_TBD_
-
-## Evaluation
-_TBD_
+## Build the library
+```pwsh
+npm run build
+```

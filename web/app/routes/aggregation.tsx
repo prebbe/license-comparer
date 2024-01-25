@@ -1,0 +1,72 @@
+import { json } from "@remix-run/node";
+
+import { useLoaderData } from "@remix-run/react";
+
+import { Aggregator, LicenseAction } from "../../../core/dist/index";
+import { FunctionComponent } from "react";
+
+export const loader = () => {
+  const aggregator = new Aggregator();
+
+  const aggregates = aggregator.runFullAggregation();
+
+  return json({aggregates});
+}
+
+export default function Aggregation() {
+  const { aggregates } = useLoaderData<typeof loader>();
+  
+  return (
+      <div className="main">
+          <h2>License-Aggregator</h2>
+          {aggregates.length? 
+            (
+              <table>
+              <tr>
+                <th>License 1</th>
+                <th>License 2</th>
+                <th>Permissions</th>
+                <th>Prohibitions</th>
+                <th>Duties</th>
+              </tr>
+              {aggregates.map((aggregate) => (
+                <tr>
+                  <td>{aggregate.license1.shortName}</td>
+                  <td>{aggregate.license2.shortName}</td>
+                  <td>
+                    <LicenseActionList actions={aggregate.permissions} />
+                  </td>
+                  <td>
+                    <LicenseActionList actions={aggregate.prohibitions} />
+                  </td>
+                  <td>
+                    <LicenseActionList actions={aggregate.duties} />
+                  </td>
+                </tr>
+              ))}
+            </table>
+          ) : (
+            <p>No aggregates found :/</p>
+          )
+        }  
+      </div>
+  )
+}
+
+
+const LicenseActionList: FunctionComponent<{
+  actions: LicenseAction[]
+}> = ({ actions }) => {
+
+    if (actions.length <= 0) {
+      return (<p>-</p>);
+    }
+
+    return (
+      <ul>
+      {actions.map((action) => (
+        <li>{action.name}</li>
+      ))}
+      </ul>
+    );
+}
