@@ -1,4 +1,4 @@
-import { Rules } from "../src/rules";
+import { Rules } from "../../src/compatibility/rules";
 import type { LicenseAction, ShareAlikes } from "../src/types";
 import { createLicense, createLicenseAction, createLicenseSummary, createShareAlikes } from "../src/types";
 

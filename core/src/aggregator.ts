@@ -1,5 +1,6 @@
 import DataAccess from './dataAccess';
-import { AggregatedLicense, License, LicenseAction } from './types';
+import { join, union } from './helpers';
+import { AggregatedLicense, License, LicenseAction, LicenseSummary } from './types';
 
 class Aggregator {
     db: DataAccess;
@@ -8,96 +9,20 @@ class Aggregator {
         this.db = new DataAccess();
     }
 
-    private combinePermissions(license1: string, license2: string): LicenseAction[] {
-        let permissions1 = this.db.loadLicensePermissions(license1);
-        let permissions2 = this.db.loadLicensePermissions(license2);
-    
-        if (permissions1 == null || permissions1.length === 0) {
-            return [];
-        }
-    
-        if (permissions2 == null || permissions2.length === 0) {
-            return [];
-        }
+    private combinePermissions(license1: LicenseSummary, license2: LicenseSummary): LicenseAction[] {
+        let result = join(license1.permissions, license2.permissions);
 
-        let result = [];
-        for (let i = 0; i < permissions1.length; i++) {
-            for (let j = 0; j < permissions2.length; j++) {
-                if (permissions1[i].id != permissions2[j].id) {
-                    continue;
-                }
+        return result;
+    }
     
-                result.push(permissions1[i]);
-            }
-        }
+    private combineProhibitions(license1: LicenseSummary, license2: LicenseSummary): LicenseAction[] {
+        let result = union(license1.prohibitions, license2.prohibitions);
     
         return result;
     }
     
-    private combineProhibitions(license1: string, license2: string): LicenseAction[] {
-        let prohibitions1 = this.db.loadLicenseProhibitions(license1);
-        let prohibitions2 = this.db.loadLicenseProhibitions(license2);
-    
-        if (prohibitions1 == null || prohibitions1.length === 0) {
-            if (prohibitions2 == null || prohibitions2.length === 0) {
-                return [];
-            }
-    
-            return prohibitions2;
-        }
-    
-        if (prohibitions2 == null || prohibitions2.length === 0) {
-            return prohibitions1;
-        }
-
-        let result = prohibitions1;
-        for (let i = 0; i < prohibitions2.length; i++) {
-            let prohibitionToCheck = prohibitions2[i];
-
-            if (prohibitionToCheck == null) {
-                continue;
-            }
-
-            let match1 = result.find((p:any) => p.id == prohibitionToCheck.id);
-            if (match1 != undefined)
-                continue;
-            
-            result.push(prohibitions2[i]);
-        }
-    
-        return result;
-    }
-    
-    private combineDuties(license1: string, license2: string): LicenseAction[] {
-        let duties1 = this.db.loadLicenseDuties(license1);
-        let duties2 = this.db.loadLicenseDuties(license2);
-    
-        if (duties1 == undefined || duties1.length === 0) {
-            if (duties2 == undefined || duties2.length === 0) {
-                return [];
-            }
-            
-            return duties2;
-        }
-
-        if (duties2 == null || duties2.length === 0) {
-            return duties1;
-        }
-    
-        let result = duties1;
-        for (let i = 0; i < duties2.length; i++) {
-            let dutyToCheck = duties2[i];
-
-            if (dutyToCheck == null) {
-                continue;
-            }
-
-            let match1 = result.find((p:any) => p.id == dutyToCheck.id);
-            if (match1 != undefined)
-                continue;
-            
-            result.push(duties2[i]);
-        }
+    private combineDuties(license1: LicenseSummary, license2: LicenseSummary): LicenseAction[] {
+        let result = union(license1.duties, license2.duties);
     
         return result;
     }
@@ -123,14 +48,20 @@ class Aggregator {
         return result;
     }
     
-    aggregateLicense(license1: License, license2: License) : AggregatedLicense {
-        let prohibitions = this.combineProhibitions(license1.name, license2.name);
-        let duties = this.combineDuties(license1.name, license2.name);
+    aggregateLicense(license1: LicenseSummary, license2: LicenseSummary) : AggregatedLicense {
+        let prohibitions = this.combineProhibitions(license1, license2);
+        let duties = this.combineDuties(license1, license2);
     
-        let combinedPermissions = this.combinePermissions(license1.name, license2.name);
+        let combinedPermissions = this.combinePermissions(license1, license2);
         let permissions = this.cleanPermissions(combinedPermissions, prohibitions);
     
-        return { license1, license2, permissions, prohibitions, duties };
+        return { 
+            license1: license1.metaInformation, 
+            license2: license2.metaInformation, 
+            permissions, 
+            prohibitions, 
+            duties 
+        };
     }
 
     runFullAggregation(): AggregatedLicense[] {
@@ -150,7 +81,7 @@ class Aggregator {
                     throw new Error("License1 is missing");
                 }
 
-                let result = this.aggregateLicense(license1.metaInformation, license2.metaInformation);
+                let result = this.aggregateLicense(license1, license2);
                 results.push(result);
             }    
         }
