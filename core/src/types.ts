@@ -6,6 +6,16 @@ type License = {
     description: string
 };
 
+function createLicense(id: number, name: string, shortName: string, sourceLink: string, description: string) : License {
+    return {
+        id,
+        name,
+        shortName,
+        sourceLink,
+        description
+    };
+}
+
 type Action = {
     id: number,
     origin: string,
@@ -13,9 +23,25 @@ type Action = {
     description: string
 };
 
+function createAction(id: number, origin: string, name: string, description: string) : Action {
+    return {
+        id,
+        origin,
+        name,
+        description
+    };
+}
+
 type LicenseAction = {
     id: number,
     name: string
+}
+
+function createLicenseAction(id: number, name: string) : LicenseAction {
+    return {
+        id,
+        name
+    };
 }
 
 type ShareAlikes = {
@@ -28,6 +54,26 @@ type ShareAlikes = {
     licenseShortName2: string,
 }
 
+function createShareAlikes(
+    id: number,
+    licenseId1: number,
+    licenseName1: string,
+    licenseShortName1: string,
+    licenseId2: number,
+    licenseName2: string,
+    licenseShortName2: string
+): ShareAlikes {
+    return {
+        id,
+        licenseId1,
+        licenseName1,
+        licenseShortName1,
+        licenseId2,
+        licenseName2,
+        licenseShortName2
+    };
+}
+
 type LicenseSummary = {
     metaInformation : License,
     permissions : LicenseAction[],
@@ -36,10 +82,47 @@ type LicenseSummary = {
     shareAlikes : ShareAlikes[]
 }
 
+function createLicenseSummary(
+    metaInformation: License,
+    permissions: LicenseAction[],
+    prohibitions: LicenseAction[],
+    duties: LicenseAction[],
+    shareAlikes: ShareAlikes[]
+    ): LicenseSummary {
+
+    return {
+        metaInformation,
+        permissions,
+        prohibitions,
+        duties,
+        shareAlikes
+    };
+}
+
+type PartialLicenseMatchResult = {
+    match : boolean,
+    missingElements1: LicenseAction[], 
+    missingElements2: LicenseAction[], 
+}
+
 type LicenseCompatibilityCheckResult = {
     checkType: string,
     license1: LicenseSummary,
     license2: LicenseSummary,
+    verdict: boolean,
+    permissionCheck: boolean,
+    prohibitionCheck: boolean, 
+    dutiesCheck: boolean,
+    shareAlikeCheck: boolean,
+    relicenseCheck: boolean 
+}
+
+type PartialLicenseCompatibilityCheckResult = {
+    checkType: string,
+    license1: LicenseSummary,
+    license2: LicenseSummary,
+    missingActions1: LicenseAction[],
+    missingActions2: LicenseAction[],
     verdict: boolean,
     permissionCheck: boolean,
     prohibitionCheck: boolean, 
@@ -62,6 +145,15 @@ export type {
     LicenseAction, 
     ShareAlikes, 
     LicenseSummary,
+    PartialLicenseMatchResult,
     LicenseCompatibilityCheckResult,
     AggregatedLicense
+}
+
+export {
+    createLicense,
+    createAction,
+    createLicenseAction,
+    createShareAlikes,
+    createLicenseSummary
 }

@@ -6,7 +6,8 @@
   "type": "module",
   "types": "/dist/index.d.ts",
   "scripts": {
-    "build": "npx tsc --build --force"
+    "build": "npx tsc --build --force",
+    "test": "jest"
   },
   "files": [
     "/dist",
@@ -28,7 +29,10 @@
   "homepage": "https://github.com/prebbe/license-comparison-reasoner#readme",
   "devDependencies": {
     "@remix-run/dev": "^2.5.1",
+    "@types/jest": "^29.5.11",
     "@types/node": "^20.11.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
