@@ -673,6 +673,10 @@
       {
         "id": 16,
         "name": "UninhibitedAccess"
+      },
+      {
+        "id": 27,
+        "name": "Relicense"
       }
     ],
     "prohibitions": [
