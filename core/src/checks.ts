@@ -1,15 +1,17 @@
+import Action from "./entities/Action";
+import AggregatedLicenseV2 from "./entities/AggregatedLicenseV2";
+import License from "./entities/License";
+import ShareAlike from "./entities/ShareAlike";
 import { join } from "./helpers";
 
-import { AggregatedLicenseV2, LicenseAction, LicenseSummary, ShareAlikes } from "./types";
-
 class Checks {
-    static canfulfillDuties(prohibitions: LicenseAction[], duties: LicenseAction[]): boolean {
+    static canfulfillDuties(prohibitions: Action[], duties: Action[]): boolean {
         let dutiesAreNotProhibited = join(prohibitions, duties).length == 0;
 
         return dutiesAreNotProhibited;
     }
 
-    static allowDerivatives(license1: LicenseSummary, license2: LicenseSummary): boolean {
+    static allowDerivatives(license1: License, license2: License): boolean {
         let l1AllowsDerivatives = this.permitsDerivatives(license1.permissions) && 
                                 !this.prohibitsDerivatives(license1.prohibitions);
                                 
@@ -19,15 +21,15 @@ class Checks {
         return l1AllowsDerivatives && l2AllowsDerivatives;
     }
 
-    private static prohibitsDerivatives(prohibitions: LicenseAction[]): boolean {
+    private static prohibitsDerivatives(prohibitions: Action[]): boolean {
         return prohibitions.findIndex((prohibition) => prohibition.id == 1) >= 0;
     }
 
-    private static permitsDerivatives(permissions: LicenseAction[]): boolean {
+    private static permitsDerivatives(permissions: Action[]): boolean {
         return permissions.findIndex((permission) => permission.id == 1) >= 0;
     }
 
-    static conformToShareAlike(license1: LicenseSummary, license2: LicenseSummary): boolean {
+    static conformToShareAlike(license1: License, license2: License): boolean {
         let l1requiresShareAlike = this.requiresShareAlikeCheck(license1.duties);
         let l2requiresShareAlike = this.requiresShareAlikeCheck(license2.duties);
 
@@ -48,15 +50,15 @@ class Checks {
         return l1Conforms && l2Conforms;
     }
 
-    private static requiresShareAlikeCheck(duties: LicenseAction[]): boolean {
+    private static requiresShareAlikeCheck(duties: Action[]): boolean {
         return duties.findIndex((duty) => duty.id === 5) >= 0;
     }
 
-    private static containsShareAlike(shareAlikes: ShareAlikes[], id: number): boolean {
-        return shareAlikes.findIndex((shareAlike: ShareAlikes) => shareAlike.licenseId2 == id) >= 0;
+    private static containsShareAlike(shareAlikes: ShareAlike[], id: number): boolean {
+        return shareAlikes.findIndex((shareAlike: ShareAlike) => shareAlike.licenseId2 == id) >= 0;
     }
 
-    static conformToRelicense(license1: LicenseSummary, license2: LicenseSummary): boolean {
+    static conformToRelicense(license1: License, license2: License): boolean {
         let isTheSameLicense = (license1.metaInformation.id === license2.metaInformation.id);
     
         if (isTheSameLicense)
@@ -68,8 +70,8 @@ class Checks {
         return license1AllowsRelicensing && license2AllowsRelicensing;
     }
     
-    private static containsRelicensing(actions: LicenseAction[]): boolean {
-        return actions.findIndex((action: LicenseAction) => action.id === 27) >= 0;
+    private static containsRelicensing(actions: Action[]): boolean {
+        return actions.findIndex((action: Action) => action.id === 27) >= 0;
     }
 
     static runChecks(license: AggregatedLicenseV2 ) {

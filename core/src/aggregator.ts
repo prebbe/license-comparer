@@ -1,7 +1,11 @@
 import DataAccess from './dataAccess';
 import { join, union } from './helpers';
 import Checks from './checks';
-import { AggregatedLicense, AggregatedLicenseV2, LicenseCompatibilityCheckResult, LicenseAction, LicenseSummary } from './types';
+import License from './entities/License';
+import Action from './entities/Action';
+import AggregatedLicense from './entities/AggregatedLicense';
+import AggregatedLicenseV2 from './entities/AggregatedLicenseV2';
+import LicenseCompatibilityCheckResult from './entities/LicenseCompatibilityCheckResult';
 
 class Aggregator {
     db: DataAccess;
@@ -12,30 +16,30 @@ class Aggregator {
         this.checks = new Checks();
     }
 
-    private combinePermissions(license1: LicenseSummary, license2: LicenseSummary): LicenseAction[] {
+    private combinePermissions(license1: License, license2: License): Action[] {
         let result = join(license1.permissions, license2.permissions);
 
         return result;
     }
     
-    private combineProhibitions(license1: LicenseSummary, license2: LicenseSummary): LicenseAction[] {
+    private combineProhibitions(license1: License, license2: License): Action[] {
         let result = union(license1.prohibitions, license2.prohibitions);
     
         return result;
     }
     
-    private combineDuties(license1: LicenseSummary, license2: LicenseSummary): LicenseAction[] {
+    private combineDuties(license1: License, license2: License): Action[] {
         let result = union(license1.duties, license2.duties);
     
         return result;
     }
     
-    private cleanPermissions(permissions: LicenseAction[], prohibitions: LicenseAction[]): LicenseAction[] {
+    private cleanPermissions(permissions: Action[], prohibitions: Action[]): Action[] {
         let result = permissions.map((p) => p);
         for (let i = 0; i < prohibitions.length; i++) {
             let prohibition = prohibitions[i];
     
-            let permission = permissions.find((p:LicenseAction) => p.id == prohibition.id)
+            let permission = permissions.find((p:Action) => p.id == prohibition.id)
             if (permission === undefined) {
                 continue;
             }
@@ -51,7 +55,7 @@ class Aggregator {
         return result;
     }
     
-    aggregateLicense(license1: LicenseSummary, license2: LicenseSummary) : AggregatedLicense {
+    aggregateLicense(license1: License, license2: License) : AggregatedLicense {
         let prohibitions = this.combineProhibitions(license1, license2);
         let duties = this.combineDuties(license1, license2);
     
@@ -67,7 +71,7 @@ class Aggregator {
         };
     }
 
-    combineLicenses(license1: LicenseSummary, license2: LicenseSummary) : AggregatedLicenseV2 {
+    combineLicenses(license1: License, license2: License) : AggregatedLicenseV2 {
         let permissions = this.combinePermissions(license1, license2);
         let prohibitions = this.combineProhibitions(license1, license2);
         let duties = this.combineDuties(license1, license2);
@@ -76,7 +80,7 @@ class Aggregator {
         
     }
 
-    runLicenseChecks(license1: LicenseSummary, license2: LicenseSummary) : LicenseCompatibilityCheckResult {
+    runLicenseChecks(license1: License, license2: License) : LicenseCompatibilityCheckResult {
         let combinedLicenses = this.combineLicenses(license1, license2);
 
         let checkResult = Checks.runChecks(combinedLicenses);

@@ -2,7 +2,7 @@ import { json } from "@remix-run/node";
 
 import { Link, useLoaderData } from "@remix-run/react";
 
-import { Aggregator, DataAccess, License, LicenseCompatibilityCheckResult } from "../../../core/dist/index";
+import { Aggregator, DataAccess, MetaInformation, LicenseCompatibilityCheckResult } from "../../../core/dist/index";
 import { FunctionComponent } from "react";
 
 export const loader = () => {
@@ -39,7 +39,7 @@ export default function Compatibility() {
 }
 
 const CompatibilityTable: FunctionComponent<{
-  licenses: License[]
+  licenses: MetaInformation[]
   results: LicenseCompatibilityCheckResult[]
 }> = ({ licenses, results }) => {
 

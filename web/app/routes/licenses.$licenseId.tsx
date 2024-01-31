@@ -7,7 +7,7 @@ import { Link, useLoaderData } from "@remix-run/react";
 
 import type { FunctionComponent } from "react";
 
-import type { LicenseSummary } from "../../../core/dist/index";
+import type { License } from "../../../core/dist/index";
 import { DataAccess } from "../../../core/dist/index";
 
 export const loader = ({params}: LoaderFunctionArgs) => {
@@ -44,7 +44,7 @@ export default function License() {
 }
 
 const LicenseInformation: FunctionComponent<{
-    license: Pick<LicenseSummary, 'metaInformation'>
+    license: Pick<License, 'metaInformation'>
 }> = ({ license }) => {
     const metaInformation = license.metaInformation;
 
@@ -62,7 +62,7 @@ const LicenseInformation: FunctionComponent<{
 }
 
 const LicenseDetails: FunctionComponent<{
-    license: LicenseSummary
+    license: License
 }> = ({ license }) => {
     const permissions = license.permissions;
     const prohibitions = license.prohibitions;

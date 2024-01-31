@@ -1,6 +1,7 @@
 import DataAccess from './dataAccess';
+import License from './entities/License';
+import LicenseCompatibilityCheckResult from './entities/LicenseCompatibilityCheckResult';
 import { Rules } from './rules';
-import { LicenseSummary, LicenseCompatibilityCheckResult } from './types';
 
 class CompatibilityChecker {
     db: DataAccess;
@@ -9,7 +10,7 @@ class CompatibilityChecker {
         this.db = new DataAccess();
     }
     
-    checkFullCompatibility(license1: LicenseSummary, license2: LicenseSummary): LicenseCompatibilityCheckResult {
+    checkFullCompatibility(license1: License, license2: License): LicenseCompatibilityCheckResult {
         const checkType = 'Full';
         
         let permissionCheck = Rules.permissionsAreCompatible(license1, license2);
@@ -24,7 +25,7 @@ class CompatibilityChecker {
         return { checkType, license1, license2, verdict, permissionCheck, prohibitionCheck, dutiesCheck, shareAlikeCheck, relicenseCheck };
     }
     
-    checkPartialCompatibility(license1: LicenseSummary, license2: LicenseSummary): LicenseCompatibilityCheckResult {
+    checkPartialCompatibility(license1: License, license2: License): LicenseCompatibilityCheckResult {
         const checkType = 'Partial';
 
         let permissionCheck = Rules.permissionsArePartiallyCompatible(license1, license2);

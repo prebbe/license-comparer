@@ -1,9 +1,12 @@
 import * as fs from 'fs';
+import MetaInformation from './entities/MetaInformation';
+import ShareAlike from './entities/ShareAlike';
+import Action from './entities/Action';
+import License from './entities/License';
 
-import {License, LicenseAction, ShareAlikes, LicenseSummary} from './types';
 
 class DataAccess {
-    licenses: LicenseSummary[] = new Array();
+    licenses: License[] = new Array();
 
     constructor() {
         this.initializeDataAccess();
@@ -16,11 +19,11 @@ class DataAccess {
         this.licenses = JSON.parse(configFileContent);
     }
 
-    loadLicenses() : LicenseSummary[] {
+    loadLicenses() : License[] {
         return this.licenses;
     }
 
-    loadLicense(name: string): LicenseSummary | null {
+    loadLicense(name: string): License | null {
         let license = this.licenses.find((license) => license.metaInformation.name == name);
 
         if (!license) {
@@ -30,7 +33,7 @@ class DataAccess {
         return license;
     }
 
-    loadLicenseById(id: number): LicenseSummary | null {
+    loadLicenseById(id: number): License | null {
         let license = this.licenses.find((license) => license.metaInformation.id == id);
 
         if (!license) {
@@ -40,11 +43,11 @@ class DataAccess {
         return license;
     }
 
-    loadLicenseMetainformations(): License[] {
+    loadLicenseMetainformations(): MetaInformation[] {
         return this.licenses.map((license) => license.metaInformation);
     }
 
-    loadLicenseMetaInformation(name: string): License | null {
+    loadLicenseMetaInformation(name: string): MetaInformation | null {
         let license = this.licenses.find((license) => license.metaInformation.name === name);
 
         if (!license) {
@@ -54,7 +57,7 @@ class DataAccess {
         return license.metaInformation;
     }
 
-    loadLicensePermissions(name: string): LicenseAction[] | null {
+    loadLicensePermissions(name: string): Action[] | null {
         let license = this.licenses.find((license) => license.metaInformation.name === name);
 
         if (!license) {
@@ -64,7 +67,7 @@ class DataAccess {
         return license.permissions;
     }
 
-    loadLicenseProhibitions(name: string): LicenseAction[] | null {
+    loadLicenseProhibitions(name: string): Action[] | null {
         let license = this.licenses.find((license) => license.metaInformation.name === name);
 
         if (!license) {
@@ -74,7 +77,7 @@ class DataAccess {
         return license.prohibitions;
     }
 
-    loadLicenseDuties(name: string): LicenseAction[] | null {
+    loadLicenseDuties(name: string): Action[] | null {
         let license = this.licenses.find((license) => license.metaInformation.name === name);
 
         if (!license) {
@@ -84,7 +87,7 @@ class DataAccess {
         return license.duties;
     }
 
-    loadShareAlikes(name: string): ShareAlikes[] | null {
+    loadShareAlikes(name: string): ShareAlike[] | null {
         let license = this.licenses.find((license) => license.metaInformation.name === name);
 
         if (!license) {

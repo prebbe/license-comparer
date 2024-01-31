@@ -2,7 +2,7 @@ import { json } from "@remix-run/node";
 
 import { useLoaderData } from "@remix-run/react";
 
-import { Aggregator, LicenseAction } from "../../../core/dist/index";
+import { Aggregator, Action } from "../../../core/dist/index";
 import { FunctionComponent } from "react";
 
 export const loader = () => {
@@ -55,7 +55,7 @@ export default function Aggregation() {
 
 
 const LicenseActionList: FunctionComponent<{
-  actions: LicenseAction[]
+  actions: Action[]
 }> = ({ actions }) => {
 
     if (actions.length <= 0) {

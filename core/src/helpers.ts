@@ -1,10 +1,10 @@
-import { LicenseAction } from "./types";
+import Action from "./entities/Action";
 
-function areEqual(actions1: LicenseAction, actions2: LicenseAction) {
+function areEqual(actions1: Action, actions2: Action) {
     return actions1.id === actions2.id;
 }
 
-function matchExactly(actions1: LicenseAction[], actions2: LicenseAction[]): boolean {
+function matchExactly(actions1: Action[], actions2: Action[]): boolean {
     let match = true;
     for(let i = 0; i < actions1.length; i++) {
         let action1 = actions1[i];
@@ -33,7 +33,7 @@ function matchExactly(actions1: LicenseAction[], actions2: LicenseAction[]): boo
     return match;
 }
 
-function matchPartially(actions1: LicenseAction[], actions2: LicenseAction[]): boolean {
+function matchPartially(actions1: Action[], actions2: Action[]): boolean {
     let match = false;
     for(let i = 0; i < actions1.length; i++) {
         let action1 = actions1[i];
@@ -58,8 +58,8 @@ function matchPartially(actions1: LicenseAction[], actions2: LicenseAction[]): b
     return match;
 }
 
-function join(actions1: LicenseAction[], actions2: LicenseAction[]): LicenseAction[] {
-    let results: LicenseAction[] = [];
+function join(actions1: Action[], actions2: Action[]): Action[] {
+    let results: Action[] = [];
 
     if ((actions1.length - actions2.length) >= 0) {
         for (let i = 0; i < actions2.length; i++) {
@@ -86,10 +86,10 @@ function join(actions1: LicenseAction[], actions2: LicenseAction[]): LicenseActi
     return results;
 }
 
-function union(actions1: LicenseAction[], actions2: LicenseAction[]): LicenseAction[] {
+function union(actions1: Action[], actions2: Action[]): Action[] {
     let combinedActions = actions1.concat(actions2);
 
-    let reducedActions: LicenseAction[] = [];
+    let reducedActions: Action[] = [];
     for (let i = 0; i < combinedActions.length; i++) {
         let action = combinedActions[i];
         if (reducedActions.findIndex((ra) => areEqual(ra, action)) < 0) {
