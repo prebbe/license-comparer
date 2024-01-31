@@ -4,60 +4,6 @@ function areEqual(actions1: Action, actions2: Action) {
     return actions1.id === actions2.id;
 }
 
-function matchExactly(actions1: Action[], actions2: Action[]): boolean {
-    let match = true;
-    for(let i = 0; i < actions1.length; i++) {
-        let action1 = actions1[i];
-        let equivalentIndex = actions2.findIndex((action2) => areEqual(action2, action1));
-        
-        if (equivalentIndex < 0) {
-            match = false;
-            break;
-        }
-    }
-
-    if (!match) {
-        return false;
-    }
-    
-    for(let j = 0; j < actions2.length; j++) {
-        let action2 = actions2[j];
-        let equivalentIndex = actions1.findIndex((action1) => areEqual(action1, action2));
-        
-        if (equivalentIndex < 0) {
-            match = false;
-            break;
-        }
-    }
-
-    return match;
-}
-
-function matchPartially(actions1: Action[], actions2: Action[]): boolean {
-    let match = false;
-    for(let i = 0; i < actions1.length; i++) {
-        let action1 = actions1[i];
-        let equivalentIndex = actions2.findIndex((action2) => areEqual(action2, action1));
-        
-        if (equivalentIndex >= 0) {
-            match = true;
-            continue;
-        }
-    }
-    
-    for(let j = 0; j < actions2.length; j++) {
-        let action2 = actions2[j];
-        let equivalentIndex = actions1.findIndex((action1) => areEqual(action1, action2));
-        
-        if (equivalentIndex >= 0) {
-            match = true;
-            continue;
-        }
-    }
-
-    return match;
-}
-
 function join(actions1: Action[], actions2: Action[]): Action[] {
     let results: Action[] = [];
 
@@ -100,4 +46,4 @@ function union(actions1: Action[], actions2: Action[]): Action[] {
     return reducedActions;
 }
 
-export { areEqual, matchExactly, matchPartially, join, union }
+export { areEqual, join, union }

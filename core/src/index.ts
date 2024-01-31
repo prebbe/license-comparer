@@ -5,8 +5,7 @@ import LicenseCompatibilityCheckResult from './entities/LicenseCompatibilityChec
 import AggregatedLicense from './entities/AggregatedLicense';
 
 import DataAccess from './dataAccess';
-import CompatibilityChecker from './checker';
 import Aggregator from './aggregator';
 
 export type { License, Action, MetaInformation, LicenseCompatibilityCheckResult, AggregatedLicense }
-export { DataAccess, CompatibilityChecker, Aggregator }
+export { DataAccess, Aggregator }
