@@ -1,33 +1,12 @@
-# license-comparison-reasoner
-This repository contains some of the source code that accompanies my master-thesis regarding open-data-licenses in the context of open-data-pipelines at FAU Erlangen-Nürnberg.
-One approach we are trying in this context is to implement a reasoner that can compare and aggregate multiple open-data-licenses.
+# Master-Thesis - Integrating Open-Data-License-Information in Open-Data-Pipelines
+This repo includes the source-code that accompanies my master-thesis. 
 
 > [!IMPORTANT]
 > The contents of this repository are a prove-of-concept! The recommendations given are not guaranteed to be correct and have not been reviewed by a law office or other institutions.
 > I strongly recommend that you always consult a lawyer or ask your company attourney in case you need legal advice. I will not assume any liability, warranty, etc. for any damages that occur by using this proof-of-concept.
 
 ## Technologies used
-* [SQLite](https://sqlite.org/index.html) for the backend
-* [Logica](https://logica.dev/) for the reasoning
-
-## Get started
-
-To get started, you first have to install the necessary tools(listed above). Simply follow the official how-to's to install them.
-
-### Create the SQLITE-backend
-Start by creating a new sqlite-table in the data-folder:
-```pwsh
-sqlite3 data/backend.sqlite
-```
-
-After connecting to it, use the SQL-scripts in the data-folder to create and populate the needed tables:
-```pwsh
-.read data/tables.sql
-.read data/values.sql
-.quit
-```
-
-## Testing the different artifacts
-Each artifact has its own READMe.md that describes the necessary steps to run it and also contains the notebooks that were used to evaluate its results.
-* [Artifact 1](/artifact_01/)
-* [Artifact 2](/artifact_02/)
+* [Typescript](https://www.typescriptlang.org/)
+* [NPM](https://www.npmjs.com/)
+* [Jest](https://jestjs.io/) for Unittests
+* [Remix](https://remix.run/) for the frontend
