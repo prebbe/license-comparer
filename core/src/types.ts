@@ -139,6 +139,14 @@ type AggregatedLicense = {
     duties: LicenseAction[]
 }
 
+type AggregatedLicenseV2 = {
+    license1: LicenseSummary,
+    license2: LicenseSummary,
+    permissions: LicenseAction[],
+    prohibitions: LicenseAction[],
+    duties: LicenseAction[]
+}
+
 export type {
     License, 
     Action, 
@@ -147,7 +155,8 @@ export type {
     LicenseSummary,
     PartialLicenseMatchResult,
     LicenseCompatibilityCheckResult,
-    AggregatedLicense
+    AggregatedLicense,
+    AggregatedLicenseV2
 }
 
 export {

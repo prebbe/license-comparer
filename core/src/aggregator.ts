@@ -1,12 +1,15 @@
 import DataAccess from './dataAccess';
 import { join, union } from './helpers';
-import { AggregatedLicense, License, LicenseAction, LicenseSummary } from './types';
+import Checks from './checks';
+import { AggregatedLicense, AggregatedLicenseV2, LicenseCompatibilityCheckResult, LicenseAction, LicenseSummary } from './types';
 
 class Aggregator {
     db: DataAccess;
+    checks: Checks;
 
     constructor() {
         this.db = new DataAccess();
+        this.checks = new Checks();
     }
 
     private combinePermissions(license1: LicenseSummary, license2: LicenseSummary): LicenseAction[] {
@@ -64,6 +67,33 @@ class Aggregator {
         };
     }
 
+    combineLicenses(license1: LicenseSummary, license2: LicenseSummary) : AggregatedLicenseV2 {
+        let permissions = this.combinePermissions(license1, license2);
+        let prohibitions = this.combineProhibitions(license1, license2);
+        let duties = this.combineDuties(license1, license2);
+        
+        return {license1, license2, permissions, prohibitions, duties}
+        
+    }
+
+    runLicenseChecks(license1: LicenseSummary, license2: LicenseSummary) : LicenseCompatibilityCheckResult {
+        let combinedLicenses = this.combineLicenses(license1, license2);
+
+        let checkResult = Checks.runChecks(combinedLicenses);
+
+        return {
+            checkType: 'v2',
+            license1,
+            license2,
+            verdict: checkResult,
+            permissionCheck: checkResult,
+            prohibitionCheck: checkResult, 
+            dutiesCheck: checkResult,
+            shareAlikeCheck: checkResult,
+            relicenseCheck: checkResult 
+        };
+    }
+
     runFullAggregation(): AggregatedLicense[] {
         let licenses = this.db.loadLicenses();
 
@@ -82,6 +112,31 @@ class Aggregator {
                 }
 
                 let result = this.aggregateLicense(license1, license2);
+                results.push(result);
+            }    
+        }
+
+        return results;
+    }
+
+    runCompatibilityChecks() : LicenseCompatibilityCheckResult[] {
+        let licenses = this.db.loadLicenses();
+
+        let results: LicenseCompatibilityCheckResult[] = [];
+        for(let i = 0; i < licenses.length; i++) {
+            let license1 = licenses[i];
+
+            if (license1 == null) {
+                throw new Error("License1 is missing");
+            }
+
+            for(let j = 0; j < licenses.length; j++) {
+                let license2 = licenses[j];
+                if (license2 == null) {
+                    throw new Error("License1 is missing");
+                }
+
+                let result = this.runLicenseChecks(license1, license2);
                 results.push(result);
             }    
         }
