@@ -77,3 +77,23 @@ a.go-back-link {
     border-radius: 8px;
     text-decoration: none;
 }
+
+.license-pipeline-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.license-pipeline-form {
+    width: 50%
+}
+
+.license-pipeline-form-element {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.license-pipeline-overview {
+    width: 50%
+}

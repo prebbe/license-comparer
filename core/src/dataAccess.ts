@@ -4,7 +4,6 @@ import ShareAlike from './entities/ShareAlike';
 import Action from './entities/Action';
 import License from './entities/License';
 
-
 class DataAccess {
     licenses: License[] = new Array();
 

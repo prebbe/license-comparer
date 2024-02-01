@@ -30,7 +30,6 @@ export default function Compatibility() {
   
   return (
     <div className="main">
-      <Link to={`/compatibility`} className="go-back-link">← Go back</Link>
       <h2>License-Compatibility</h2>
       <p>This part of the website shows how different licenses are compatible with each other.</p>
       <p>This check compares if two licenses are compatible.</p>

@@ -1,5 +1,7 @@
 import Action from "./entities/Action";
 import AggregatedLicenseV2 from "./entities/AggregatedLicenseV2";
+import { CheckResult, SingleCheckResult } from "./entities/CheckResult";
+import CombinedLicense from "./entities/CombinedLicense";
 import License from "./entities/License";
 import ShareAlike from "./entities/ShareAlike";
 import { join } from "./helpers";
@@ -81,6 +83,51 @@ class Checks {
         let relicenseCheck = this.conformToRelicense(license.license1, license.license2);
 
         return dutyCheck && derivateCheck && shareAlikeCheck && relicenseCheck;
+    }
+
+    static checkCombinedLicense(license: CombinedLicense ): CheckResult {
+        let result = true;
+        let checkResults = [];
+        for (let i = 0; i <= license.numberOfLicenses - 1; i++) {
+            let license1 = license.licenses[i];
+
+            for (let j = 0; j < license.numberOfLicenses - 1; j++) {
+                let license2 = license.licenses[j];
+
+                if (i === j) {
+                    continue;
+                }
+
+                let checkResult = this.checkLicenses(license1, license2); 
+                if (checkResult.result == false) {
+                    result = false;
+                }
+                checkResults.push(checkResult);
+            }
+        }
+
+        return { result, checks: checkResults };
+    }
+
+    private static checkLicenses(license1: License, license2: License): SingleCheckResult {
+        let dutiesCheck = this.canfulfillDuties(license1.prohibitions, license2.duties) 
+                        && this.canfulfillDuties(license2.prohibitions, license1.duties);
+
+        let derivativesCheck = this.allowDerivatives(license1, license2);
+        let shareAlikeCheck = this.conformToShareAlike(license1, license2);
+        let relicensingCheck = this.conformToRelicense(license1, license2);
+
+        let result = dutiesCheck && derivativesCheck && shareAlikeCheck && relicensingCheck;
+
+        return { 
+            name1: license1.metaInformation.shortName,
+            name2: license2.metaInformation.shortName,
+            result,
+            dutiesCheck, 
+            derivativesCheck,
+            shareAlikeCheck,
+            relicensingCheck
+        };
     }
 }
 

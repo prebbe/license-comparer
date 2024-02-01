@@ -1,5 +1,5 @@
 import Action from '../src/entities/Action';
-import {areEqual, matchExactly, matchPartially, join, union } from '../src/helpers';
+import {areEqual, join, union } from '../src/helpers';
 import { createAction } from './typehelper';
 
 describe("Testing areEqual", () => {
@@ -94,7 +94,6 @@ describe("Testing join", () => {
         expect(join(l1, l2)).toEqual(expectedResult);
     })
 })
-
 
 describe("Testing union", () => {
     test("If both licenses are empty return an empty array", () => {

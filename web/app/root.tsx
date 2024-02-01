@@ -68,6 +68,19 @@ export default function App() {
                     ? "pending"
                     : ""
                     }
+                    to={`/pipeline`}>
+                  Pipeline-Simulation
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={({ isActive, isPending }) =>
+                    isActive
+                    ? "active"
+                    : isPending
+                    ? "pending"
+                    : ""
+                    }
                     to={`/compatibility`}>
                   Compatibility-Check
                 </NavLink>
