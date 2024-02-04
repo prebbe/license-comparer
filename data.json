@@ -97,17 +97,7 @@
         "name": "LinkDataSet"
       }
     ],
-    "shareAlikes": [
-      {
-        "id": 0,
-        "licenseId1": 0,
-        "licenseName1": "Creative Commons Attribution License 4.0",
-        "licenseShortName1": "CC-BY-4.0",
-        "licenseId2": 0,
-        "licenseName2": "Creative Commons Attribution License 4.0",
-        "licenseShortName2": "CC-BY-4.0"
-      }
-    ]
+    "shareAlikes": []
   },
   {
     "metaInformation": {
@@ -212,6 +202,15 @@
       }
     ],
     "shareAlikes": [
+      {
+        "id": 0,
+        "licenseId1": 1,
+        "licenseName1": "Creative Commons Attribution-ShareAlike License 4.0",
+        "licenseShortName1": "CC-BY-SA-4.0",
+        "licenseId2": 0,
+        "licenseName2": "Creative Commons Attribution License 4.0",
+        "licenseShortName2": "CC-BY-4.0"
+      },
       {
         "id": 1,
         "licenseId1": 1,
@@ -531,7 +530,26 @@
         "name": "LinkDataSet"
       }
     ],
-    "shareAlikes": []
+    "shareAlikes": [
+      {
+        "id": 0,
+        "licenseId1": 4,
+        "licenseName1": "Creative Commons Attribution-NonCommercial-ShareAlike License 4.0",
+        "licenseShortName1": "CC-BY-NC-SA-4.0",
+        "licenseId2": 4,
+        "licenseName2": "Creative Commons Attribution-NonCommercial-ShareAlike License 4.0",
+        "licenseShortName2": "CC-BY-NC-SA-4.0"
+      },
+      {
+        "id": 1,
+        "licenseId1": 4,
+        "licenseName1": "Creative Commons Attribution-NonCommercial-ShareAlike License 4.0",
+        "licenseShortName1": "CC-BY-NC-SA-4.0",
+        "licenseId2": 0,
+        "licenseName2": "Creative Commons Attribution License 4.0",
+        "licenseShortName2": "CC-BY-4.0"
+      }
+    ]
   },
   {
     "metaInformation": {
@@ -945,7 +963,17 @@
         "name": "LinkDataSet"
       }
     ],
-    "shareAlikes": []
+    "shareAlikes": [
+      {
+        "id": 0,
+        "licenseId1": 9,
+        "licenseName1": "Open Data Commons Open Database License v1.0",
+        "licenseShortName1": "ODbL-1.0",
+        "licenseId2": 9,
+        "licenseName2": "Open Data Commons Open Database License v1.0",
+        "licenseShortName2": "ODbL-1.0"
+      }
+    ]
   },
   {
     "metaInformation": {
@@ -1404,7 +1432,17 @@
         "name": "LimitLicenseVersion"
       }
     ],
-    "shareAlikes": []
+    "shareAlikes": [
+      {
+        "id": 0,
+        "licenseId1": 15,
+        "licenseName1": "Norwegian Licence for Open Government Data 2.0",
+        "licenseShortName1": "NLOD-2.0",
+        "licenseId2": 15,
+        "licenseName2": "Norwegian Licence for Open Government Data 2.0",
+        "licenseShortName2": "NLOD-2.0"
+      }
+    ]
   },
   {
     "metaInformation": {
