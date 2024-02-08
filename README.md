@@ -10,3 +10,21 @@ This repo includes the source-code that accompanies my master-thesis.
 * [NPM](https://www.npmjs.com/)
 * [Jest](https://jestjs.io/) for Unittests
 * [Remix](https://remix.run/) for the frontend
+
+## Get started
+* Check out the solution
+* Install the dependencies for the core-project and build it:
+```pwsh
+cd core
+npm install
+npm run build
+```
+* Install the dependencies for the web-project
+```pwsh
+cd ..\web
+npm install
+```
+* Run the web app locally:
+```pwsh
+npm run dev
+```
