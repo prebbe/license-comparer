@@ -10,91 +10,133 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Sharing the original data without modification"
       },
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
       {
         "id": 4,
-        "name": "CommercialUse"
+        "name": "CommercialUse",
+        "displayName": "Commercial Use",
+        "description": "Use the data for commercial purpose"
       },
       {
         "id": 15,
-        "name": "FreeAccess"
+        "name": "FreeAccess",
+        "displayName": "Free Access",
+        "description": "Accessing the data is free of charge"
       },
       {
         "id": 16,
-        "name": "UninhibitedAccess"
+        "name": "UninhibitedAccess",
+        "displayName": "Uninhibited Access",
+        "description": "Accessing the data is not prevented by unneccessary means"
       },
       {
         "id": 27,
-        "name": "Relicense"
+        "name": "Relicense",
+        "displayName": "Change license",
+        "description": "The license of the dataset can be changed to another license"
       }
     ],
     "prohibitions": [
       {
         "id": 12,
-        "name": "ClaimWarranty"
+        "name": "ClaimWarranty",
+        "displayName": "Claim Warranty",
+        "description": "You can claim a warranty for the provided information"
       },
       {
         "id": 13,
-        "name": "ClaimLiability"
+        "name": "ClaimLiability",
+        "displayName": "Claim Liability",
+        "description": "The provided is liable for damages"
       },
       {
         "id": 14,
-        "name": "Endorse"
+        "name": "Endorse",
+        "displayName": "Endorse",
+        "description": "You can use the provider of the data to endorse your project"
       },
       {
         "id": 17,
-        "name": "ClaimMoralRights"
+        "name": "ClaimMoralRights",
+        "displayName": "Claim Moral Rights",
+        "description": "You can claim the moral rights that are attached to the content of the dataset"
       },
       {
         "id": 19,
-        "name": "ClaimTrademark"
+        "name": "ClaimTrademark",
+        "displayName": "Claim Trademarks",
+        "description": "You can claim any trademarks used in the data"
       },
       {
         "id": 21,
-        "name": "ClaimPersonalityRights"
+        "name": "ClaimPersonalityRights",
+        "displayName": "Claim Personality Rights",
+        "description": "You can claim the personality rights that are attached to the content of the dataset"
       },
       {
         "id": 22,
-        "name": "ClaimPatentRights"
+        "name": "ClaimPatentRights",
+        "displayName": "Claim Patent",
+        "description": "You can claim a patent that is included in the data"
       },
       {
         "id": 23,
-        "name": "ClaimCopyrightRights"
+        "name": "ClaimCopyrightRights",
+        "displayName": "Claim Copyright",
+        "description": "You can claim a copyright that are attached to the content of the dataset"
       }
     ],
     "duties": [
       {
         "id": 6,
-        "name": "Attribution"
+        "name": "Attribution",
+        "displayName": "Attribution",
+        "description": "You have to attribute the original creator of the data"
       },
       {
         "id": 7,
-        "name": "Inform"
+        "name": "Inform",
+        "displayName": "Mark Changes",
+        "description": "You have to inform consumers about changes you have made to the data"
       },
       {
         "id": 8,
-        "name": "Notice"
+        "name": "Notice",
+        "displayName": "Keep Notices",
+        "description": "You have to keep any copyright notice that is part of the original dataset"
       },
       {
         "id": 9,
-        "name": "LinkLicense"
+        "name": "LinkLicense",
+        "displayName": "Link to the license",
+        "description": "You have to include a link to the original license"
       },
       {
         "id": 10,
-        "name": "LinkDataSet"
+        "name": "LinkDataSet",
+        "displayName": "Link to the dataset",
+        "description": "You have to provide a link to the original dataset"
       }
     ],
     "shareAlikes": []
@@ -110,95 +152,139 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Allows sharing the original data without modification"
       },
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
-      {
+     {
         "id": 4,
-        "name": "CommercialUse"
+        "name": "CommercialUse",
+        "displayName": "Commercial Use",
+        "description": "Use the data for commercial purpose"
       },
       {
         "id": 15,
-        "name": "FreeAccess"
+        "name": "FreeAccess",
+        "displayName": "Free Access",
+        "description": "Accessing the data is free of charge"
       },
       {
         "id": 16,
-        "name": "UninhibitedAccess"
+        "name": "UninhibitedAccess",
+        "displayName": "Uninhibited Access",
+        "description": "Accessing the data is not prevented by unneccessary means"
       },
       {
         "id": 27,
-        "name": "Relicense"
+        "name": "Relicense",
+        "displayName": "Change license",
+        "description": "The license of the dataset can be changed to another license"
       }
     ],
     "prohibitions": [
       {
         "id": 12,
-        "name": "ClaimWarranty"
+        "name": "ClaimWarranty",
+        "displayName": "Claim Warranty",
+        "description": "You can claim a warranty for the provided information"
       },
       {
         "id": 13,
-        "name": "ClaimLiability"
+        "name": "ClaimLiability",
+        "displayName": "Claim Liability",
+        "description": "The provided is liable for damages"
       },
       {
         "id": 14,
-        "name": "Endorse"
+        "name": "Endorse",
+        "displayName": "Endorse",
+        "description": "You can use the provider of the data to endorse your project"
       },
       {
         "id": 17,
-        "name": "ClaimMoralRights"
+        "name": "ClaimMoralRights",
+        "displayName": "Claim Moral Rights",
+        "description": "You can claim the moral rights that are attached to the content of the dataset"
       },
       {
         "id": 19,
-        "name": "ClaimTrademark"
+        "name": "ClaimTrademark",
+        "displayName": "Claim Trademarks",
+        "description": "You can claim any trademarks used in the data"
       },
       {
         "id": 21,
-        "name": "ClaimPersonalityRights"
+        "name": "ClaimPersonalityRights",
+        "displayName": "Claim Personality Rights",
+        "description": "You can claim the personality rights that are attached to the content of the dataset"
       },
       {
         "id": 22,
-        "name": "ClaimPatentRights"
+        "name": "ClaimPatentRights",
+        "displayName": "Claim Patent",
+        "description": "You can claim a patent that is included in the data"
       },
       {
         "id": 23,
-        "name": "ClaimCopyrightRights"
+        "name": "ClaimCopyrightRights",
+        "displayName": "Claim Copyright",
+        "description": "You can claim a copyright that are attached to the content of the dataset"
       }
     ],
     "duties": [
       {
         "id": 5,
-        "name": "ShareAlike"
+        "name": "ShareAlike",
+        "displayName": "Conform Share-Alike",
+        "description": "If you want to relicense the data you have to use the same or a similar license"
       },
       {
         "id": 6,
-        "name": "Attribution"
+        "name": "Attribution",
+        "displayName": "Attribution",
+        "description": "You have to attribute the original creator of the data"
       },
       {
         "id": 7,
-        "name": "Inform"
+        "name": "Inform",
+        "displayName": "Mark Changes",
+        "description": "You have to inform consumers about changes you have made to the data"
       },
       {
         "id": 8,
-        "name": "Notice"
+        "name": "Notice",
+        "displayName": "Keep Notices",
+        "description": "You have to keep any copyright notice that is part of the original dataset"
       },
       {
         "id": 9,
-        "name": "LinkLicense"
+        "name": "LinkLicense",
+        "displayName": "Link to the license",
+        "description": "You have to include a link to the original license"
       },
       {
         "id": 10,
-        "name": "LinkDataSet"
+        "name": "LinkDataSet",
+        "displayName": "Link to the dataset",
+        "description": "You have to provide a link to the original dataset"
       }
     ],
     "shareAlikes": [
@@ -233,87 +319,127 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Allows sharing the original data without modification"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
-      {
+     {
         "id": 4,
-        "name": "CommercialUse"
+        "name": "CommercialUse",
+        "displayName": "Commercial Use",
+        "description": "Use the data for commercial purpose"
       },
       {
         "id": 15,
-        "name": "FreeAccess"
+        "name": "FreeAccess",
+        "displayName": "Free Access",
+        "description": "Accessing the data is free of charge"
       },
       {
         "id": 16,
-        "name": "UninhibitedAccess"
+        "name": "UninhibitedAccess",
+        "displayName": "Uninhibited Access",
+        "description": "Accessing the data is not prevented by unneccessary means"
       }
     ],
     "prohibitions": [
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
       {
         "id": 12,
-        "name": "ClaimWarranty"
+        "name": "ClaimWarranty",
+        "displayName": "Claim Warranty",
+        "description": "You can claim a warranty for the provided information"
       },
       {
         "id": 13,
-        "name": "ClaimLiability"
+        "name": "ClaimLiability",
+        "displayName": "Claim Liability",
+        "description": "The provided is liable for damages"
       },
       {
         "id": 14,
-        "name": "Endorse"
+        "name": "Endorse",
+        "displayName": "Endorse",
+        "description": "You can use the provider of the data to endorse your project"
       },
       {
         "id": 17,
-        "name": "ClaimMoralRights"
+        "name": "ClaimMoralRights",
+        "displayName": "Claim Moral Rights",
+        "description": "You can claim the moral rights that are attached to the content of the dataset"
       },
       {
         "id": 19,
-        "name": "ClaimTrademark"
+        "name": "ClaimTrademark",
+        "displayName": "Claim Trademarks",
+        "description": "You can claim any trademarks used in the data"
       },
       {
         "id": 21,
-        "name": "ClaimPersonalityRights"
+        "name": "ClaimPersonalityRights",
+        "displayName": "Claim Personality Rights",
+        "description": "You can claim the personality rights that are attached to the content of the dataset"
       },
       {
         "id": 22,
-        "name": "ClaimPatentRights"
+        "name": "ClaimPatentRights",
+        "displayName": "Claim Patent",
+        "description": "You can claim a patent that is included in the data"
       },
       {
         "id": 23,
-        "name": "ClaimCopyrightRights"
+        "name": "ClaimCopyrightRights",
+        "displayName": "Claim Copyright",
+        "description": "You can claim a copyright that are attached to the content of the dataset"
       }
     ],
     "duties": [
       {
         "id": 6,
-        "name": "Attribution"
+        "name": "Attribution",
+        "displayName": "Attribution",
+        "description": "You have to attribute the original creator of the data"
       },
       {
         "id": 7,
-        "name": "Inform"
+        "name": "Inform",
+        "displayName": "Mark Changes",
+        "description": "You have to inform consumers about changes you have made to the data"
       },
       {
         "id": 8,
-        "name": "Notice"
+        "name": "Notice",
+        "displayName": "Keep Notices",
+        "description": "You have to keep any copyright notice that is part of the original dataset"
       },
       {
         "id": 9,
-        "name": "LinkLicense"
+        "name": "LinkLicense",
+        "displayName": "Link to the license",
+        "description": "You have to include a link to the original license"
       },
       {
         "id": 10,
-        "name": "LinkDataSet"
+        "name": "LinkDataSet",
+        "displayName": "Link to the dataset",
+        "description": "You have to provide a link to the original dataset"
       }
     ],
     "shareAlikes": [
@@ -339,91 +465,133 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Allows sharing the original data without modification"
       },
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
       {
         "id": 15,
-        "name": "FreeAccess"
+        "name": "FreeAccess",
+        "displayName": "Free Access",
+        "description": "Accessing the data is free of charge"
       },
       {
         "id": 16,
-        "name": "UninhibitedAccess"
+        "name": "UninhibitedAccess",
+        "displayName": "Uninhibited Access",
+        "description": "Accessing the data is not prevented by unneccessary means"
       },
       {
         "id": 27,
-        "name": "Relicense"
+        "name": "Relicense",
+        "displayName": "Change license",
+        "description": "The license of the dataset can be changed to another license"
       }
     ],
     "prohibitions": [
-      {
+     {
         "id": 4,
-        "name": "CommercialUse"
+        "name": "CommercialUse",
+        "displayName": "Commercial Use",
+        "description": "Use the data for commercial purpose"
       },
       {
         "id": 12,
-        "name": "ClaimWarranty"
+        "name": "ClaimWarranty",
+        "displayName": "Claim Warranty",
+        "description": "You can claim a warranty for the provided information"
       },
       {
         "id": 13,
-        "name": "ClaimLiability"
+        "name": "ClaimLiability",
+        "displayName": "Claim Liability",
+        "description": "The provided is liable for damages"
       },
       {
         "id": 14,
-        "name": "Endorse"
+        "name": "Endorse",
+        "displayName": "Endorse",
+        "description": "You can use the provider of the data to endorse your project"
       },
       {
         "id": 17,
-        "name": "ClaimMoralRights"
+        "name": "ClaimMoralRights",
+        "displayName": "Claim Moral Rights",
+        "description": "You can claim the moral rights that are attached to the content of the dataset"
       },
       {
         "id": 19,
-        "name": "ClaimTrademark"
+        "name": "ClaimTrademark",
+        "displayName": "Claim Trademarks",
+        "description": "You can claim any trademarks used in the data"
       },
       {
         "id": 21,
-        "name": "ClaimPersonalityRights"
+        "name": "ClaimPersonalityRights",
+        "displayName": "Claim Personality Rights",
+        "description": "You can claim the personality rights that are attached to the content of the dataset"
       },
       {
         "id": 22,
-        "name": "ClaimPatentRights"
+        "name": "ClaimPatentRights",
+        "displayName": "Claim Patent",
+        "description": "You can claim a patent that is included in the data"
       },
       {
         "id": 23,
-        "name": "ClaimCopyrightRights"
+        "name": "ClaimCopyrightRights",
+        "displayName": "Claim Copyright",
+        "description": "You can claim a copyright that are attached to the content of the dataset"
       }
     ],
     "duties": [
       {
         "id": 6,
-        "name": "Attribution"
+        "name": "Attribution",
+        "displayName": "Attribution",
+        "description": "You have to attribute the original creator of the data"
       },
       {
         "id": 7,
-        "name": "Inform"
+        "name": "Inform",
+        "displayName": "Mark Changes",
+        "description": "You have to inform consumers about changes you have made to the data"
       },
       {
         "id": 8,
-        "name": "Notice"
+        "name": "Notice",
+        "displayName": "Keep Notices",
+        "description": "You have to keep any copyright notice that is part of the original dataset"
       },
       {
         "id": 9,
-        "name": "LinkLicense"
+        "name": "LinkLicense",
+        "displayName": "Link to the license",
+        "description": "You have to include a link to the original license"
       },
       {
         "id": 10,
-        "name": "LinkDataSet"
+        "name": "LinkDataSet",
+        "displayName": "Link to the dataset",
+        "description": "You have to provide a link to the original dataset"
       }
     ],
     "shareAlikes": []
@@ -439,95 +607,139 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Allows sharing the original data without modification"
       },
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
       {
         "id": 15,
-        "name": "FreeAccess"
+        "name": "FreeAccess",
+        "displayName": "Free Access",
+        "description": "Accessing the data is free of charge"
       },
       {
         "id": 16,
-        "name": "UninhibitedAccess"
+        "name": "UninhibitedAccess",
+        "displayName": "Uninhibited Access",
+        "description": "Accessing the data is not prevented by unneccessary means"
       },
       {
         "id": 27,
-        "name": "Relicense"
+        "name": "Relicense",
+        "displayName": "Change license",
+        "description": "The license of the dataset can be changed to another license"
       }
     ],
     "prohibitions": [
-      {
+     {
         "id": 4,
-        "name": "CommercialUse"
+        "name": "CommercialUse",
+        "displayName": "Commercial Use",
+        "description": "Use the data for commercial purpose"
       },
       {
         "id": 12,
-        "name": "ClaimWarranty"
+        "name": "ClaimWarranty",
+        "displayName": "Claim Warranty",
+        "description": "You can claim a warranty for the provided information"
       },
       {
         "id": 13,
-        "name": "ClaimLiability"
+        "name": "ClaimLiability",
+        "displayName": "Claim Liability",
+        "description": "The provided is liable for damages"
       },
       {
         "id": 14,
-        "name": "Endorse"
+        "name": "Endorse",
+        "displayName": "Endorse",
+        "description": "You can use the provider of the data to endorse your project"
       },
       {
         "id": 17,
-        "name": "ClaimMoralRights"
+        "name": "ClaimMoralRights",
+        "displayName": "Claim Moral Rights",
+        "description": "You can claim the moral rights that are attached to the content of the dataset"
       },
       {
         "id": 19,
-        "name": "ClaimTrademark"
+        "name": "ClaimTrademark",
+        "displayName": "Claim Trademarks",
+        "description": "You can claim any trademarks used in the data"
       },
       {
         "id": 21,
-        "name": "ClaimPersonalityRights"
+        "name": "ClaimPersonalityRights",
+        "displayName": "Claim Personality Rights",
+        "description": "You can claim the personality rights that are attached to the content of the dataset"
       },
       {
         "id": 22,
-        "name": "ClaimPatentRights"
+        "name": "ClaimPatentRights",
+        "displayName": "Claim Patent",
+        "description": "You can claim a patent that is included in the data"
       },
       {
         "id": 23,
-        "name": "ClaimCopyrightRights"
+        "name": "ClaimCopyrightRights",
+        "displayName": "Claim Copyright",
+        "description": "You can claim a copyright that are attached to the content of the dataset"
       }
     ],
     "duties": [
       {
         "id": 5,
-        "name": "ShareAlike"
+        "name": "ShareAlike",
+        "displayName": "Conform Share-Alike",
+        "description": "If you want to relicense the data you have to use the same or a similar license"
       },
       {
         "id": 6,
-        "name": "Attribution"
+        "name": "Attribution",
+        "displayName": "Attribution",
+        "description": "You have to attribute the original creator of the data"
       },
       {
         "id": 7,
-        "name": "Inform"
+        "name": "Inform",
+        "displayName": "Mark Changes",
+        "description": "You have to inform consumers about changes you have made to the data"
       },
       {
         "id": 8,
-        "name": "Notice"
+        "name": "Notice",
+        "displayName": "Keep Notices",
+        "description": "You have to keep any copyright notice that is part of the original dataset"
       },
       {
         "id": 9,
-        "name": "LinkLicense"
+        "name": "LinkLicense",
+        "displayName": "Link to the license",
+        "description": "You have to include a link to the original license"
       },
       {
         "id": 10,
-        "name": "LinkDataSet"
+        "name": "LinkDataSet",
+        "displayName": "Link to the dataset",
+        "description": "You have to provide a link to the original dataset"
       }
     ],
     "shareAlikes": [
@@ -562,91 +774,133 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Allows sharing the original data without modification"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
       {
         "id": 15,
-        "name": "FreeAccess"
+        "name": "FreeAccess",
+        "displayName": "Free Access",
+        "description": "Accessing the data is free of charge"
       },
       {
         "id": 16,
-        "name": "UninhibitedAccess"
+        "name": "UninhibitedAccess",
+        "displayName": "Uninhibited Access",
+        "description": "Accessing the data is not prevented by unneccessary means"
       }
     ],
     "prohibitions": [
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
-      {
+     {
         "id": 4,
-        "name": "CommercialUse"
+        "name": "CommercialUse",
+        "displayName": "Commercial Use",
+        "description": "Use the data for commercial purpose"
       },
       {
         "id": 12,
-        "name": "ClaimWarranty"
+        "name": "ClaimWarranty",
+        "displayName": "Claim Warranty",
+        "description": "You can claim a warranty for the provided information"
       },
       {
         "id": 13,
-        "name": "ClaimLiability"
+        "name": "ClaimLiability",
+        "displayName": "Claim Liability",
+        "description": "The provided is liable for damages"
       },
       {
         "id": 14,
-        "name": "Endorse"
+        "name": "Endorse",
+        "displayName": "Endorse",
+        "description": "You can use the provider of the data to endorse your project"
       },
       {
         "id": 17,
-        "name": "ClaimMoralRights"
+        "name": "ClaimMoralRights",
+        "displayName": "Claim Moral Rights",
+        "description": "You can claim the moral rights that are attached to the content of the dataset"
       },
       {
         "id": 19,
-        "name": "ClaimTrademark"
+        "name": "ClaimTrademark",
+        "displayName": "Claim Trademarks",
+        "description": "You can claim any trademarks used in the data"
       },
       {
         "id": 21,
-        "name": "ClaimPersonalityRights"
+        "name": "ClaimPersonalityRights",
+        "displayName": "Claim Personality Rights",
+        "description": "You can claim the personality rights that are attached to the content of the dataset"
       },
       {
         "id": 22,
-        "name": "ClaimPatentRights"
+        "name": "ClaimPatentRights",
+        "displayName": "Claim Patent",
+        "description": "You can claim a patent that is included in the data"
       },
       {
         "id": 23,
-        "name": "ClaimCopyrightRights"
+        "name": "ClaimCopyrightRights",
+        "displayName": "Claim Copyright",
+        "description": "You can claim a copyright that are attached to the content of the dataset"
       },
       {
         "id": 27,
-        "name": "Relicense"
+        "name": "Relicense",
+        "displayName": "Change license",
+        "description": "The license of the dataset can be changed to another license"
       }
     ],
     "duties": [
       {
         "id": 6,
-        "name": "Attribution"
+        "name": "Attribution",
+        "displayName": "Attribution",
+        "description": "You have to attribute the original creator of the data"
       },
       {
         "id": 7,
-        "name": "Inform"
+        "name": "Inform",
+        "displayName": "Mark Changes",
+        "description": "You have to inform consumers about changes you have made to the data"
       },
       {
         "id": 8,
-        "name": "Notice"
+        "name": "Notice",
+        "displayName": "Keep Notices",
+        "description": "You have to keep any copyright notice that is part of the original dataset"
       },
       {
         "id": 9,
-        "name": "LinkLicense"
+        "name": "LinkLicense",
+        "displayName": "Link to the license",
+        "description": "You have to include a link to the original license"
       },
       {
         "id": 10,
-        "name": "LinkDataSet"
+        "name": "LinkDataSet",
+        "displayName": "Link to the dataset",
+        "description": "You have to provide a link to the original dataset"
       }
     ],
     "shareAlikes": []
@@ -662,57 +916,83 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Allows sharing the original data without modification"
       },
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
-      {
+     {
         "id": 4,
-        "name": "CommercialUse"
+        "name": "CommercialUse",
+        "displayName": "Commercial Use",
+        "description": "Use the data for commercial purpose"
       },
       {
         "id": 14,
-        "name": "Endorse"
+        "name": "Endorse",
+        "displayName": "Endorse",
+        "description": "You can use the provider of the data to endorse your project"
       },
       {
         "id": 15,
-        "name": "FreeAccess"
+        "name": "FreeAccess",
+        "displayName": "Free Access",
+        "description": "Accessing the data is free of charge"
       },
       {
         "id": 16,
-        "name": "UninhibitedAccess"
+        "name": "UninhibitedAccess",
+        "displayName": "Uninhibited Access",
+        "description": "Accessing the data is not prevented by unneccessary means"
       },
       {
         "id": 27,
-        "name": "Relicense"
+        "name": "Relicense",
+        "displayName": "Change license",
+        "description": "The license of the dataset can be changed to another license"
       }
     ],
     "prohibitions": [
       {
         "id": 12,
-        "name": "ClaimWarranty"
+        "name": "ClaimWarranty",
+        "displayName": "Claim Warranty",
+        "description": "You can claim a warranty for the provided information"
       },
       {
         "id": 13,
-        "name": "ClaimLiability"
+        "name": "ClaimLiability",
+        "displayName": "Claim Liability",
+        "description": "The provided is liable for damages"
       },
       {
         "id": 19,
-        "name": "ClaimTrademark"
+        "name": "ClaimTrademark",
+        "displayName": "Claim Trademarks",
+        "description": "You can claim any trademarks used in the data"
       },
       {
         "id": 22,
-        "name": "ClaimPatentRights"
+        "name": "ClaimPatentRights",
+        "displayName": "Claim Patent",
+        "description": "You can claim a patent that is included in the data"
       }
     ],
     "duties": [],
@@ -729,79 +1009,115 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Allows sharing the original data without modification"
       },
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
-      {
+     {
         "id": 4,
-        "name": "CommercialUse"
+        "name": "CommercialUse",
+        "displayName": "Commercial Use",
+        "description": "Use the data for commercial purpose"
       },
       {
         "id": 15,
-        "name": "FreeAccess"
+        "name": "FreeAccess",
+        "displayName": "Free Access",
+        "description": "Accessing the data is free of charge"
       },
       {
         "id": 16,
-        "name": "UninhibitedAccess"
+        "name": "UninhibitedAccess",
+        "displayName": "Uninhibited Access",
+        "description": "Accessing the data is not prevented by unneccessary means"
       }
     ],
     "prohibitions": [
       {
         "id": 12,
-        "name": "ClaimWarranty"
+        "name": "ClaimWarranty",
+        "displayName": "Claim Warranty",
+        "description": "You can claim a warranty for the provided information"
       },
       {
         "id": 13,
-        "name": "ClaimLiability"
+        "name": "ClaimLiability",
+        "displayName": "Claim Liability",
+        "description": "The provided is liable for damages"
       },
       {
         "id": 20,
-        "name": "ClaimDataProtection"
+        "name": "ClaimDataProtection",
+        "displayName": "Claim Data Protection Rights",
+        "description": "You can claim the data protection rights attached ot the content of the dataset"
       },
       {
         "id": 21,
-        "name": "ClaimPersonalityRights"
+        "name": "ClaimPersonalityRights",
+        "displayName": "Claim Personality Rights",
+        "description": "You can claim the personality rights that are attached to the content of the dataset"
       },
       {
         "id": 22,
-        "name": "ClaimPatentRights"
+        "name": "ClaimPatentRights",
+        "displayName": "Claim Patent",
+        "description": "You can claim a patent that is included in the data"
       },
       {
         "id": 23,
-        "name": "ClaimCopyrightRights"
+        "name": "ClaimCopyrightRights",
+        "displayName": "Claim Copyright",
+        "description": "You can claim a copyright that are attached to the content of the dataset"
       },
       {
         "id": 27,
-        "name": "Relicense"
+        "name": "Relicense",
+        "displayName": "Change license",
+        "description": "The license of the dataset can be changed to another license"
       }
     ],
     "duties": [
       {
         "id": 6,
-        "name": "Attribution"
+        "name": "Attribution",
+        "displayName": "Attribution",
+        "description": "You have to attribute the original creator of the data"
       },
       {
         "id": 8,
-        "name": "Notice"
+        "name": "Notice",
+        "displayName": "Keep Notices",
+        "description": "You have to keep any copyright notice that is part of the original dataset"
       },
       {
         "id": 9,
-        "name": "LinkLicense"
+        "name": "LinkLicense",
+        "displayName": "Link to the license",
+        "description": "You have to include a link to the original license"
       },
       {
         "id": 10,
-        "name": "LinkDataSet"
+        "name": "LinkDataSet",
+        "displayName": "Link to the dataset",
+        "description": "You have to provide a link to the original dataset"
       }
     ],
     "shareAlikes": []
@@ -817,57 +1133,83 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Allows sharing the original data without modification"
       },
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
-      {
+     {
         "id": 4,
-        "name": "CommercialUse"
+        "name": "CommercialUse",
+        "displayName": "Commercial Use",
+        "description": "Use the data for commercial purpose"
       },
       {
         "id": 14,
-        "name": "Endorse"
+        "name": "Endorse",
+        "displayName": "Endorse",
+        "description": "You can use the provider of the data to endorse your project"
       },
       {
         "id": 15,
-        "name": "FreeAccess"
+        "name": "FreeAccess",
+        "displayName": "Free Access",
+        "description": "Accessing the data is free of charge"
       },
       {
         "id": 16,
-        "name": "UninhibitedAccess"
+        "name": "UninhibitedAccess",
+        "displayName": "Uninhibited Access",
+        "description": "Accessing the data is not prevented by unneccessary means"
       },
       {
         "id": 27,
-        "name": "Relicense"
+        "name": "Relicense",
+        "displayName": "Change license",
+        "description": "The license of the dataset can be changed to another license"
       }
     ],
     "prohibitions": [
       {
         "id": 12,
-        "name": "ClaimWarranty"
+        "name": "ClaimWarranty",
+        "displayName": "Claim Warranty",
+        "description": "You can claim a warranty for the provided information"
       },
       {
         "id": 13,
-        "name": "ClaimLiability"
+        "name": "ClaimLiability",
+        "displayName": "Claim Liability",
+        "description": "The provided is liable for damages"
       },
       {
         "id": 19,
-        "name": "ClaimTrademark"
+        "name": "ClaimTrademark",
+        "displayName": "Claim Trademarks",
+        "description": "You can claim any trademarks used in the data"
       },
       {
         "id": 22,
-        "name": "ClaimPatentRights"
+        "name": "ClaimPatentRights",
+        "displayName": "Claim Patent",
+        "description": "You can claim a patent that is included in the data"
       }
     ],
     "duties": [],
@@ -884,83 +1226,121 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Allows sharing the original data without modification"
       },
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
-      {
+     {
         "id": 4,
-        "name": "CommercialUse"
+        "name": "CommercialUse",
+        "displayName": "Commercial Use",
+        "description": "Use the data for commercial purpose"
       },
       {
         "id": 15,
-        "name": "FreeAccess"
+        "name": "FreeAccess",
+        "displayName": "Free Access",
+        "description": "Accessing the data is free of charge"
       },
       {
         "id": 16,
-        "name": "UninhibitedAccess"
+        "name": "UninhibitedAccess",
+        "displayName": "Uninhibited Access",
+        "description": "Accessing the data is not prevented by unneccessary means"
       },
       {
         "id": 27,
-        "name": "Relicense"
+        "name": "Relicense",
+        "displayName": "Change license",
+        "description": "The license of the dataset can be changed to another license"
       }
     ],
     "prohibitions": [
       {
         "id": 12,
-        "name": "ClaimWarranty"
+        "name": "ClaimWarranty",
+        "displayName": "Claim Warranty",
+        "description": "You can claim a warranty for the provided information"
       },
       {
         "id": 13,
-        "name": "ClaimLiability"
+        "name": "ClaimLiability",
+        "displayName": "Claim Liability",
+        "description": "The provided is liable for damages"
       },
       {
         "id": 20,
-        "name": "ClaimDataProtection"
+        "name": "ClaimDataProtection",
+        "displayName": "Claim Data Protection Rights",
+        "description": "You can claim the data protection rights attached ot the content of the dataset"
       },
       {
         "id": 21,
-        "name": "ClaimPersonalityRights"
+        "name": "ClaimPersonalityRights",
+        "displayName": "Claim Personality Rights",
+        "description": "You can claim the personality rights that are attached to the content of the dataset"
       },
       {
         "id": 22,
-        "name": "ClaimPatentRights"
+        "name": "ClaimPatentRights",
+        "displayName": "Claim Patent",
+        "description": "You can claim a patent that is included in the data"
       },
       {
         "id": 23,
-        "name": "ClaimCopyrightRights"
+        "name": "ClaimCopyrightRights",
+        "displayName": "Claim Copyright",
+        "description": "You can claim a copyright that are attached to the content of the dataset"
       }
     ],
     "duties": [
       {
         "id": 5,
-        "name": "ShareAlike"
+        "name": "ShareAlike",
+        "displayName": "Conform Share-Alike",
+        "description": "If you want to relicense the data you have to use the same or a similar license"
       },
       {
         "id": 6,
-        "name": "Attribution"
+        "name": "Attribution",
+        "displayName": "Attribution",
+        "description": "You have to attribute the original creator of the data"
       },
       {
         "id": 8,
-        "name": "Notice"
+        "name": "Notice",
+        "displayName": "Keep Notices",
+        "description": "You have to keep any copyright notice that is part of the original dataset"
       },
       {
         "id": 9,
-        "name": "LinkLicense"
+        "name": "LinkLicense",
+        "displayName": "Link to the license",
+        "description": "You have to include a link to the original license"
       },
       {
         "id": 10,
-        "name": "LinkDataSet"
+        "name": "LinkDataSet",
+        "displayName": "Link to the dataset",
+        "description": "You have to provide a link to the original dataset"
       }
     ],
     "shareAlikes": [
@@ -986,47 +1366,67 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Allows sharing the original data without modification"
       },
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
       {
         "id": 4,
-        "name": "CommercialUse"
+        "name": "CommercialUse",
+        "displayName": "Commercial Use",
+        "description": "Use the data for commercial purpose"
       }
     ],
     "prohibitions": [
       {
         "id": 27,
-        "name": "Relicense"
+        "name": "Relicense",
+        "displayName": "Change license",
+        "description": "The license of the dataset can be changed to another license"
       }
     ],
     "duties": [
       {
         "id": 6,
-        "name": "Attribution"
+        "name": "Attribution",
+        "displayName": "Attribution",
+        "description": "You have to attribute the original creator of the data"
       },
       {
         "id": 7,
-        "name": "Inform"
+        "name": "Inform",
+        "displayName": "Mark Changes",
+        "description": "You have to inform consumers about changes you have made to the data"
       },
       {
         "id": 9,
-        "name": "LinkLicense"
+        "name": "LinkLicense",
+        "displayName": "Link to the license",
+        "description": "You have to include a link to the original license"
       },
       {
         "id": 10,
-        "name": "LinkDataSet"
+        "name": "LinkDataSet",
+        "displayName": "Link to the dataset",
+        "description": "You have to provide a link to the original dataset"
       }
     ],
     "shareAlikes": []
@@ -1042,29 +1442,41 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Allows sharing the original data without modification"
       },
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
       {
         "id": 4,
-        "name": "CommercialUse"
+        "name": "CommercialUse",
+        "displayName": "Commercial Use",
+        "description": "Use the data for commercial purpose"
       }
     ],
     "prohibitions": [
       {
         "id": 27,
-        "name": "Relicense"
+        "name": "Relicense",
+        "displayName": "Change license",
+        "description": "The license of the dataset can be changed to another license"
       }
     ],
     "duties": [],
@@ -1081,91 +1493,133 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Allows sharing the original data without modification"
       },
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
-      {
+     {
         "id": 4,
-        "name": "CommercialUse"
+        "name": "CommercialUse",
+        "displayName": "Commercial Use",
+        "description": "Use the data for commercial purpose"
       },
       {
         "id": 15,
-        "name": "FreeAccess"
+        "name": "FreeAccess",
+        "displayName": "Free Access",
+        "description": "Accessing the data is free of charge"
       },
       {
         "id": 16,
-        "name": "UninhibitedAccess"
+        "name": "UninhibitedAccess",
+        "displayName": "Uninhibited Access",
+        "description": "Accessing the data is not prevented by unneccessary means"
       },
       {
         "id": 27,
-        "name": "Relicense"
+        "name": "Relicense",
+        "displayName": "Change license",
+        "description": "The license of the dataset can be changed to another license"
       }
     ],
     "prohibitions": [
       {
         "id": 12,
-        "name": "ClaimWarranty"
+        "name": "ClaimWarranty",
+        "displayName": "Claim Warranty",
+        "description": "You can claim a warranty for the provided information"
       },
       {
         "id": 13,
-        "name": "ClaimLiability"
+        "name": "ClaimLiability",
+        "displayName": "Claim Liability",
+        "description": "The provided is liable for damages"
       },
       {
         "id": 14,
-        "name": "Endorse"
+        "name": "Endorse",
+        "displayName": "Endorse",
+        "description": "You can use the provider of the data to endorse your project"
       },
       {
         "id": 19,
-        "name": "ClaimTrademark"
+        "name": "ClaimTrademark",
+        "displayName": "Claim Trademarks",
+        "description": "You can claim any trademarks used in the data"
       },
       {
         "id": 22,
-        "name": "ClaimPatentRights"
+        "name": "ClaimPatentRights",
+        "displayName": "Claim Patent",
+        "description": "You can claim a patent that is included in the data"
       },
       {
         "id": 24,
-        "name": "ClaimDesignRights"
+        "name": "ClaimDesignRights",
+        "displayName": "Claim Design Rights",
+        "description": "You can claim the design rights that are attached to the content of the dataset"
       },
       {
         "id": 25,
-        "name": "ClaimPersonalData"
+        "name": "ClaimPersonalData",
+        "displayName": "Use Personal Data",
+        "description": "You can use personal data that is part of the content of the dataset"
       },
       {
         "id": 26,
-        "name": "ClaimThirdPartyRights"
+        "name": "ClaimThirdPartyRights",
+        "displayName": "Claim Third Party Rights",
+        "description": "You can claim third party rights that are attached to the content of the dataset"
       }
     ],
     "duties": [
       {
         "id": 6,
-        "name": "Attribution"
+        "name": "Attribution",
+        "displayName": "Attribution",
+        "description": "You have to attribute the original creator of the data"
       },
       {
         "id": 7,
-        "name": "Inform"
+        "name": "Inform",
+        "displayName": "Mark Changes",
+        "description": "You have to inform consumers about changes you have made to the data"
       },
       {
         "id": 8,
-        "name": "Notice"
+        "name": "Notice",
+        "displayName": "Keep Notices",
+        "description": "You have to keep any copyright notice that is part of the original dataset"
       },
       {
         "id": 9,
-        "name": "LinkLicense"
+        "name": "LinkLicense",
+        "displayName": "Link to the license",
+        "description": "You have to include a link to the original license"
       },
       {
         "id": 10,
-        "name": "LinkDataSet"
+        "name": "LinkDataSet",
+        "displayName": "Link to the dataset",
+        "description": "You have to provide a link to the original dataset"
       }
     ],
     "shareAlikes": []
@@ -1181,79 +1635,115 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Allows sharing the original data without modification"
       },
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
-      {
+     {
         "id": 4,
-        "name": "CommercialUse"
+        "name": "CommercialUse",
+        "displayName": "Commercial Use",
+        "description": "Use the data for commercial purpose"
       },
       {
         "id": 15,
-        "name": "FreeAccess"
+        "name": "FreeAccess",
+        "displayName": "Free Access",
+        "description": "Accessing the data is free of charge"
       },
       {
         "id": 16,
-        "name": "UninhibitedAccess"
+        "name": "UninhibitedAccess",
+        "displayName": "Uninhibited Access",
+        "description": "Accessing the data is not prevented by unneccessary means"
       }
     ],
     "prohibitions": [
       {
         "id": 12,
-        "name": "ClaimWarranty"
+        "name": "ClaimWarranty",
+        "displayName": "Claim Warranty",
+        "description": "You can claim a warranty for the provided information"
       },
       {
         "id": 13,
-        "name": "ClaimLiability"
+        "name": "ClaimLiability",
+        "displayName": "Claim Liability",
+        "description": "The provided is liable for damages"
       },
       {
         "id": 14,
-        "name": "Endorse"
+        "name": "Endorse",
+        "displayName": "Endorse",
+        "description": "You can use the provider of the data to endorse your project"
       },
       {
         "id": 19,
-        "name": "ClaimTrademark"
+        "name": "ClaimTrademark",
+        "displayName": "Claim Trademarks",
+        "description": "You can claim any trademarks used in the data"
       },
       {
         "id": 22,
-        "name": "ClaimPatentRights"
+        "name": "ClaimPatentRights",
+        "displayName": "Claim Patent",
+        "description": "You can claim a patent that is included in the data"
       },
       {
         "id": 24,
-        "name": "ClaimDesignRights"
+        "name": "ClaimDesignRights",
+        "displayName": "Claim Design Rights",
+        "description": "You can claim the design rights that are attached to the content of the dataset"
       },
       {
         "id": 25,
-        "name": "ClaimPersonalData"
+        "name": "ClaimPersonalData",
+        "displayName": "Use Personal Data",
+        "description": "You can use personal data that is part of the content of the dataset"
       },
       {
         "id": 26,
-        "name": "ClaimThirdPartyRights"
+        "name": "ClaimThirdPartyRights",
+        "displayName": "Claim Third Party Rights",
+        "description": "You can claim third party rights that are attached to the content of the dataset"
       },
       {
         "id": 27,
-        "name": "Relicense"
+        "name": "Relicense",
+        "displayName": "Change license",
+        "description": "The license of the dataset can be changed to another license"
       }
     ],
     "duties": [
       {
         "id": 9,
-        "name": "LinkLicense"
+        "name": "LinkLicense",
+        "displayName": "Link to the license",
+        "description": "You have to include a link to the original license"
       },
       {
         "id": 10,
-        "name": "LinkDataSet"
+        "name": "LinkDataSet",
+        "displayName": "Link to the dataset",
+        "description": "You have to provide a link to the original dataset"
       }
     ],
     "shareAlikes": []
@@ -1269,59 +1759,85 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Allows sharing the original data without modification"
       },
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
-      {
+     {
         "id": 4,
-        "name": "CommercialUse"
+        "name": "CommercialUse",
+        "displayName": "Commercial Use",
+        "description": "Use the data for commercial purpose"
       },
       {
         "id": 15,
-        "name": "FreeAccess"
+        "name": "FreeAccess",
+        "displayName": "Free Access",
+        "description": "Accessing the data is free of charge"
       },
       {
         "id": 16,
-        "name": "UninhibitedAccess"
+        "name": "UninhibitedAccess",
+        "displayName": "Uninhibited Access",
+        "description": "Accessing the data is not prevented by unneccessary means"
       }
     ],
     "prohibitions": [
       {
         "id": 12,
-        "name": "ClaimWarranty"
+        "name": "ClaimWarranty",
+        "displayName": "Claim Warranty",
+        "description": "You can claim a warranty for the provided information"
       },
       {
         "id": 13,
-        "name": "ClaimLiability"
+        "name": "ClaimLiability",
+        "displayName": "Claim Liability",
+        "description": "The provided is liable for damages"
       },
       {
         "id": 14,
-        "name": "Endorse"
+        "name": "Endorse",
+        "displayName": "Endorse",
+        "description": "You can use the provider of the data to endorse your project"
       }
     ],
     "duties": [
       {
         "id": 6,
-        "name": "Attribution"
+        "name": "Attribution",
+        "displayName": "Attribution",
+        "description": "You have to attribute the original creator of the data"
       },
       {
         "id": 9,
-        "name": "LinkLicense"
+        "name": "LinkLicense",
+        "displayName": "Link to the license",
+        "description": "You have to include a link to the original license"
       },
       {
         "id": 10,
-        "name": "LinkDataSet"
+        "name": "LinkDataSet",
+        "displayName": "Link to the dataset",
+        "description": "You have to provide a link to the original dataset"
       }
     ],
     "shareAlikes": []
@@ -1337,99 +1853,145 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Allows sharing the original data without modification"
       },
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
       {
         "id": 5,
-        "name": "ShareAlike"
+        "name": "ShareAlike",
+        "displayName": "Conform Share-Alike",
+        "description": "If you want to relicense the data you have to use the same or a similar license"
       },
       {
         "id": 11,
-        "name": "LimitLicenseVersion"
+        "name": "LimitLicenseVersion",
+        "displayName": "Limit License Version",
+        "description": "You have to use a specific version of this license or one compatible with it, to relicense the dataset"
       },
       {
         "id": 15,
-        "name": "FreeAccess"
+        "name": "FreeAccess",
+        "displayName": "Free Access",
+        "description": "Accessing the data is free of charge"
       },
       {
         "id": 16,
-        "name": "UninhibitedAccess"
+        "name": "UninhibitedAccess",
+        "displayName": "Uninhibited Access",
+        "description": "Accessing the data is not prevented by unneccessary means"
       }
     ],
     "prohibitions": [
       {
         "id": 12,
-        "name": "ClaimWarranty"
+        "name": "ClaimWarranty",
+        "displayName": "Claim Warranty",
+        "description": "You can claim a warranty for the provided information"
       },
       {
         "id": 13,
-        "name": "ClaimLiability"
+        "name": "ClaimLiability",
+        "displayName": "Claim Liability",
+        "description": "The provided is liable for damages"
       },
       {
         "id": 14,
-        "name": "Endorse"
+        "name": "Endorse",
+        "displayName": "Endorse",
+        "description": "You can use the provider of the data to endorse your project"
       },
       {
         "id": 19,
-        "name": "ClaimTrademark"
+        "name": "ClaimTrademark",
+        "displayName": "Claim Trademarks",
+        "description": "You can claim any trademarks used in the data"
       },
       {
         "id": 22,
-        "name": "ClaimPatentRights"
+        "name": "ClaimPatentRights",
+        "displayName": "Claim Patent",
+        "description": "You can claim a patent that is included in the data"
       },
       {
         "id": 23,
-        "name": "ClaimCopyrightRights"
+        "name": "ClaimCopyrightRights",
+        "displayName": "Claim Copyright",
+        "description": "You can claim a copyright that are attached to the content of the dataset"
       },
       {
         "id": 24,
-        "name": "ClaimDesignRights"
+        "name": "ClaimDesignRights",
+        "displayName": "Claim Design Rights",
+        "description": "You can claim the design rights that are attached to the content of the dataset"
       },
       {
         "id": 25,
-        "name": "ClaimPersonalData"
+        "name": "ClaimPersonalData",
+        "displayName": "Use Personal Data",
+        "description": "You can use personal data that is part of the content of the dataset"
       },
       {
         "id": 26,
-        "name": "ClaimThirdPartyRights"
+        "name": "ClaimThirdPartyRights",
+        "displayName": "Claim Third Party Rights",
+        "description": "You can claim third party rights that are attached to the content of the dataset"
       },
       {
         "id": 27,
-        "name": "Relicense"
+        "name": "Relicense",
+        "displayName": "Change license",
+        "description": "The license of the dataset can be changed to another license"
       }
     ],
     "duties": [
       {
         "id": 6,
-        "name": "Attribution"
+        "name": "Attribution",
+        "displayName": "Attribution",
+        "description": "You have to attribute the original creator of the data"
       },
       {
         "id": 7,
-        "name": "Inform"
+        "name": "Inform",
+        "displayName": "Mark Changes",
+        "description": "You have to inform consumers about changes you have made to the data"
       },
       {
         "id": 9,
-        "name": "LinkLicense"
+        "name": "LinkLicense",
+        "displayName": "Link to the license",
+        "description": "You have to include a link to the original license"
       },
       {
         "id": 10,
-        "name": "LinkDataSet"
+        "name": "LinkDataSet",
+        "displayName": "Link to the dataset",
+        "description": "You have to provide a link to the original dataset"
       },
       {
         "id": 11,
-        "name": "LimitLicenseVersion"
+        "name": "LimitLicenseVersion",
+        "displayName": "Limit License Version",
+        "description": "You have to use a specific version of this license or one compatible with it, to relicense the dataset"
       }
     ],
     "shareAlikes": [
@@ -1455,59 +2017,85 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Allows sharing the original data without modification"
       },
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
-      {
+     {
         "id": 4,
-        "name": "CommercialUse"
+        "name": "CommercialUse",
+        "displayName": "Commercial Use",
+        "description": "Use the data for commercial purpose"
       },
       {
         "id": 27,
-        "name": "Relicense"
+        "name": "Relicense",
+        "displayName": "Change license",
+        "description": "The license of the dataset can be changed to another license"
       }
     ],
     "prohibitions": [
       {
         "id": 12,
-        "name": "ClaimWarranty"
+        "name": "ClaimWarranty",
+        "displayName": "Claim Warranty",
+        "description": "You can claim a warranty for the provided information"
       },
       {
         "id": 13,
-        "name": "ClaimLiability"
+        "name": "ClaimLiability",
+        "displayName": "Claim Liability",
+        "description": "The provided is liable for damages"
       }
     ],
     "duties": [
       {
         "id": 6,
-        "name": "Attribution"
+        "name": "Attribution",
+        "displayName": "Attribution",
+        "description": "You have to attribute the original creator of the data"
       },
       {
         "id": 7,
-        "name": "Inform"
+        "name": "Inform",
+        "displayName": "Mark Changes",
+        "description": "You have to inform consumers about changes you have made to the data"
       },
       {
         "id": 8,
-        "name": "Notice"
+        "name": "Notice",
+        "displayName": "Keep Notices",
+        "description": "You have to keep any copyright notice that is part of the original dataset"
       },
       {
         "id": 9,
-        "name": "LinkLicense"
+        "name": "LinkLicense",
+        "displayName": "Link to the license",
+        "description": "You have to include a link to the original license"
       },
       {
         "id": 10,
-        "name": "LinkDataSet"
+        "name": "LinkDataSet",
+        "displayName": "Link to the dataset",
+        "description": "You have to provide a link to the original dataset"
       }
     ],
     "shareAlikes": []
@@ -1523,39 +2111,55 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Allows sharing the original data without modification"
       },
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
       {
         "id": 27,
-        "name": "Relicense"
+        "name": "Relicense",
+        "displayName": "Change license",
+        "description": "The license of the dataset can be changed to another license"
       }
     ],
     "prohibitions": [
       {
         "id": 12,
-        "name": "ClaimWarranty"
+        "name": "ClaimWarranty",
+        "displayName": "Claim Warranty",
+        "description": "You can claim a warranty for the provided information"
       },
       {
         "id": 13,
-        "name": "ClaimLiability"
+        "name": "ClaimLiability",
+        "displayName": "Claim Liability",
+        "description": "The provided is liable for damages"
       }
     ],
     "duties": [
       {
         "id": 9,
-        "name": "LinkLicense"
+        "name": "LinkLicense",
+        "displayName": "Link to the license",
+        "description": "You have to include a link to the original license"
       }
     ],
     "shareAlikes": []
@@ -1571,67 +2175,97 @@
     "permissions": [
       {
         "id": 0,
-        "name": "Sharing"
+        "name": "Sharing",
+        "displayName": "Share",
+        "description": "Allows sharing the original data without modification"
       },
       {
         "id": 1,
-        "name": "DerivativeWorks"
+        "name": "DerivativeWorks",
+        "displayName": "Create Derivatives",
+        "description": "Create a derivative from the origin data"
       },
       {
         "id": 2,
-        "name": "Reproduce"
+        "name": "Reproduce",
+        "displayName": "Reproduce",
+        "description": "Reproduce the original data"
       },
       {
         "id": 3,
-        "name": "Distribution"
+        "name": "Distribution",
+        "displayName": "Distribute",
+        "description": "Distribute a modified version of the data"
       },
       {
         "id": 15,
-        "name": "FreeAccess"
+        "name": "FreeAccess",
+        "displayName": "Free Access",
+        "description": "Accessing the data is free of charge"
       },
       {
         "id": 16,
-        "name": "UninhibitedAccess"
+        "name": "UninhibitedAccess",
+        "displayName": "Uninhibited Access",
+        "description": "Accessing the data is not prevented by unneccessary means"
       }
     ],
     "prohibitions": [
       {
         "id": 12,
-        "name": "ClaimWarranty"
+        "name": "ClaimWarranty",
+        "displayName": "Claim Warranty",
+        "description": "You can claim a warranty for the provided information"
       },
       {
         "id": 13,
-        "name": "ClaimLiability"
+        "name": "ClaimLiability",
+        "displayName": "Claim Liability",
+        "description": "The provided is liable for damages"
       },
       {
         "id": 14,
-        "name": "Endorse"
+        "name": "Endorse",
+        "displayName": "Endorse",
+        "description": "You can use the provider of the data to endorse your project"
       },
       {
         "id": 27,
-        "name": "Relicense"
+        "name": "Relicense",
+        "displayName": "Change license",
+        "description": "The license of the dataset can be changed to another license"
       }
     ],
     "duties": [
       {
         "id": 6,
-        "name": "Attribution"
+        "name": "Attribution",
+        "displayName": "Attribution",
+        "description": "You have to attribute the original creator of the data"
       },
       {
         "id": 7,
-        "name": "Inform"
+        "name": "Inform",
+        "displayName": "Mark Changes",
+        "description": "You have to inform consumers about changes you have made to the data"
       },
       {
         "id": 8,
-        "name": "Notice"
+        "name": "Notice",
+        "displayName": "Keep Notices",
+        "description": "You have to keep any copyright notice that is part of the original dataset"
       },
       {
         "id": 9,
-        "name": "LinkLicense"
+        "name": "LinkLicense",
+        "displayName": "Link to the license",
+        "description": "You have to include a link to the original license"
       },
       {
         "id": 10,
-        "name": "LinkDataSet"
+        "name": "LinkDataSet",
+        "displayName": "Link to the dataset",
+        "description": "You have to provide a link to the original dataset"
       }
     ],
     "shareAlikes": []

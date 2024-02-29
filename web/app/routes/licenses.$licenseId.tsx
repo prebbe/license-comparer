@@ -7,7 +7,7 @@ import { Link, useLoaderData } from "@remix-run/react";
 
 import type { FunctionComponent } from "react";
 
-import type { License } from "../../../core/dist/index";
+import type { Action, License } from "../../../core/dist/index";
 import { DataAccess } from "../../../core/dist/index";
 
 export const loader = ({params}: LoaderFunctionArgs) => {
@@ -78,7 +78,7 @@ const LicenseDetails: FunctionComponent<{
                         <ul>
                             {
                                 permissions.map((permission) => (
-                                    <li className="license-permission">{permission.name}</li>)
+                                    <li className="license-permission"><ActionElement action={permission} /></li>)
                                 )
                             }
                         </ul>) : ('')
@@ -90,7 +90,7 @@ const LicenseDetails: FunctionComponent<{
                         <ul>
                             {
                                 prohibitions.map((prohibition) => (
-                                    <li className="license-prohibition">{prohibition.name}</li>)
+                                    <li className="license-prohibition"><ActionElement action={prohibition} /></li>)
                                 )
                             }
                         </ul>) : ('')
@@ -102,7 +102,7 @@ const LicenseDetails: FunctionComponent<{
                         <ul>
                             {
                                 duties.map((duty) => (
-                                    <li className="license-duty">{duty.name}</li>)
+                                    <li className="license-duty"><ActionElement action={duty} /></li>)
                                 )
                             }
                         </ul>) : ('')
@@ -112,3 +112,12 @@ const LicenseDetails: FunctionComponent<{
         </div>
     )
 }
+
+const ActionElement: FunctionComponent<{
+    action: Action
+  }> = ({ action }) => {
+  
+      return (
+          <span title={action.description}>{action.displayName}</span>
+      )
+  }

@@ -65,8 +65,17 @@ const LicenseActionList: FunctionComponent<{
     return (
       <ul>
       {actions.map((action) => (
-        <li>{action.name}</li>
+        <li><ActionElement action={action} /></li>
       ))}
       </ul>
     );
+}
+
+const ActionElement: FunctionComponent<{
+  action: Action
+}> = ({ action }) => {
+
+    return (
+        <span title={action.description}>{action.displayName}</span>
+    )
 }

@@ -97,3 +97,20 @@ a.go-back-link {
 .license-pipeline-overview {
     width: 50%
 }
+
+.license-actions > p {
+    font-size: 1.5em;
+}
+
+.license-check-icon-success {
+    color: green;
+}
+
+.license-check-icon-failure {
+    color: red;
+}
+
+.license-action-info-icon {
+    height: 1em;
+    width: 1em;
+}

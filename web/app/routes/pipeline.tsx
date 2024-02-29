@@ -2,7 +2,7 @@ import { json, ActionFunctionArgs, redirect } from "@remix-run/node";
 
 import { useLoaderData } from "@remix-run/react";
 
-import { CheckResult, DataAccess, License, MetaInformation } from "../../../core/dist/index";
+import { Action, CheckResult, DataAccess, License, MetaInformation } from "../../../core/dist/index";
 import { FunctionComponent } from "react";
 import CombinedLicense from "../../../core/dist/entities/CombinedLicense";
 
@@ -134,16 +134,25 @@ const CombinedLicenseOverview: FunctionComponent<{
       return (
         <div className="license-actions">
               <h3>Check-Result</h3>
-              <p>Overall-Result: {checkResult.result ? '✓': '✕'}</p>
+              <p>Overall-Result: <CheckIcon value={checkResult.result} /></p>
               <ul>
                 {checkResult.checks.map((check) => (
-                    
-                    <li>{`${check.name1} x ${check.name2} = ${check.result ? '✓': '✕'} (duties: ${check.dutiesCheck ? '✓': '✕'}, derivative: ${check.derivativesCheck ? '✓': '✕'} ,share-alike:${check.shareAlikeCheck ? '✓': '✕'}, relicensing: ${check.relicensingCheck ? '✓': '✕'}) `}</li>
+                    <li>{`${check.name1} x ${check.name2} = `}<CheckIcon value={check.result} />{`(duties: `}<CheckIcon value={check.dutiesCheck} />{`, derivative: `}<CheckIcon value={check.derivativesCheck} />{` ,share-alike: `}<CheckIcon value={check.shareAlikeCheck} />{`, relicensing: `}<CheckIcon value={check.relicensingCheck} /></li>
                 ))}
               </ul>
           </div>
       )
   }
+
+const CheckIcon : FunctionComponent<{
+    value: boolean
+}> = ({ value }) => {
+    if (value) {
+        return (<span className='license-check-icon-success'>✓</span>);
+    } else {
+        return (<span className='license-check-icon-failure'>✕</span>)
+    }
+}
 
 const CombinedLicenseDisplay: FunctionComponent<{
   license: (CombinedLicense | null)
@@ -172,7 +181,7 @@ const CombinedLicenseDisplay: FunctionComponent<{
                         <ul>
                             {
                                 permissions.map((permission) => (
-                                    <li className="license-permission">{permission.name}</li>)
+                                    <li><ActionElement action={permission} /></li>)
                                 )
                             }
                         </ul>) : ('')
@@ -184,7 +193,7 @@ const CombinedLicenseDisplay: FunctionComponent<{
                         <ul>
                             {
                                 prohibitions.map((prohibition) => (
-                                    <li className="license-prohibition">{prohibition.name}</li>)
+                                    <li><ActionElement action={prohibition} /></li>)
                                 )
                             }
                         </ul>) : ('')
@@ -196,7 +205,7 @@ const CombinedLicenseDisplay: FunctionComponent<{
                         <ul>
                             {
                                 duties.map((duty) => (
-                                    <li className="license-duty">{duty.name}</li>)
+                                    <li><ActionElement action={duty} /></li>)
                                 )
                             }
                         </ul>) : ('')
@@ -207,6 +216,8 @@ const CombinedLicenseDisplay: FunctionComponent<{
     )
 }
 
+
+
 const CombinedLicenseJsonDisplay: FunctionComponent<{
     json: string
   }> = ({ json }) => {
@@ -214,7 +225,16 @@ const CombinedLicenseJsonDisplay: FunctionComponent<{
       return (
           <div className="license-actions">
               <h3>JSON-Result</h3>
-              <code>{json}</code>
+              <pre>{json}</pre>
           </div>
+      )
+  }
+
+const ActionElement: FunctionComponent<{
+    action: Action
+  }> = ({ action }) => {
+  
+      return (
+          <span title={action.description}>{action.displayName}</span>
       )
   }
