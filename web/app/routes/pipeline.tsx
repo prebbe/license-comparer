@@ -6,7 +6,8 @@ import { Action, CheckResult, DataAccess, License, MetaInformation } from "../..
 import { FunctionComponent } from "react";
 import CombinedLicense from "../../../core/dist/entities/CombinedLicense";
 
-import {addLicense, getLicense, checkLicense, resetLicense, toJson } from '../../pipeline';
+import { addLicense, getLicense, checkLicense, resetLicense, toJson, getRecommendations } from '../../pipeline';
+import { RecommendationResult } from "../../../core/dist/recommender";
 
 export const loader = () => {
   const dataAccess = new DataAccess();
@@ -20,7 +21,9 @@ export const loader = () => {
 
   const jsonResult = toJson();
 
-  return json({ licenses, hasStartedPipeline, combinedLicense, checkResult, jsonResult});
+  const recommendationResult = getRecommendations();
+
+  return json({ licenses, hasStartedPipeline, combinedLicense, checkResult, jsonResult, recommendationResult });
 }
 
 export const action = async ({_, request}: ActionFunctionArgs) => {
@@ -39,7 +42,7 @@ export const action = async ({_, request}: ActionFunctionArgs) => {
 }
 
 export default function Pipeline() {
-  const { licenses, hasStartedPipeline, combinedLicense, checkResult, jsonResult } = useLoaderData<typeof loader>();
+  const { licenses, hasStartedPipeline, combinedLicense, checkResult, jsonResult, recommendationResult } = useLoaderData<typeof loader>();
   
   return (
     <div className="main">
@@ -49,6 +52,7 @@ export default function Pipeline() {
             <CombinedLicenseOverview license={combinedLicense} />
         </div>
         <CombinedLicenseCheckDisplay checkResult={checkResult} />
+        <CombinedLicenseRecommendations recommendations={recommendationResult} />
         <CombinedLicenseDisplay license={combinedLicense} />
         <CombinedLicenseJsonDisplay json={jsonResult} />
         
@@ -216,7 +220,64 @@ const CombinedLicenseDisplay: FunctionComponent<{
     )
 }
 
+const CombinedLicenseRecommendations: FunctionComponent<{
+    recommendations: (RecommendationResult[])
+  }> = ({ recommendations }) => {
+  
+      if (recommendations.length == 0) {
+          return (
+            <div className="license-recommendations">
+                <h3>Recommendations</h3>
+                <p>-</p>
+            </div>
+          )
+      }
+  
+      return (
+        <div className="license-recommendations">
+              <h3>Recommendations</h3>
+              <ul>
+                {recommendations.map((recommendation) => (
+                    <CombinedLicenseRecommendation recommendation={recommendation} />
+                ))}
+              </ul>
+          </div>
+      )
+  }
 
+const CombinedLicenseRecommendation: FunctionComponent<{
+    recommendation: (RecommendationResult)
+}> = ({ recommendation }) => {
+  
+    if (recommendation.comparisonResult.isEqual) {
+        return (
+        <li>{`${recommendation.name} is equal to the combined license.`}</li>
+        )
+    }
+
+    if (recommendation.comparisonResult.isMoreRestrictive) {
+        return (
+            <li>
+                <span>{`${recommendation.name} is more restrictive:`}</span>
+                <ul>
+                    {recommendation.comparisonResult.permissionCheck.missingActions.map((permission) => (
+                        <li className="license-permission">{permission.displayName}</li>
+                    ))}
+                    {recommendation.comparisonResult.prohibitionCheck.additionalActions.map((prohibition) => (
+                        <li className="license-prohibition">{prohibition.displayName}</li>
+                    ))}
+                    {recommendation.comparisonResult.dutyCheck.additionalActions.map((duty) => (
+                        <li className="license-duty">{duty.displayName}</li>
+                    ))}
+                </ul>
+            </li>
+        )
+    }
+  
+    return (
+        <span></span>
+    )
+  }
 
 const CombinedLicenseJsonDisplay: FunctionComponent<{
     json: string

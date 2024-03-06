@@ -1,4 +1,5 @@
 import { CheckResult, PipelineAggregator } from "../core/dist";
+import { RecommendationResult } from "../core/dist/recommender";
 
 const pipeline = new PipelineAggregator();
 
@@ -20,6 +21,10 @@ export function checkLicense(): CheckResult | null{
 
 export function resetLicense() {
     pipeline.resetLicense();
+}
+
+export function getRecommendations(): RecommendationResult[] {
+    return pipeline.getRecommendations();
 }
 
 export function toJson(): string {

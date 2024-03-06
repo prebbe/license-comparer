@@ -3,13 +3,16 @@ import CombinedLicense from "./entities/CombinedLicense";
 import License from "./entities/License";
 import Checks from "./checks";
 import { CheckResult } from "./entities/CheckResult";
+import Recommender, { RecommendationResult } from "./recommender";
 
 class PipelineAggregator {
     db: DataAccess;
+    recommender: Recommender;
     result: CombinedLicense | null = null;
 
     constructor() {
         this.db = new DataAccess();
+        this.recommender = new Recommender();
     }
 
     getLicense(): CombinedLicense | null {
@@ -74,6 +77,15 @@ class PipelineAggregator {
         }
 
         return combinedLicense;
+    }
+
+    getRecommendations(): RecommendationResult[] {
+        let recommendations: RecommendationResult[] = [];
+        if (this.result === null)
+            return recommendations;
+
+        recommendations = this.recommender.findSimilarLicenses(this.result);
+        return recommendations;
     }
 
     private loadLicenses(names: string[]): License[] {
