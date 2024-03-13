@@ -1,0 +1,6 @@
+{
+    "id": 11,
+    "name": "LimitLicenseVersion",
+    "displayName": "Limit License Version",
+    "description": "You have to use a specific version of this license or one compatible with it, to relicense the dataset"
+}

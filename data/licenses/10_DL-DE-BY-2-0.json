@@ -1,0 +1,13 @@
+{
+    "metaInformation": {
+      "id": 10,
+      "name": "Data licence Germany - attribution - version 2.0",
+      "shortName": "DL-DE-BY-2.0",
+      "sourceLink": "https://www.govdata.de/dl-de/by-2-0",
+      "description": null
+    },
+    "permissions": [ 0, 1, 2, 3, 4 ],
+    "prohibitions": [ 27 ],
+    "duties": [ 6, 7, 9, 10 ],
+    "shareAlikes": []
+  }

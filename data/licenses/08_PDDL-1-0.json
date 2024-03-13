@@ -1,0 +1,13 @@
+{
+    "metaInformation": {
+      "id": 8,
+      "name": "Open Data Commons Public Domain Dedication and License v1.0",
+      "shortName": "PDDL-1.0",
+      "sourceLink": "https://opendatacommons.org/licenses/pddl/1-0/",
+      "description": null
+    },
+    "permissions": [ 0, 1, 2, 3, 4, 14, 15, 16, 27 ],
+    "prohibitions": [ 12, 13, 19, 22 ],
+    "duties": [],
+    "shareAlikes": []
+  }

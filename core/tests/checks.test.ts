@@ -1,7 +1,6 @@
 import Checks from '../src/checks'
 import Action from '../src/entities/Action';
-import ShareAlike from '../src/entities/ShareAlike';
-import { createLicense, createAction, createMetaInformation, createShareAlike } from "./typehelper";
+import { createLicense, createAction, createMetaInformation } from "./typehelper";
 
 describe("Testing canfulfillDuties", () => {
     test('True, if the prohibitions and duties do not have common actions', () => {
@@ -75,7 +74,7 @@ describe("Testing allowDerivatives", () => {
             createAction(4, 'action4')
         ];
         let l1duties: Action[] = [];
-        let l1ShareAlike: ShareAlike[] = [];
+        let l1ShareAlike: number[] = [];
         
         let l1 = createLicense(l1l, l1permissions, l1prohibitions, l1duties, l1ShareAlike);
 
@@ -91,7 +90,7 @@ describe("Testing allowDerivatives", () => {
             createAction(9, 'action9')
         ];
         let l2duties: Action[] = [];
-        let l2ShareAlike: ShareAlike[] = [];
+        let l2ShareAlike: number[] = [];
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
@@ -111,7 +110,7 @@ describe("Testing allowDerivatives", () => {
             createAction(4, 'action4')
         ];
         let l1duties: Action[] = [];
-        let l1ShareAlike: ShareAlike[] = [];
+        let l1ShareAlike: number[] = [];
         
         let l1 = createLicense(l1l, l1permissions, l1prohibitions, l1duties, l1ShareAlike);
 
@@ -126,7 +125,7 @@ describe("Testing allowDerivatives", () => {
             createAction(9, 'action9')
         ];
         let l2duties: Action[] = [];
-        let l2ShareAlike: ShareAlike[] = [];
+        let l2ShareAlike: number[] = [];
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
@@ -146,7 +145,7 @@ describe("Testing allowDerivatives", () => {
             createAction(4, 'action4')
         ];
         let l1duties: Action[] = [];
-        let l1ShareAlike: ShareAlike[] = [];
+        let l1ShareAlike: number[] = [];
         
         let l1 = createLicense(l1l, l1permissions, l1prohibitions, l1duties, l1ShareAlike);
 
@@ -162,7 +161,7 @@ describe("Testing allowDerivatives", () => {
             createAction(9, 'action9')
         ];
         let l2duties: Action[] = [];
-        let l2ShareAlike: ShareAlike[] = [];
+        let l2ShareAlike: number[] = [];
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
@@ -184,7 +183,7 @@ describe("Testing conformToShareAlike", () => {
             createAction(4, 'action4')
         ];
         let l1duties: Action[] = [];
-        let l1ShareAlike: ShareAlike[] = [];
+        let l1ShareAlike: number[] = [];
         
         let l1 = createLicense(l1l, l1permissions, l1prohibitions, l1duties, l1ShareAlike);
 
@@ -200,7 +199,7 @@ describe("Testing conformToShareAlike", () => {
             createAction(9, 'action9')
         ];
         let l2duties: Action[] = [];
-        let l2ShareAlike: ShareAlike[] = [];
+        let l2ShareAlike: number[] = [];
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
@@ -222,9 +221,7 @@ describe("Testing conformToShareAlike", () => {
         let l1duties: Action[] = [
             createAction(5, 'action5')
        ];
-        let l1ShareAlike: ShareAlike[] = [
-            createShareAlike(0, 0, 'test', '', 1, 'test', '')
-        ];
+        let l1ShareAlike: number[] = [1];
         
         let l1 = createLicense(l1l, l1permissions, l1prohibitions, l1duties, l1ShareAlike);
 
@@ -239,7 +236,7 @@ describe("Testing conformToShareAlike", () => {
             createAction(9, 'action9')
         ];
         let l2duties: Action[] = [];
-        let l2ShareAlike: ShareAlike[] = [];
+        let l2ShareAlike: number[] = [];
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
@@ -261,9 +258,7 @@ describe("Testing conformToShareAlike", () => {
         let l1duties: Action[] = [
             createAction(5, 'action5')
        ];
-        let l1ShareAlike: ShareAlike[] = [
-            createShareAlike(0, 0, 'test', '', 2, 'test', '')
-        ];
+        let l1ShareAlike: number[] = [2];
         
         let l1 = createLicense(l1l, l1permissions, l1prohibitions, l1duties, l1ShareAlike);
 
@@ -278,7 +273,7 @@ describe("Testing conformToShareAlike", () => {
             createAction(9, 'action9')
         ];
         let l2duties: Action[] = [];
-        let l2ShareAlike: ShareAlike[] = [];
+        let l2ShareAlike: number[] = [];
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
@@ -300,9 +295,7 @@ describe("Testing conformToShareAlike", () => {
         let l1duties: Action[] = [
             createAction(5, 'action5')
        ];
-        let l1ShareAlike: ShareAlike[] = [
-            createShareAlike(0, 0, 'test', '', 1, 'test', '')
-        ];
+        let l1ShareAlike: number[] = [1];
         
         let l1 = createLicense(l1l, l1permissions, l1prohibitions, l1duties, l1ShareAlike);
 
@@ -319,9 +312,7 @@ describe("Testing conformToShareAlike", () => {
         let l2duties: Action[] = [
             createAction(5, 'action5')
         ];
-        let l2ShareAlike: ShareAlike[] = [
-            createShareAlike(1, 1, 'test', '', 0, 'test', '')
-        ];
+        let l2ShareAlike: number[] = [0];
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
@@ -343,9 +334,7 @@ describe("Testing conformToShareAlike", () => {
         let l1duties: Action[] = [
             createAction(5, 'action5')
        ];
-        let l1ShareAlike: ShareAlike[] = [
-            createShareAlike(0, 0, 'test', '', 2, 'test', '')
-        ];
+        let l1ShareAlike: number[] = [2];
         
         let l1 = createLicense(l1l, l1permissions, l1prohibitions, l1duties, l1ShareAlike);
 
@@ -362,9 +351,7 @@ describe("Testing conformToShareAlike", () => {
         let l2duties: Action[] = [
             createAction(5, 'action5')
         ];
-        let l2ShareAlike: ShareAlike[] = [
-            createShareAlike(1, 1, 'test', '', 0, 'test', '')
-        ];
+        let l2ShareAlike: number[] = [0];
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
@@ -386,9 +373,7 @@ describe("Testing conformToShareAlike", () => {
         let l1duties: Action[] = [
             createAction(5, 'action5')
        ];
-        let l1ShareAlike: ShareAlike[] = [
-            createShareAlike(0, 0, 'test', '', 2, 'test', '')
-        ];
+        let l1ShareAlike: number[] = [2];
         
         let l1 = createLicense(l1l, l1permissions, l1prohibitions, l1duties, l1ShareAlike);
 
@@ -405,9 +390,7 @@ describe("Testing conformToShareAlike", () => {
         let l2duties: Action[] = [
             createAction(5, 'action5')
         ];
-        let l2ShareAlike: ShareAlike[] = [
-            createShareAlike(1, 1, 'test', '', 3, 'test', '')
-        ];
+        let l2ShareAlike: number[] = [3];
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
@@ -429,7 +412,7 @@ describe("Testing conformToRelicensing", () => {
             createAction(4, 'action4')
         ];
         let l1duties: Action[] = [];
-        let l1ShareAlike: ShareAlike[] = [];
+        let l1ShareAlike: number[] = [];
         
         let l1 = createLicense(l1l, l1permissions, l1prohibitions, l1duties, l1ShareAlike);
 
@@ -445,7 +428,7 @@ describe("Testing conformToRelicensing", () => {
             createAction(4, 'action4')
         ];
         let l2duties: Action[] = [];
-        let l2ShareAlike: ShareAlike[] = [];
+        let l2ShareAlike: number[] = [];
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
@@ -466,7 +449,7 @@ describe("Testing conformToRelicensing", () => {
             createAction(4, 'action4')
         ];
         let l1duties: Action[] = [];
-        let l1ShareAlike: ShareAlike[] = [];
+        let l1ShareAlike: number[] = [];
         
         let l1 = createLicense(l1l, l1permissions, l1prohibitions, l1duties, l1ShareAlike);
 
@@ -482,7 +465,7 @@ describe("Testing conformToRelicensing", () => {
             createAction(9, 'action9')
         ];
         let l2duties: Action[] = [];
-        let l2ShareAlike: ShareAlike[] = [];
+        let l2ShareAlike: number[] = [];
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
@@ -503,7 +486,7 @@ describe("Testing conformToRelicensing", () => {
             createAction(27, 'relicensing') 
         ];
         let l1duties: Action[] = [];
-        let l1ShareAlike: ShareAlike[] = [];
+        let l1ShareAlike: number[] = [];
         
         let l1 = createLicense(l1l, l1permissions, l1prohibitions, l1duties, l1ShareAlike);
 
@@ -520,7 +503,7 @@ describe("Testing conformToRelicensing", () => {
             createAction(9, 'action9')
         ];
         let l2duties: Action[] = [];
-        let l2ShareAlike: ShareAlike[] = [];
+        let l2ShareAlike: number[] = [];
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
@@ -540,7 +523,7 @@ describe("Testing conformToRelicensing", () => {
             createAction(4, 'action4')
         ];
         let l1duties: Action[] = [];
-        let l1ShareAlike: ShareAlike[] = [];
+        let l1ShareAlike: number[] = [];
         
         let l1 = createLicense(l1l, l1permissions, l1prohibitions, l1duties, l1ShareAlike);
 
@@ -557,7 +540,7 @@ describe("Testing conformToRelicensing", () => {
             createAction(9, 'action9')
         ];
         let l2duties: Action[] = [];
-        let l2ShareAlike: ShareAlike[] = [];
+        let l2ShareAlike: number[] = [];
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
@@ -578,7 +561,7 @@ describe("Testing conformToRelicensing", () => {
             createAction(4, 'action4')
         ];
         let l1duties: Action[] = [];
-        let l1ShareAlike: ShareAlike[] = [];
+        let l1ShareAlike: number[] = [];
         
         let l1 = createLicense(l1l, l1permissions, l1prohibitions, l1duties, l1ShareAlike);
 
@@ -595,7 +578,7 @@ describe("Testing conformToRelicensing", () => {
             createAction(27, 'relicensing')
         ];
         let l2duties: Action[] = [];
-        let l2ShareAlike: ShareAlike[] = [];
+        let l2ShareAlike: number[] = [];
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
@@ -616,7 +599,7 @@ describe("Testing conformToRelicensing", () => {
             createAction(4, 'action4')
         ];
         let l1duties: Action[] = [];
-        let l1ShareAlike: ShareAlike[] = [];
+        let l1ShareAlike: number[] = [];
         
         let l1 = createLicense(l1l, l1permissions, l1prohibitions, l1duties, l1ShareAlike);
 
@@ -633,7 +616,7 @@ describe("Testing conformToRelicensing", () => {
             createAction(9, 'action9')
         ];
         let l2duties: Action[] = [];
-        let l2ShareAlike: ShareAlike[] = [];
+        let l2ShareAlike: number[] = [];
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 

@@ -1,0 +1,13 @@
+{
+    "metaInformation": {
+      "id": 7,
+      "name": "Open Data Commons Attribution License v1.0",
+      "shortName": "ODC-By-1.0",
+      "sourceLink": "https://opendatacommons.org/licenses/by/1-0/",
+      "description": null
+    },
+    "permissions": [ 0, 1, 2, 3, 4, 15, 16 ],
+    "prohibitions": [ 12, 13, 20, 21, 22, 23, 27 ],
+    "duties": [ 6, 8, 9, 10 ],
+    "shareAlikes": []
+  }

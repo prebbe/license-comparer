@@ -1,0 +1,13 @@
+{
+    "metaInformation": {
+      "id": 18,
+      "name": "Community Data License Agreement - Sharing - Version 1.0",
+      "shortName": "CDLA-Sharing-1.0",
+      "sourceLink": "https://cdla.dev/sharing-1-0/",
+      "description": null
+    },
+    "permissions": [ 0, 1, 2, 3, 15, 16 ],
+    "prohibitions": [ 12, 13, 14, 27 ],
+    "duties": [ 6, 7, 8, 9, 10 ],
+    "shareAlikes": []
+  }

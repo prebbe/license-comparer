@@ -2,9 +2,6 @@ import DataAccess from './dataAccess';
 import { join, union } from './helpers';
 import License from './entities/License';
 import Action from './entities/Action';
-import AggregatedLicense from './entities/AggregatedLicense';
-import AggregatedLicenseV2 from './entities/AggregatedLicenseV2';
-import LicenseCompatibilityCheckResult from './entities/LicenseCompatibilityCheckResult';
 import CombinedLicense from './entities/CombinedLicense';
 
 class Recommender {

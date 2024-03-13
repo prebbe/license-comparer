@@ -3,7 +3,6 @@ import AggregatedLicenseV2 from "./entities/AggregatedLicenseV2";
 import { CheckResult, SingleCheckResult } from "./entities/CheckResult";
 import CombinedLicense from "./entities/CombinedLicense";
 import License from "./entities/License";
-import ShareAlike from "./entities/ShareAlike";
 import { join } from "./helpers";
 
 class Checks {
@@ -56,8 +55,8 @@ class Checks {
         return duties.findIndex((duty) => duty.id === 5) >= 0;
     }
 
-    private static containsShareAlike(shareAlikes: ShareAlike[], id: number): boolean {
-        return shareAlikes.findIndex((shareAlike: ShareAlike) => shareAlike.licenseId2 == id) >= 0;
+    private static containsShareAlike(shareAlikes: number[], id: number): boolean {
+        return shareAlikes.findIndex((shareAlike: number) => shareAlike == id) >= 0;
     }
 
     static conformToRelicense(license1: License, license2: License): boolean {

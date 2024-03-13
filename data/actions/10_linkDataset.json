@@ -1,0 +1,6 @@
+{
+    "id": 10,
+    "name": "LinkDataSet",
+    "displayName": "Link to the dataset",
+    "description": "You have to provide a link to the original dataset"
+}

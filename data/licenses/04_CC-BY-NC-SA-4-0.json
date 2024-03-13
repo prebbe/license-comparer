@@ -1,0 +1,13 @@
+{
+    "metaInformation": {
+      "id": 4,
+      "name": "Creative Commons Attribution-NonCommercial-ShareAlike License 4.0",
+      "shortName": "CC-BY-NC-SA-4.0",
+      "sourceLink": "https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.de",
+      "description": null
+    },
+    "permissions": [ 0, 1, 2, 3, 15, 16, 27 ],
+    "prohibitions": [ 4, 12, 13, 17, 19, 21, 22, 23 ],
+    "duties": [ 5, 6, 7, 8, 9, 10 ],
+    "shareAlikes": [ 0, 4 ]
+  }

@@ -1,0 +1,13 @@
+{
+    "metaInformation": {
+      "id": 14,
+      "name": "Open License",
+      "shortName": "etalab-2.0",
+      "sourceLink": "https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Open_Licence.pdf",
+      "description": null
+    },
+    "permissions": [ 0, 1, 2, 3, 4, 15, 16 ],
+    "prohibitions": [ 12, 13, 14 ],
+    "duties": [ 6, 9, 10 ],
+    "shareAlikes": []
+  }

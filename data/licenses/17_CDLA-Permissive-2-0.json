@@ -1,0 +1,13 @@
+{
+  "metaInformation": {
+    "id": 17,
+    "name": "Community Data License Agreement - Permissive - Version 2.0",
+    "shortName": "CDLA-Permissive-2.0",
+    "sourceLink": "https://cdla.dev/permissive-2-0/",
+    "description": null
+  },
+  "permissions": [ 0, 1, 2, 3, 27 ],
+  "prohibitions": [ 12, 13 ],
+  "duties": [ 9 ],
+  "shareAlikes": []
+}
