@@ -1,16 +1,8 @@
+import CompatibilityCheckResult from "./CompatibilityCheckResult";
+
 type CheckResult = {
     result: boolean,
-    checks: SingleCheckResult[]
+    checks: CompatibilityCheckResult[]
 };
 
-type SingleCheckResult = {
-    name1: string,
-    name2: string,
-    result: boolean
-    dutiesCheck: boolean,
-    derivativesCheck: boolean,
-    shareAlikeCheck: boolean,
-    relicensingCheck: boolean
-};
-
-export type { CheckResult, SingleCheckResult };
+export type { CheckResult };

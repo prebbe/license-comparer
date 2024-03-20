@@ -1,9 +1,8 @@
-import { CheckResult, PipelineAggregator } from "../core/dist";
-import { RecommendationResult } from "../core/dist/recommender";
+import { CheckResult, CompositeLicense, Pipeline, RecommendationResult } from "../core/dist/index";
 
-const pipeline = new PipelineAggregator();
+const pipeline = new Pipeline();
 
-export function getLicense() {
+export function getLicense() : CompositeLicense | null {
     return pipeline.getLicense();
 }
 
@@ -16,7 +15,7 @@ export function addLicense(name: string) {
 }
 
 export function checkLicense(): CheckResult | null{
-    return pipeline.checkLicense();
+    return pipeline.checkLicenses();
 }
 
 export function resetLicense() {

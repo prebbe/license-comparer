@@ -1,8 +1,8 @@
 import License from './entities/License';
 import Action from './entities/Action';
-import CombinedLicense from './entities/CombinedLicense';
 import { CombinedComparisonResult, ComparisonResult, RecommendationResult } from './entities/RecommendationResult';
 import LicenseFinder from './licenseFinder';
+import CompositeLicense from './entities/CompositeLicense';
 
 class Recommender {
     licenseFinder: LicenseFinder;
@@ -11,14 +11,14 @@ class Recommender {
         this.licenseFinder = new LicenseFinder();
     }
 
-    findSimilarLicenses(combinedLicense: CombinedLicense) : RecommendationResult[] {
+    findSimilarLicenses(compositeLicense: CompositeLicense) : RecommendationResult[] {
         let licenses = this.licenseFinder.getLicenses();
 
         let results : RecommendationResult[] = [];
         for(let i = 0; i < licenses.length; i++) {
             let license = licenses[i];
 
-            let comparisonResult = this.compareStandardWithSyntheticLicense(license, combinedLicense);
+            let comparisonResult = this.compareStandardWithSyntheticLicense(license, compositeLicense);
 
             if (comparisonResult.isEqual || comparisonResult.isMoreRestrictive) {
                 let result = { comparisonResult, name: license.metaInformation.name };
@@ -29,7 +29,7 @@ class Recommender {
         return results;
     }
 
-    private compareStandardWithSyntheticLicense(standard: License, synthetic: CombinedLicense) : CombinedComparisonResult {
+    private compareStandardWithSyntheticLicense(standard: License, synthetic: CompositeLicense) : CombinedComparisonResult {
         let permissionCheck = this.compareActions(standard.permissions, synthetic.permissions);
         let prohibitionCheck = this.compareActions(standard.prohibitions, synthetic.prohibitions);
         let dutyCheck = this.compareActions(standard.duties, synthetic.duties);

@@ -31,8 +31,8 @@ export default function Aggregation() {
               </tr>
               {aggregates.map((aggregate) => (
                 <tr>
-                  <td>{aggregate.licenses[0].spdxName}</td>
-                  <td>{aggregate.licenses[1].spdxName}</td>
+                  <td>{aggregate.metainformations[0].spdxName}</td>
+                  <td>{aggregate.metainformations[1].spdxName}</td>
                   <td>
                     <LicenseActionList actions={aggregate.permissions} />
                   </td>

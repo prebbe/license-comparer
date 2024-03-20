@@ -2,20 +2,19 @@ import { json, ActionFunctionArgs, redirect } from "@remix-run/node";
 
 import { useLoaderData } from "@remix-run/react";
 
-import { Action, CheckResult, DataAccess, License, LicenseFinder, MetaInformation } from "../../../core/dist/index";
+import { Action, CheckResult, CompositeLicense, LicenseFinder, MetaInformation, RecommendationResult } from "../../../core/dist/index";
 import { FunctionComponent } from "react";
-import CombinedLicense from "../../../core/dist/entities/CombinedLicense";
 
 import { addLicense, getLicense, checkLicense, resetLicense, toJson, getRecommendations } from '../../pipeline';
-import { RecommendationResult } from "../../../core/dist/entities/RecommendationResult";
+
 
 export const loader = () => {
   const finder = new LicenseFinder();
   const metainformations = finder.getLicenses().map((license) => license.metaInformation);
 
-  const combinedLicense = getLicense();
+  const compositeLicense = getLicense();
 
-  const hasStartedPipeline = !(combinedLicense == null);
+  const hasStartedPipeline = !(compositeLicense == null);
 
   const checkResult = checkLicense();
 
@@ -23,7 +22,7 @@ export const loader = () => {
 
   const recommendationResult = getRecommendations();
 
-  return json({ metainformations, hasStartedPipeline, combinedLicense, checkResult, jsonResult, recommendationResult });
+  return json({ metainformations, hasStartedPipeline, compositeLicense, checkResult, jsonResult, recommendationResult });
 }
 
 export const action = async ({_, request}: ActionFunctionArgs) => {
@@ -42,19 +41,19 @@ export const action = async ({_, request}: ActionFunctionArgs) => {
 }
 
 export default function Pipeline() {
-  const { metainformations, hasStartedPipeline, combinedLicense, checkResult, jsonResult, recommendationResult } = useLoaderData<typeof loader>();
+  const { metainformations, hasStartedPipeline, compositeLicense, checkResult, jsonResult, recommendationResult } = useLoaderData<typeof loader>();
   
   return (
     <div className="main">
       <h2>License-Aggregation-Pipeline</h2>
         <div className="license-pipeline-container">
             <LicenseSelectorForm metainformations={metainformations} hasStartedPipeline={hasStartedPipeline} />
-            <CombinedLicenseOverview license={combinedLicense} />
+            <CompositeLicenseOverview license={compositeLicense} />
         </div>
-        <CombinedLicenseCheckDisplay checkResult={checkResult} />
-        <CombinedLicenseRecommendations recommendations={recommendationResult} />
-        <CombinedLicenseDisplay license={combinedLicense} />
-        <CombinedLicenseJsonDisplay json={jsonResult} />
+        <CompositeLicenseCheckDisplay checkResult={checkResult} />
+        <CompositeLicenseRecommendations recommendations={recommendationResult} />
+        <CompositeLicenseDisplay license={compositeLicense} />
+        <CompositeLicenseJsonDisplay json={jsonResult} />
         
     </div>
   )
@@ -97,8 +96,8 @@ const LicenseSelector: FunctionComponent<{
       )
   }
 
-const CombinedLicenseOverview: FunctionComponent<{
-    license: (CombinedLicense | null)
+const CompositeLicenseOverview: FunctionComponent<{
+    license: (CompositeLicense | null)
   }> = ({ license }) => {
     if (license == null) {
         return (
@@ -112,7 +111,7 @@ const CombinedLicenseOverview: FunctionComponent<{
         <div className="license-pipeline-overview">
             <ul>
                 {
-                    license.licenses.map((license) => (
+                    license.metainformations.map((license) => (
                         <li>{license.name}</li>
                     ))
                 }
@@ -122,7 +121,7 @@ const CombinedLicenseOverview: FunctionComponent<{
   }
 
 
-  const CombinedLicenseCheckDisplay: FunctionComponent<{
+  const CompositeLicenseCheckDisplay: FunctionComponent<{
     checkResult: (CheckResult | null)
   }> = ({ checkResult }) => {
   
@@ -141,7 +140,7 @@ const CombinedLicenseOverview: FunctionComponent<{
               <p>Overall-Result: <CheckIcon value={checkResult.result} /></p>
               <ul>
                 {checkResult.checks.map((check) => (
-                    <li>{`${check.name1} x ${check.name2} = `}<CheckIcon value={check.result} />{`(duties: `}<CheckIcon value={check.dutiesCheck} />{`, derivative: `}<CheckIcon value={check.derivativesCheck} />{` ,share-alike: `}<CheckIcon value={check.shareAlikeCheck} />{`, relicensing: `}<CheckIcon value={check.relicensingCheck} /></li>
+                    <li>{`${check.name1} x ${check.name2} = `}<CheckIcon value={check.areCompatible} />{`(Less Restrictive: `}<CheckIcon value={(check.restrictivenessCheck1 && check.restrictivenessCheck2)} />{`, composable: `}<CheckIcon value={check.canBeComposed} />{` ,share-alike: `}<CheckIcon value={check.areShareAlikeConform} />{`)`}</li>
                 ))}
               </ul>
           </div>
@@ -158,8 +157,8 @@ const CheckIcon : FunctionComponent<{
     }
 }
 
-const CombinedLicenseDisplay: FunctionComponent<{
-  license: (CombinedLicense | null)
+const CompositeLicenseDisplay: FunctionComponent<{
+  license: (CompositeLicense | null)
 }> = ({ license }) => {
 
     if (license == null) {
@@ -220,7 +219,7 @@ const CombinedLicenseDisplay: FunctionComponent<{
     )
 }
 
-const CombinedLicenseRecommendations: FunctionComponent<{
+const CompositeLicenseRecommendations: FunctionComponent<{
     recommendations: (RecommendationResult[])
   }> = ({ recommendations }) => {
   
@@ -238,14 +237,14 @@ const CombinedLicenseRecommendations: FunctionComponent<{
               <h3>Recommendations</h3>
               <ul>
                 {recommendations.map((recommendation) => (
-                    <CombinedLicenseRecommendation recommendation={recommendation} />
+                    <CompositeLicenseRecommendation recommendation={recommendation} />
                 ))}
               </ul>
           </div>
       )
   }
 
-const CombinedLicenseRecommendation: FunctionComponent<{
+const CompositeLicenseRecommendation: FunctionComponent<{
     recommendation: (RecommendationResult)
 }> = ({ recommendation }) => {
   
@@ -279,7 +278,7 @@ const CombinedLicenseRecommendation: FunctionComponent<{
     )
   }
 
-const CombinedLicenseJsonDisplay: FunctionComponent<{
+const CompositeLicenseJsonDisplay: FunctionComponent<{
     json: string
   }> = ({ json }) => {
   

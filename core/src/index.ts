@@ -1,25 +1,26 @@
 import License from './entities/License';
 import Action from './entities/Action';
 import MetaInformation from './entities/MetaInformation';
-import LicenseCompatibilityCheckResult from './entities/LicenseCompatibilityCheckResult';
-import AggregatedLicense from './entities/AggregatedLicense';
-import { CheckResult, SingleCheckResult } from './entities/CheckResult';
+import { CheckResult } from './entities/CheckResult';
 
-import DataAccess from './dataAccess';
 import Aggregator from './aggregator';
-import PipelineAggregator from './pipelineAggregator';
+import Pipeline from './pipeline';
 import LicenseFinder from './licenseFinder';
-import Checks from './checks';
 import Checker from './checker';
+import CompatibilityCheckResult from './entities/CompatibilityCheckResult';
+import { RecommendationResult, CombinedComparisonResult } from './entities/RecommendationResult';
+import Recommender from './recommender';
+import CompositeLicense from './entities/CompositeLicense';
 
 export type { 
     License,
     Action,
     MetaInformation,
-    LicenseCompatibilityCheckResult,
-    AggregatedLicense,
     CheckResult,
-    SingleCheckResult
+    CompositeLicense,
+    CompatibilityCheckResult,
+    RecommendationResult,
+    CombinedComparisonResult
 }
 
-export { DataAccess, Aggregator, PipelineAggregator, LicenseFinder, Checks, Checker }
+export { Aggregator, Pipeline, LicenseFinder, Checker, Recommender }

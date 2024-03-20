@@ -2,20 +2,20 @@ import { json } from "@remix-run/node";
 
 import { Link, useLoaderData } from "@remix-run/react";
 
-import { MetaInformation, LicenseFinder, SingleCheckResult, Checks } from "../../../core/dist/index";
+import { MetaInformation, LicenseFinder, Checker, CompatibilityCheckResult} from "../../../core/dist/index";
 import { FunctionComponent } from "react";
 
 export const loader = () => {
   const finder = new LicenseFinder();
   const metaInformations = finder.getLicenses().map((license) => license.metaInformation);
 
-  const checks = new Checks();
-  const fullCheck = checks.runCompatibilityChecks();
+  const checker = new Checker();
+  const fullCheck = checker.runCompatibilityChecks();
 
   return json({ metaInformations, fullCheck });
 }
 
-const findResult = (results: SingleCheckResult[], name1: string, name2: string) => {
+const findResult = (results: CompatibilityCheckResult[], name1: string, name2: string) => {
   let result = results.find((result) => (
     result.name1 == name1 && result.name2 == name2
   ));
@@ -38,7 +38,7 @@ export default function Compatibility() {
 
 const CompatibilityTable: FunctionComponent<{
   metaInformations: MetaInformation[]
-  results: SingleCheckResult[]
+  results: CompatibilityCheckResult[]
 }> = ({ metaInformations, results }) => {
 
   if (metaInformations.length <= 0 || results.length <= 0) {
@@ -57,7 +57,7 @@ const CompatibilityTable: FunctionComponent<{
         <tr>
           <td className="license-compatibility-table-entry">{!metaInformation1.spdxName ? metaInformation1.name : metaInformation1.spdxName}</td>
           {metaInformations.map((metaInformation2) => (
-            <CompatibilityTableEntry result={findResult(results, metaInformation1.spdxName, metaInformation2.spdxName)} />
+            <CompatibilityTableEntry result={findResult(results, metaInformation1.name, metaInformation2.name)} />
           ))}
         </tr>
       ))}
@@ -66,14 +66,14 @@ const CompatibilityTable: FunctionComponent<{
 }
 
 const CompatibilityTableEntry: FunctionComponent<{
-  result: SingleCheckResult | undefined
+  result: CompatibilityCheckResult | undefined
 }> = ({ result }) => {
 
   if (result == null) {
     return (<td className="license-compatibility-table-entry license-compatibility-table-unknown">?</td>);
   }
 
-  if (result.result) {
+  if (result.areCompatible) {
     return (<td className="license-compatibility-table-entry license-compatibility-table-valid">✓</td>);
   }
 

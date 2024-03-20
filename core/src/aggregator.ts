@@ -12,20 +12,20 @@ class Aggregator {
         this.licenseFinder = new LicenseFinder();
     }
 
-    private combinePermissions(license1: License, license2: License): Action[] {
-        let result = join(license1.permissions, license2.permissions);
+    private combinePermissions(permissions1: Action[], permissions2: Action[]): Action[] {
+        let result = join(permissions1, permissions2);
 
         return result;
     }
     
-    private combineProhibitions(license1: License, license2: License): Action[] {
-        let result = union(license1.prohibitions, license2.prohibitions);
+    private combineProhibitions(prohibitions1: Action[], prohibitions2: Action[]): Action[] {
+        let result = union(prohibitions1, prohibitions2);
     
         return result;
     }
     
-    private combineDuties(license1: License, license2: License): Action[] {
-        let result = union(license1.duties, license2.duties);
+    private combineDuties(duties1: Action[], duties2: Action[]): Action[] {
+        let result = union(duties1, duties2);
     
         return result;
     }
@@ -47,17 +47,40 @@ class Aggregator {
     }
     
     createCompositeLicense(license1: License, license2: License) : CompositeLicense {
-        let prohibitions = this.combineProhibitions(license1, license2);
-        let duties = this.combineDuties(license1, license2);
+        let prohibitions = this.combineProhibitions(license1.prohibitions, license2.prohibitions);
+        let duties = this.combineDuties(license1.duties, license2.duties);
     
-        let combinedPermissions = this.combinePermissions(license1, license2);
+        let combinedPermissions = this.combinePermissions(license1.permissions, license2.permissions);
         let permissionsWithoutProhibitions = this.removeDuplicates(combinedPermissions, prohibitions);
         let permissions = this.removeDuplicates(permissionsWithoutProhibitions, duties);
          
-        let licenses: MetaInformation[] = [license1.metaInformation, license2.metaInformation];
+        let metainformations: MetaInformation[] = [license1.metaInformation, license2.metaInformation];
 
         return { 
-            licenses,
+            metainformations,
+            numberOfLicenses: 2,
+            permissions, 
+            prohibitions, 
+            duties 
+        };
+    }
+
+    extendCompositeLicense(composite: CompositeLicense, license: License) : CompositeLicense {
+        let prohibitions = this.combineProhibitions(composite.prohibitions, license.prohibitions);
+        let duties = this.combineDuties(composite.duties, license.duties);
+    
+        let combinedPermissions = this.combinePermissions(composite.permissions, license.permissions);
+        let permissionsWithoutProhibitions = this.removeDuplicates(combinedPermissions, prohibitions);
+        let permissions = this.removeDuplicates(permissionsWithoutProhibitions, duties);
+         
+        let metainformations: MetaInformation[] = composite.metainformations;
+        metainformations.push(license.metaInformation);
+
+        let numberOfLicenses = composite.numberOfLicenses + 1;
+
+        return { 
+            metainformations,
+            numberOfLicenses,
             permissions, 
             prohibitions, 
             duties 

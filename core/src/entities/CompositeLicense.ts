@@ -2,7 +2,8 @@ import Action from "./Action";
 import MetaInformation from "./MetaInformation";
 
 type CompositeLicense = {
-    licenses: MetaInformation[],
+    metainformations: MetaInformation[],
+    numberOfLicenses: number;
     permissions: Action[],
     prohibitions: Action[],
     duties: Action[]

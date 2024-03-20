@@ -2,11 +2,9 @@ import { json } from "@remix-run/node";
 
 import { NavLink, useLoaderData } from "@remix-run/react";
 
-import { DataAccess } from "../../../core/dist/index";
 import { LicenseFinder } from "../../../core/dist/index";
 
 export const loader = () => {
-  const db = new DataAccess();
   const finder = new LicenseFinder();
 
   const licenses = finder.getLicenses();

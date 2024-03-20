@@ -48,8 +48,9 @@ function union(actions1: Action[], actions2: Action[]): Action[] {
 
 function isSubsetOf(actions1: Action[], actions2: Action[]) : boolean {
     let result = true;
-    for(let i = 0; i <= actions1.length; i++) {
-        let index = actions2.findIndex((action2) => areEqual(action2, actions1[i]));
+    for(let i = 0; i < actions1.length; i++) {
+        let action1 = actions1[i];
+        let index = actions2.findIndex((action2) => areEqual(action1, action2));
 
         if (index < 0) {
             result = false;
@@ -68,7 +69,7 @@ function contains(actions: Action[], action: Action) : boolean {
 
 function areDistinct(actions1: Action[], actions2: Action[]) : boolean {
     let result = true;
-    for(let i = 0; i <= actions1.length; i++) {
+    for(let i = 0; i < actions1.length; i++) {
         let index = actions2.findIndex((action2) => areEqual(action2, actions1[i]));
 
         if (index >= 0) {
@@ -81,7 +82,7 @@ function areDistinct(actions1: Action[], actions2: Action[]) : boolean {
         return false;
     }
 
-    for(let i = 0; i <= actions2.length; i++) {
+    for(let i = 0; i < actions2.length; i++) {
         let index = actions1.findIndex((action1) => areEqual(action1, actions2[i]));
 
         if (index >= 0) {

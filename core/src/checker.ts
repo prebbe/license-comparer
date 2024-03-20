@@ -2,9 +2,16 @@ import Action from "./entities/Action";
 import CompatibilityCheckResult from "./entities/CompatibilityCheckResult";
 import License from "./entities/License";
 import { isSubsetOf, join, areDistinct } from "./helpers";
+import LicenseFinder from "./licenseFinder";
 
 class Checker {
-    private static permissionsAreLessRestrictive(license1: License, license2: License) : boolean {
+    licenseFinder: LicenseFinder;
+
+    constructor() {
+        this.licenseFinder = new LicenseFinder();
+    }
+
+    private permissionsAreLessRestrictive(license1: License, license2: License) : boolean {
         let permissionsAreSubset = isSubsetOf(license1.permissions, license2.permissions);
 
         let permissionsAreNotRestricted = areDistinct(license1.permissions, license2.prohibitions) && 
@@ -13,7 +20,7 @@ class Checker {
         return permissionsAreSubset && permissionsAreNotRestricted;
     }
 
-    private static prohibitionsAreLessRestrictive(license1: License, license2: License) : boolean {
+    private prohibitionsAreLessRestrictive(license1: License, license2: License) : boolean {
         let prohibitionsAreSubset = isSubsetOf(license1.prohibitions, license2.prohibitions);
 
         let prohibitionsAreNotRestricted = areDistinct(license1.prohibitions, license2.permissions) && 
@@ -22,7 +29,7 @@ class Checker {
         return prohibitionsAreSubset && prohibitionsAreNotRestricted;
     }
 
-    private static dutiesAreLessRestrictive(license1: License, license2: License) : boolean {
+    private dutiesAreLessRestrictive(license1: License, license2: License) : boolean {
         let dutiesAreSubset = isSubsetOf(license1.duties, license2.duties);
 
         let dutiesAreNotRestricted = areDistinct(license1.duties, license2.permissions) && 
@@ -31,11 +38,11 @@ class Checker {
         return dutiesAreSubset && dutiesAreNotRestricted;
     }
 
-    private static allowsRelicensing(license: License): boolean {
+    private allowsRelicensing(license: License): boolean {
         return license.permissions.findIndex((action: Action) => action.id === 27) >= 0;
     }
 
-    static isLessRestrictive(license1: License, license2: License) : boolean {
+    isLessRestrictive(license1: License, license2: License) : boolean {
         // Check the permissions
         let permissionsAreLessRestrictive = this.permissionsAreLessRestrictive(license1, license2);
 
@@ -54,23 +61,23 @@ class Checker {
             allowsRelicensing;
     }
 
-    private static haveCommonPermissions(license1: License, license2: License): boolean {
+    private haveCommonPermissions(license1: License, license2: License): boolean {
         let permissionsAreDistinct = areDistinct(license1.permissions, license2.permissions);
 
         return permissionsAreDistinct === false;
     }
 
-    private static dutiesAreNotProhibited(license1: License, license2: License): boolean {
+    private dutiesAreNotProhibited(license1: License, license2: License): boolean {
         let dutiesAreNotProhibited = join(license1.duties, license2.prohibitions).length == 0;
 
         return dutiesAreNotProhibited;
     }
 
-    private static bothAllowRelicense(license1: License, license2: License): boolean {
+    private bothAllowRelicense(license1: License, license2: License): boolean {
         return this.allowsRelicensing(license1) && this.allowsRelicensing(license2);
     }
 
-    private static canBeComposed(license1: License, license2: License): boolean {
+    private canBeComposed(license1: License, license2: License): boolean {
         let haveCommonPermissions = this.haveCommonPermissions(license1, license2);
         let dutiesAreNotProhibited = this.dutiesAreNotProhibited(license1, license2);
         let bothAllowRelicense = this.bothAllowRelicense(license1, license2);
@@ -78,15 +85,15 @@ class Checker {
         return haveCommonPermissions && dutiesAreNotProhibited && bothAllowRelicense;
     }
 
-    private static requiresShareAlikeCheck(duties: Action[]): boolean {
+    private requiresShareAlikeCheck(duties: Action[]): boolean {
         return duties.findIndex((duty) => duty.id === 5) >= 0;
     }
 
-    private static containsShareAlike(shareAlikes: number[], id: number): boolean {
+    private containsShareAlike(shareAlikes: number[], id: number): boolean {
         return shareAlikes.findIndex((shareAlike: number) => shareAlike == id) >= 0;
     }
 
-    private static areShareAlikeConform(license1: License, license2: License) {
+    private areShareAlikeConform(license1: License, license2: License) {
         let l1requiresShareAlike = this.requiresShareAlikeCheck(license1.duties);
         let l2requiresShareAlike = this.requiresShareAlikeCheck(license2.duties);
 
@@ -107,7 +114,7 @@ class Checker {
         return l1Conforms && l2Conforms;
     }
 
-    static AreCompatible(license1: License, license2: License): CompatibilityCheckResult {
+    AreCompatible(license1: License, license2: License): CompatibilityCheckResult {
         let license1IsLessRestrictive = this.isLessRestrictive(license1, license2);
         let license2IsLessRestrictive = this.isLessRestrictive(license2, license1);
 
@@ -118,12 +125,43 @@ class Checker {
 
         let areShareAlikeConform = this.areShareAlikeConform(license1, license2);
 
+        let areCompatible = ((license1IsLessRestrictive || license2IsLessRestrictive) ||
+                            canBeComposed) && areShareAlikeConform;
+
         return {
+            name1: license1.metaInformation.name,
+            name2: license2.metaInformation.name,
             restrictivenessCheck1: license1IsLessRestrictive,
             restrictivenessCheck2: license2IsLessRestrictive,
             canBeComposed: canBeComposed,
             areShareAlikeConform: areShareAlikeConform,
+            areCompatible: areCompatible
         };
+    }
+
+    runCompatibilityChecks() : CompatibilityCheckResult[] {
+        let licenses = this.licenseFinder.getLicenses();
+
+        let results: CompatibilityCheckResult[] = [];
+        for(let i = 0; i < licenses.length; i++) {
+            let license1 = licenses[i];
+
+            if (license1 == null) {
+                throw new Error("License1 is missing");
+            }
+
+            for(let j = 0; j < licenses.length; j++) {
+                let license2 = licenses[j];
+                if (license2 == null) {
+                    throw new Error("License1 is missing");
+                }
+
+                let result = this.AreCompatible(license1, license2);
+                results.push(result);
+            }    
+        }
+
+        return results;
     }
 }
 
