@@ -2,7 +2,7 @@
     "metaInformation": {
       "id": 7,
       "name": "Open Data Commons Attribution License v1.0",
-      "shortName": "ODC-By-1.0",
+      "spdxName": "ODC-By-1.0",
       "sourceLink": "https://opendatacommons.org/licenses/by/1-0/",
       "description": null
     },

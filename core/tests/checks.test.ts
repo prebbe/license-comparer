@@ -16,7 +16,7 @@ describe("Testing canfulfillDuties", () => {
             createAction(5, 'test5') 
         ];
 
-        expect(Checks.canfulfillDuties(l1, l2)).toBe(true);
+        expect((new Checks()).canfulfillDuties(l1, l2)).toBe(true);
     });
 
     test('False, if the prohibitions and duties do have common actions', () => {
@@ -32,7 +32,7 @@ describe("Testing canfulfillDuties", () => {
             createAction(5, 'test5') 
         ];
 
-        expect(Checks.canfulfillDuties(l1, l2)).toBe(false);
+        expect((new Checks()).canfulfillDuties(l1, l2)).toBe(false);
     });
 
     test('True, if there are no prohibitions', () => {
@@ -44,7 +44,7 @@ describe("Testing canfulfillDuties", () => {
             createAction(5, 'test5') 
         ];
 
-        expect(Checks.canfulfillDuties(l1, l2)).toBe(true);
+        expect((new Checks()).canfulfillDuties(l1, l2)).toBe(true);
     });
 
     test('True, if there are no duties', () => {
@@ -56,7 +56,7 @@ describe("Testing canfulfillDuties", () => {
         
         let l2: Action[] = [];
 
-        expect(Checks.canfulfillDuties(l1, l2)).toBe(true);
+        expect((new Checks()).canfulfillDuties(l1, l2)).toBe(true);
     });
 })
 
@@ -94,7 +94,7 @@ describe("Testing allowDerivatives", () => {
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
-        expect(Checks.allowDerivatives(l1, l2)).toBe(true);
+        expect((new Checks()).allowDerivatives(l1, l2)).toBe(true);
     });
 
     test('False, if only one license allows derivatives', () => {
@@ -129,7 +129,7 @@ describe("Testing allowDerivatives", () => {
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
-        expect(Checks.allowDerivatives(l1, l2)).toBe(false);
+        expect((new Checks()).allowDerivatives(l1, l2)).toBe(false);
     });
 
     test('False, if one license allow derivatives, but one prohibits it', () => {
@@ -165,7 +165,7 @@ describe("Testing allowDerivatives", () => {
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
-        expect(Checks.allowDerivatives(l1, l2)).toBe(false);
+        expect((new Checks()).allowDerivatives(l1, l2)).toBe(false);
     });
 })
 
@@ -203,7 +203,7 @@ describe("Testing conformToShareAlike", () => {
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
-        expect(Checks.conformToShareAlike(l1, l2)).toBe(true);
+        expect((new Checks()).conformToShareAlike(l1, l2)).toBe(true);
     });
 
     test('True, if one licenses has share alike and list the other as valid', () => {
@@ -240,7 +240,7 @@ describe("Testing conformToShareAlike", () => {
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
-        expect(Checks.conformToShareAlike(l1, l2)).toBe(true);
+        expect((new Checks()).conformToShareAlike(l1, l2)).toBe(true);
     });
 
     test('False, if one licenses has share alike and does not list the other as valid', () => {
@@ -277,7 +277,7 @@ describe("Testing conformToShareAlike", () => {
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
-        expect(Checks.conformToShareAlike(l1, l2)).toBe(false);
+        expect((new Checks()).conformToShareAlike(l1, l2)).toBe(false);
     });
 
     test('True, if both licenses have share alike and list each other as valid', () => {
@@ -316,7 +316,7 @@ describe("Testing conformToShareAlike", () => {
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
-        expect(Checks.conformToShareAlike(l1, l2)).toBe(true);
+        expect((new Checks()).conformToShareAlike(l1, l2)).toBe(true);
     });
 
     test('False, if both licenses have share alike, but only one lists the other as valid', () => {
@@ -355,7 +355,7 @@ describe("Testing conformToShareAlike", () => {
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
-        expect(Checks.conformToShareAlike(l1, l2)).toBe(false);
+        expect((new Checks()).conformToShareAlike(l1, l2)).toBe(false);
     });
 
     test('False, if both licenses have share alike, but do not lists the other as valid', () => {
@@ -394,7 +394,7 @@ describe("Testing conformToShareAlike", () => {
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
-        expect(Checks.conformToShareAlike(l1, l2)).toBe(false);
+        expect((new Checks()).conformToShareAlike(l1, l2)).toBe(false);
     });
 })
 
@@ -432,7 +432,7 @@ describe("Testing conformToRelicensing", () => {
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
-        expect(Checks.conformToRelicense(l1, l2)).toBe(true);
+        expect((new Checks()).conformToRelicense(l1, l2)).toBe(true);
     })
 
     test("False, if only license1 allows relicensing", () => {
@@ -469,7 +469,7 @@ describe("Testing conformToRelicensing", () => {
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
-        expect(Checks.conformToRelicense(l1, l2)).toBe(false);
+        expect((new Checks()).conformToRelicense(l1, l2)).toBe(false);
     })
 
     test("False, if license1 prohibits relicensing", () => {
@@ -507,7 +507,7 @@ describe("Testing conformToRelicensing", () => {
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
-        expect(Checks.conformToRelicense(l1, l2)).toBe(false);
+        expect((new Checks()).conformToRelicense(l1, l2)).toBe(false);
     })
 
     test("False, if only license2 allows relicensing", () => {
@@ -544,7 +544,7 @@ describe("Testing conformToRelicensing", () => {
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
-        expect(Checks.conformToRelicense(l1, l2)).toBe(false);
+        expect((new Checks()).conformToRelicense(l1, l2)).toBe(false);
     })
 
     test("False, if license2 prohibits relicensing", () => {
@@ -582,7 +582,7 @@ describe("Testing conformToRelicensing", () => {
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
-        expect(Checks.conformToRelicense(l1, l2)).toBe(false);
+        expect((new Checks()).conformToRelicense(l1, l2)).toBe(false);
     })
 
     test("True, if both licenses allow relicensing", () => {
@@ -620,6 +620,6 @@ describe("Testing conformToRelicensing", () => {
         
         let l2 = createLicense(l2l, l2permissions, l2prohibitions, l2duties, l2ShareAlike);
 
-        expect(Checks.conformToRelicense(l1, l2)).toBe(true);
+        expect((new Checks()).conformToRelicense(l1, l2)).toBe(true);
     })
 })

@@ -2,7 +2,7 @@
     "metaInformation": {
       "id": 13,
       "name": "Singapore Open Data License",
-      "shortName": null,
+      "spdxName": null,
       "sourceLink": "https://beta.data.gov.sg/open-data-license",
       "description": null
     },

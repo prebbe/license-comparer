@@ -2,7 +2,7 @@
     "metaInformation": {
       "id": 11,
       "name": "Data licence Germany - Zero - Version 2.0",
-      "shortName": "DL-DE-ZERO-2.0",
+      "spdxName": "DL-DE-ZERO-2.0",
       "sourceLink": "https://www.govdata.de/dl-de/zero-2-0",
       "description": null
     },

@@ -1,19 +1,15 @@
-import DataAccess from './dataAccess';
 import { join, union } from './helpers';
-import Checks from './checks';
 import License from './entities/License';
 import Action from './entities/Action';
-import AggregatedLicense from './entities/AggregatedLicense';
-import AggregatedLicenseV2 from './entities/AggregatedLicenseV2';
-import LicenseCompatibilityCheckResult from './entities/LicenseCompatibilityCheckResult';
+import CompositeLicense from './entities/CompositeLicense';
+import MetaInformation from './entities/MetaInformation';
+import LicenseFinder from './licenseFinder';
 
 class Aggregator {
-    db: DataAccess;
-    checks: Checks;
+    licenseFinder: LicenseFinder;
 
     constructor() {
-        this.db = new DataAccess();
-        this.checks = new Checks();
+        this.licenseFinder = new LicenseFinder();
     }
 
     private combinePermissions(license1: License, license2: License): Action[] {
@@ -33,18 +29,13 @@ class Aggregator {
     
         return result;
     }
-    
-    private cleanPermissions(permissions: Action[], prohibitions: Action[]): Action[] {
-        let result = permissions.map((p) => p);
-        for (let i = 0; i < prohibitions.length; i++) {
-            let prohibition = prohibitions[i];
-    
-            let permission = permissions.find((p:Action) => p.id == prohibition.id)
-            if (permission === undefined) {
-                continue;
-            }
 
-            let index = permissions.indexOf(permission);
+    private removeDuplicates(actionsToCheck: Action[], actionsToRemove: Action[]): Action[] {
+        let result = actionsToCheck.map((p) => p);
+        for (let i = 0; i < actionsToRemove.length; i++) {
+            let actionToRemove = actionsToRemove[i];
+    
+            let index = actionsToCheck.findIndex((a:Action) => a.id == actionToRemove.id);
             if (index < 0) {
                 continue;
             }
@@ -55,53 +46,28 @@ class Aggregator {
         return result;
     }
     
-    aggregateLicense(license1: License, license2: License) : AggregatedLicense {
+    createCompositeLicense(license1: License, license2: License) : CompositeLicense {
         let prohibitions = this.combineProhibitions(license1, license2);
         let duties = this.combineDuties(license1, license2);
     
         let combinedPermissions = this.combinePermissions(license1, license2);
-        let permissions = this.cleanPermissions(combinedPermissions, prohibitions);
-    
+        let permissionsWithoutProhibitions = this.removeDuplicates(combinedPermissions, prohibitions);
+        let permissions = this.removeDuplicates(permissionsWithoutProhibitions, duties);
+         
+        let licenses: MetaInformation[] = [license1.metaInformation, license2.metaInformation];
+
         return { 
-            license1: license1.metaInformation, 
-            license2: license2.metaInformation, 
+            licenses,
             permissions, 
             prohibitions, 
             duties 
         };
     }
 
-    combineLicenses(license1: License, license2: License) : AggregatedLicenseV2 {
-        let permissions = this.combinePermissions(license1, license2);
-        let prohibitions = this.combineProhibitions(license1, license2);
-        let duties = this.combineDuties(license1, license2);
-        
-        return {license1, license2, permissions, prohibitions, duties}
-        
-    }
+    runFullAggregation(): CompositeLicense[] {
+        let licenses = this.licenseFinder.getLicenses();
 
-    runLicenseChecks(license1: License, license2: License) : LicenseCompatibilityCheckResult {
-        let combinedLicenses = this.combineLicenses(license1, license2);
-
-        let checkResult = Checks.runChecks(combinedLicenses);
-
-        return {
-            checkType: 'v2',
-            license1,
-            license2,
-            verdict: checkResult,
-            permissionCheck: checkResult,
-            prohibitionCheck: checkResult, 
-            dutiesCheck: checkResult,
-            shareAlikeCheck: checkResult,
-            relicenseCheck: checkResult 
-        };
-    }
-
-    runFullAggregation(): AggregatedLicense[] {
-        let licenses = this.db.loadLicenses();
-
-        let results: AggregatedLicense[] = [];
+        let results: CompositeLicense[] = [];
         for(let i = 0; i < licenses.length; i++) {
             let license1 = licenses[i];
 
@@ -115,32 +81,7 @@ class Aggregator {
                     throw new Error("License1 is missing");
                 }
 
-                let result = this.aggregateLicense(license1, license2);
-                results.push(result);
-            }    
-        }
-
-        return results;
-    }
-
-    runCompatibilityChecks() : LicenseCompatibilityCheckResult[] {
-        let licenses = this.db.loadLicenses();
-
-        let results: LicenseCompatibilityCheckResult[] = [];
-        for(let i = 0; i < licenses.length; i++) {
-            let license1 = licenses[i];
-
-            if (license1 == null) {
-                throw new Error("License1 is missing");
-            }
-
-            for(let j = 0; j < licenses.length; j++) {
-                let license2 = licenses[j];
-                if (license2 == null) {
-                    throw new Error("License1 is missing");
-                }
-
-                let result = this.runLicenseChecks(license1, license2);
+                let result = this.createCompositeLicense(license1, license2);
                 results.push(result);
             }    
         }

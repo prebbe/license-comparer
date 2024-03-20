@@ -2,7 +2,7 @@
     "metaInformation": {
       "id": 18,
       "name": "Community Data License Agreement - Sharing - Version 1.0",
-      "shortName": "CDLA-Sharing-1.0",
+      "spdxName": "CDLA-Sharing-1.0",
       "sourceLink": "https://cdla.dev/sharing-1-0/",
       "description": null
     },

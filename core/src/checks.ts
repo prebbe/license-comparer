@@ -4,15 +4,22 @@ import { CheckResult, SingleCheckResult } from "./entities/CheckResult";
 import CombinedLicense from "./entities/CombinedLicense";
 import License from "./entities/License";
 import { join } from "./helpers";
+import LicenseFinder from "./licenseFinder";
 
 class Checks {
-    static canfulfillDuties(prohibitions: Action[], duties: Action[]): boolean {
+    licenseFinder: LicenseFinder
+
+    constructor() {
+        this.licenseFinder = new LicenseFinder();
+    }
+
+    canfulfillDuties(prohibitions: Action[], duties: Action[]): boolean {
         let dutiesAreNotProhibited = join(prohibitions, duties).length == 0;
 
         return dutiesAreNotProhibited;
     }
 
-    static allowDerivatives(license1: License, license2: License): boolean {
+    allowDerivatives(license1: License, license2: License): boolean {
         let l1AllowsDerivatives = this.permitsDerivatives(license1.permissions) && 
                                 !this.prohibitsDerivatives(license1.prohibitions);
                                 
@@ -22,15 +29,15 @@ class Checks {
         return l1AllowsDerivatives && l2AllowsDerivatives;
     }
 
-    private static prohibitsDerivatives(prohibitions: Action[]): boolean {
+    private prohibitsDerivatives(prohibitions: Action[]): boolean {
         return prohibitions.findIndex((prohibition) => prohibition.id == 1) >= 0;
     }
 
-    private static permitsDerivatives(permissions: Action[]): boolean {
+    private permitsDerivatives(permissions: Action[]): boolean {
         return permissions.findIndex((permission) => permission.id == 1) >= 0;
     }
 
-    static conformToShareAlike(license1: License, license2: License): boolean {
+    conformToShareAlike(license1: License, license2: License): boolean {
         let l1requiresShareAlike = this.requiresShareAlikeCheck(license1.duties);
         let l2requiresShareAlike = this.requiresShareAlikeCheck(license2.duties);
 
@@ -51,15 +58,15 @@ class Checks {
         return l1Conforms && l2Conforms;
     }
 
-    private static requiresShareAlikeCheck(duties: Action[]): boolean {
+    private requiresShareAlikeCheck(duties: Action[]): boolean {
         return duties.findIndex((duty) => duty.id === 5) >= 0;
     }
 
-    private static containsShareAlike(shareAlikes: number[], id: number): boolean {
+    private containsShareAlike(shareAlikes: number[], id: number): boolean {
         return shareAlikes.findIndex((shareAlike: number) => shareAlike == id) >= 0;
     }
 
-    static conformToRelicense(license1: License, license2: License): boolean {
+    conformToRelicense(license1: License, license2: License): boolean {
         let isTheSameLicense = (license1.metaInformation.id === license2.metaInformation.id);
     
         if (isTheSameLicense)
@@ -71,11 +78,11 @@ class Checks {
         return license1AllowsRelicensing && license2AllowsRelicensing;
     }
     
-    private static containsRelicensing(actions: Action[]): boolean {
+    private containsRelicensing(actions: Action[]): boolean {
         return actions.findIndex((action: Action) => action.id === 27) >= 0;
     }
 
-    static runChecks(license: AggregatedLicenseV2 ) {
+    runChecks(license: AggregatedLicenseV2 ) {
         let dutyCheck = this.canfulfillDuties(license.prohibitions, license.duties);
         let derivateCheck = this.allowDerivatives(license.license1, license.license2);
         let shareAlikeCheck = this.conformToShareAlike(license.license1, license.license2);
@@ -84,14 +91,22 @@ class Checks {
         return dutyCheck && derivateCheck && shareAlikeCheck && relicenseCheck;
     }
 
-    static checkCombinedLicense(license: CombinedLicense ): CheckResult {
+    checkCombinedLicense(license: CombinedLicense ): CheckResult {
         let result = true;
         let checkResults = [];
         for (let i = 0; i <= license.numberOfLicenses - 1; i++) {
-            let license1 = license.licenses[i];
+            let licenseInfo1 = license.licenses[i];
+            let license1 = this.licenseFinder.getLicense(licenseInfo1.name);
+
+            if (license1 === undefined)
+                continue;
 
             for (let j = 0; j < license.numberOfLicenses - 1; j++) {
-                let license2 = license.licenses[j];
+                let licenseInfo2 = license.licenses[j];
+                let license2 = this.licenseFinder.getLicense(licenseInfo2.name);
+                
+                if (license2 === undefined)
+                    continue;
 
                 if (i === j) {
                     continue;
@@ -108,7 +123,7 @@ class Checks {
         return { result, checks: checkResults };
     }
 
-    private static checkLicenses(license1: License, license2: License): SingleCheckResult {
+    private checkLicenses(license1: License, license2: License): SingleCheckResult {
         let dutiesCheck = this.canfulfillDuties(license1.prohibitions, license2.duties) 
                         && this.canfulfillDuties(license2.prohibitions, license1.duties);
 
@@ -119,14 +134,39 @@ class Checks {
         let result = dutiesCheck && derivativesCheck && shareAlikeCheck && relicensingCheck;
 
         return { 
-            name1: license1.metaInformation.shortName,
-            name2: license2.metaInformation.shortName,
+            name1: license1.metaInformation.spdxName,
+            name2: license2.metaInformation.spdxName,
             result,
             dutiesCheck, 
             derivativesCheck,
             shareAlikeCheck,
             relicensingCheck
         };
+    }
+
+    runCompatibilityChecks() : SingleCheckResult[] {
+        let licenses = this.licenseFinder.getLicenses();
+
+        let results: SingleCheckResult[] = [];
+        for(let i = 0; i < licenses.length; i++) {
+            let license1 = licenses[i];
+
+            if (license1 == null) {
+                throw new Error("License1 is missing");
+            }
+
+            for(let j = 0; j < licenses.length; j++) {
+                let license2 = licenses[j];
+                if (license2 == null) {
+                    throw new Error("License1 is missing");
+                }
+
+                let result = this.checkLicenses(license1, license2);
+                results.push(result);
+            }    
+        }
+
+        return results;
     }
 }
 

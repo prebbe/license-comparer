@@ -2,7 +2,7 @@
     "metaInformation": {
       "id": 16,
       "name": "Open Use of Data Agreement v1.0",
-      "shortName": "O-UDA-1.0",
+      "spdxName": "O-UDA-1.0",
       "sourceLink": "https://cdla.dev/open-use-of-data-agreement-v1-0/",
       "description": null
     },

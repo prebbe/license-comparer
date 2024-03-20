@@ -2,48 +2,46 @@ import { json } from "@remix-run/node";
 
 import { Link, useLoaderData } from "@remix-run/react";
 
-import { Aggregator, DataAccess, MetaInformation, LicenseCompatibilityCheckResult } from "../../../core/dist/index";
+import { MetaInformation, LicenseFinder, SingleCheckResult, Checks } from "../../../core/dist/index";
 import { FunctionComponent } from "react";
 
 export const loader = () => {
-  const dataAccess = new DataAccess();
-  const licenses = dataAccess.loadLicenseMetainformations();
+  const finder = new LicenseFinder();
+  const metaInformations = finder.getLicenses().map((license) => license.metaInformation);
 
-  const aggregator = new Aggregator();
+  const checks = new Checks();
+  const fullCheck = checks.runCompatibilityChecks();
 
-  const fullCheck = aggregator.runCompatibilityChecks();
-
-  return json({ licenses, fullCheck });
+  return json({ metaInformations, fullCheck });
 }
 
-const findResult = (results: LicenseCompatibilityCheckResult[], id1: number, id2: number) => {
+const findResult = (results: SingleCheckResult[], name1: string, name2: string) => {
   let result = results.find((result) => (
-    result.license1.metaInformation.id == id1 && 
-    result.license2.metaInformation.id == id2
+    result.name1 == name1 && result.name2 == name2
   ));
 
   return result;
 }
 
 export default function Compatibility() {
-  const { licenses, fullCheck } = useLoaderData<typeof loader>();
+  const { metaInformations, fullCheck } = useLoaderData<typeof loader>();
   
   return (
     <div className="main">
       <h2>License-Compatibility</h2>
       <p>This part of the website shows how different licenses are compatible with each other.</p>
       <p>This check compares if two licenses are compatible.</p>
-      <CompatibilityTable licenses={licenses} results={fullCheck}/>
+      <CompatibilityTable metaInformations={metaInformations} results={fullCheck}/>
     </div>
   )
 }
 
 const CompatibilityTable: FunctionComponent<{
-  licenses: MetaInformation[]
-  results: LicenseCompatibilityCheckResult[]
-}> = ({ licenses, results }) => {
+  metaInformations: MetaInformation[]
+  results: SingleCheckResult[]
+}> = ({ metaInformations, results }) => {
 
-  if (licenses.length <= 0 || results.length <= 0) {
+  if (metaInformations.length <= 0 || results.length <= 0) {
     return (<p>No compatibility results found!</p>);
   }
 
@@ -51,15 +49,15 @@ const CompatibilityTable: FunctionComponent<{
     <table className="license-compatibility-table">
       <tr>
         <th className="license-compatibility-table-entry"></th>
-        {licenses.map((license) => (
-          <th className="license-compatibility-table-entry">{!license.shortName ? license.name : license.shortName}</th>
+        {metaInformations.map((metaInformation) => (
+          <th className="license-compatibility-table-entry">{!metaInformation.spdxName ? metaInformation.name : metaInformation.spdxName}</th>
         ))}
       </tr>
-      {licenses.map((license1) => (
+      {metaInformations.map((metaInformation1) => (
         <tr>
-          <td className="license-compatibility-table-entry">{!license1.shortName ? license1.name : license1.shortName}</td>
-          {licenses.map((license2) => (
-            <CompatibilityTableEntry result={findResult(results, license1.id, license2.id)} />
+          <td className="license-compatibility-table-entry">{!metaInformation1.spdxName ? metaInformation1.name : metaInformation1.spdxName}</td>
+          {metaInformations.map((metaInformation2) => (
+            <CompatibilityTableEntry result={findResult(results, metaInformation1.spdxName, metaInformation2.spdxName)} />
           ))}
         </tr>
       ))}
@@ -68,14 +66,14 @@ const CompatibilityTable: FunctionComponent<{
 }
 
 const CompatibilityTableEntry: FunctionComponent<{
-  result: LicenseCompatibilityCheckResult | undefined
+  result: SingleCheckResult | undefined
 }> = ({ result }) => {
 
   if (result == null) {
     return (<td className="license-compatibility-table-entry license-compatibility-table-unknown">?</td>);
   }
 
-  if (result.verdict) {
+  if (result.result) {
     return (<td className="license-compatibility-table-entry license-compatibility-table-valid">✓</td>);
   }
 

@@ -2,7 +2,7 @@
     "metaInformation": {
       "id": 12,
       "name": "Open Government License (for Public Sector Information)",
-      "shortName": "OGL-UK-3.0",
+      "spdxName": "OGL-UK-3.0",
       "sourceLink": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
       "description": null
     },

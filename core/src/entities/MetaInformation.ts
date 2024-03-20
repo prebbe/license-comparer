@@ -1,7 +1,8 @@
 type MetaInformation = {
     id: number;
     name: string;
-    shortName: string;
+    spdxName: string;
+    dcatName: string;
     sourceLink: string;
     description: string;
 }

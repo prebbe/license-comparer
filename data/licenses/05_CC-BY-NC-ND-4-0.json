@@ -2,7 +2,7 @@
     "metaInformation": {
       "id": 5,
       "name": "Creative Commons Attribution-NonCommercial-NoDerivatives License 4.0",
-      "shortName": "CC-BY-NC-ND-4.0",
+      "spdxName": "CC-BY-NC-ND-4.0",
       "sourceLink": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.de",
       "description": null
     },

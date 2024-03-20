@@ -3,26 +3,29 @@ import { json } from "@remix-run/node";
 import { NavLink, useLoaderData } from "@remix-run/react";
 
 import { DataAccess } from "../../../core/dist/index";
+import { LicenseFinder } from "../../../core/dist/index";
 
 export const loader = () => {
   const db = new DataAccess();
+  const finder = new LicenseFinder();
 
-  const licenses = db.loadLicenseMetainformations();
+  const licenses = finder.getLicenses();
+  const metaInformation = licenses.map((license) => license.metaInformation);
 
-  return json({licenses});
+  return json({metaInformation});
 }
 
 export default function Licenses() {
   
-  const { licenses } = useLoaderData<typeof loader>();
+  const { metaInformation } = useLoaderData<typeof loader>();
   return (
   <div>
     <h2>License Overview</h2>
     {
-      licenses.length? (
+      metaInformation.length? (
         <ul>
-          {licenses.map((license) => (
-            <li key={license.id}>
+          {metaInformation.map((info) => (
+            <li key={info.id}>
               <NavLink
               className={({ isActive, isPending }) =>
                 isActive
@@ -31,8 +34,8 @@ export default function Licenses() {
                 ? "pending"
                 : ""
               }
-              to={`/licenses/${license.id}`}>
-                {(license.shortName && license.shortName != '') ? license.shortName : license.name}
+              to={`/licenses/${info.id}`}>
+                {info.name}
               </NavLink>
             </li>
           ))

@@ -2,7 +2,7 @@
     "metaInformation": {
       "id": 14,
       "name": "Open License",
-      "shortName": "etalab-2.0",
+      "spdxName": "etalab-2.0",
       "sourceLink": "https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Open_Licence.pdf",
       "description": null
     },

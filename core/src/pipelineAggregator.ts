@@ -1,17 +1,20 @@
-import DataAccess from "./dataAccess";
 import CombinedLicense from "./entities/CombinedLicense";
 import License from "./entities/License";
 import Checks from "./checks";
 import { CheckResult } from "./entities/CheckResult";
-import Recommender, { RecommendationResult } from "./recommender";
+import Recommender from "./recommender";
+import { RecommendationResult } from "./entities/RecommendationResult";
+import LicenseFinder from "./licenseFinder";
 
 class PipelineAggregator {
-    db: DataAccess;
+    licenseFinder: LicenseFinder;
+    checks: Checks;
     recommender: Recommender;
     result: CombinedLicense | null = null;
 
     constructor() {
-        this.db = new DataAccess();
+        this.licenseFinder = new LicenseFinder();
+        this.checks = new Checks();
         this.recommender = new Recommender();
     }
 
@@ -20,7 +23,7 @@ class PipelineAggregator {
     }
 
     startAggregation(name: string) {
-        let license = this.db.loadLicense(name)
+        let license = this.licenseFinder.getLicense(name);
         if (license == null) {
             throw new Error("The selected license does not exist!");
         }
@@ -29,7 +32,7 @@ class PipelineAggregator {
     }
 
     addLicense(name: string) {
-        let license = this.db.loadLicense(name)
+        let license = this.licenseFinder.getLicense(name);
         if (license == null) {
             throw new Error("The selected license does not exist!");
         }
@@ -49,7 +52,7 @@ class PipelineAggregator {
             return null;
         }
 
-        return Checks.checkCombinedLicense(this.result);
+        return this.checks.checkCombinedLicense(this.result);
     }
 
     resetLicense() {
@@ -92,7 +95,7 @@ class PipelineAggregator {
         let result: License[] = [];
 
         names.forEach((name) => {
-            let license = this.db.loadLicense(name)
+            let license = this.licenseFinder.getLicense(name);
             if (license != null) {
                 result.push(license);
             }

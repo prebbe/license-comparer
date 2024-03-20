@@ -2,11 +2,12 @@ import Action from "../src/entities/Action";
 import License from "../src/entities/License";
 import MetaInformation from "../src/entities/MetaInformation";
 
-function createMetaInformation(id: number, name: string, shortName: string, sourceLink: string, description: string) : MetaInformation {
+function createMetaInformation(id: number, name: string, spdxName: string, sourceLink: string, description: string) : MetaInformation {
     return {
         id,
         name,
-        shortName,
+        spdxName,
+        dcatName: '',
         sourceLink,
         description
     };

@@ -2,16 +2,16 @@ import { json, ActionFunctionArgs, redirect } from "@remix-run/node";
 
 import { useLoaderData } from "@remix-run/react";
 
-import { Action, CheckResult, DataAccess, License, MetaInformation } from "../../../core/dist/index";
+import { Action, CheckResult, DataAccess, License, LicenseFinder, MetaInformation } from "../../../core/dist/index";
 import { FunctionComponent } from "react";
 import CombinedLicense from "../../../core/dist/entities/CombinedLicense";
 
 import { addLicense, getLicense, checkLicense, resetLicense, toJson, getRecommendations } from '../../pipeline';
-import { RecommendationResult } from "../../../core/dist/recommender";
+import { RecommendationResult } from "../../../core/dist/entities/RecommendationResult";
 
 export const loader = () => {
-  const dataAccess = new DataAccess();
-  const licenses = dataAccess.loadLicenseMetainformations();
+  const finder = new LicenseFinder();
+  const metainformations = finder.getLicenses().map((license) => license.metaInformation);
 
   const combinedLicense = getLicense();
 
@@ -23,7 +23,7 @@ export const loader = () => {
 
   const recommendationResult = getRecommendations();
 
-  return json({ licenses, hasStartedPipeline, combinedLicense, checkResult, jsonResult, recommendationResult });
+  return json({ metainformations, hasStartedPipeline, combinedLicense, checkResult, jsonResult, recommendationResult });
 }
 
 export const action = async ({_, request}: ActionFunctionArgs) => {
@@ -42,13 +42,13 @@ export const action = async ({_, request}: ActionFunctionArgs) => {
 }
 
 export default function Pipeline() {
-  const { licenses, hasStartedPipeline, combinedLicense, checkResult, jsonResult, recommendationResult } = useLoaderData<typeof loader>();
+  const { metainformations, hasStartedPipeline, combinedLicense, checkResult, jsonResult, recommendationResult } = useLoaderData<typeof loader>();
   
   return (
     <div className="main">
       <h2>License-Aggregation-Pipeline</h2>
         <div className="license-pipeline-container">
-            <LicenseSelectorForm licenses={licenses} hasStartedPipeline={hasStartedPipeline} />
+            <LicenseSelectorForm metainformations={metainformations} hasStartedPipeline={hasStartedPipeline} />
             <CombinedLicenseOverview license={combinedLicense} />
         </div>
         <CombinedLicenseCheckDisplay checkResult={checkResult} />
@@ -61,15 +61,15 @@ export default function Pipeline() {
 }
 
 const LicenseSelectorForm : FunctionComponent<{
-    licenses: MetaInformation[],
+    metainformations: MetaInformation[],
     hasStartedPipeline: boolean
-}> = ({ licenses, hasStartedPipeline }) => {
+}> = ({ metainformations, hasStartedPipeline }) => {
     return (
         <div className="license-pipeline-form">
             <form className="license-pipeline-form-element" method="post">
                 <label>
                     <span>License-Name</span>
-                    <LicenseSelector licenses={licenses} />
+                    <LicenseSelector metainformations={metainformations} />
                 </label>
                 
                 <button typeof="submit" name="_action" value="add">{
@@ -84,13 +84,13 @@ const LicenseSelectorForm : FunctionComponent<{
 }
 
 const LicenseSelector: FunctionComponent<{
-    licenses: MetaInformation[]
-  }> = ({ licenses }) => {
+    metainformations: MetaInformation[]
+  }> = ({ metainformations }) => {
       return (
           <select name="license">
             {
-                licenses.map((license) => (
-                    <option>{license.name}</option>
+                metainformations.map((metainformation) => (
+                    <option>{metainformation.name}</option>
                 ))
             }
           </select>
@@ -113,7 +113,7 @@ const CombinedLicenseOverview: FunctionComponent<{
             <ul>
                 {
                     license.licenses.map((license) => (
-                        <li>{license.metaInformation.name}</li>
+                        <li>{license.name}</li>
                     ))
                 }
             </ul>

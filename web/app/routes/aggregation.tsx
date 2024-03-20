@@ -7,7 +7,7 @@ import { FunctionComponent } from "react";
 
 export const loader = () => {
   const aggregator = new Aggregator();
-
+  
   const aggregates = aggregator.runFullAggregation();
 
   return json({aggregates});
@@ -31,8 +31,8 @@ export default function Aggregation() {
               </tr>
               {aggregates.map((aggregate) => (
                 <tr>
-                  <td>{aggregate.license1.shortName}</td>
-                  <td>{aggregate.license2.shortName}</td>
+                  <td>{aggregate.licenses[0].spdxName}</td>
+                  <td>{aggregate.licenses[1].spdxName}</td>
                   <td>
                     <LicenseActionList actions={aggregate.permissions} />
                   </td>

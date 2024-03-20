@@ -1,9 +1,10 @@
 import { join, union } from "../helpers";
 import Action from "./Action";
 import License from "./License";
+import MetaInformation from "./MetaInformation";
 
 class CombinedLicense {
-    licenses: License[];
+    licenses: MetaInformation[];
     numberOfLicenses: number;
     permissions: Action[];
     prohibitions: Action[];
@@ -11,7 +12,7 @@ class CombinedLicense {
     
     constructor(license: License
     ) {
-        this.licenses = [license];
+        this.licenses = [license.metaInformation];
         this.numberOfLicenses = 1;
         this.permissions = license.permissions;
         this.prohibitions = license.prohibitions;
@@ -20,7 +21,7 @@ class CombinedLicense {
 
     addLicense(license: License): CombinedLicense {
         // Add the license to the element (Even if there already is the same license)
-        this.numberOfLicenses = this.licenses.push(license);
+        this.numberOfLicenses = this.licenses.push(license.metaInformation);
 
         // Combine the permissions, prohibitions and duties
         let combinedPermissions = join(this.permissions, license.permissions);

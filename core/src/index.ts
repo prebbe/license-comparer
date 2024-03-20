@@ -8,6 +8,9 @@ import { CheckResult, SingleCheckResult } from './entities/CheckResult';
 import DataAccess from './dataAccess';
 import Aggregator from './aggregator';
 import PipelineAggregator from './pipelineAggregator';
+import LicenseFinder from './licenseFinder';
+import Checks from './checks';
+import Checker from './checker';
 
 export type { 
     License,
@@ -19,4 +22,4 @@ export type {
     SingleCheckResult
 }
 
-export { DataAccess, Aggregator, PipelineAggregator }
+export { DataAccess, Aggregator, PipelineAggregator, LicenseFinder, Checks, Checker }

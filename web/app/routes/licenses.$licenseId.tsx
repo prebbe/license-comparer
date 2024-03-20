@@ -8,14 +8,16 @@ import { Link, useLoaderData } from "@remix-run/react";
 import type { FunctionComponent } from "react";
 
 import type { Action, License } from "../../../core/dist/index";
-import { DataAccess } from "../../../core/dist/index";
+import { LicenseFinder } from "../../../core/dist/index";
 
 export const loader = ({params}: LoaderFunctionArgs) => {
     invariant(params.licenseId, "Missing licenseId");
-    const db = new DataAccess();
-    const license = db.loadLicenseById(Number(params.licenseId));
 
-    if (license == null) {
+    const finder = new LicenseFinder();
+
+    let license = finder.getLicenseById(Number(params.licenseId));
+
+    if (license == undefined) {
         throw new Response("Not found", {status: 404})
     }
 
@@ -53,7 +55,7 @@ const LicenseInformation: FunctionComponent<{
             <h3>Meta-Information</h3>
             <ul>
                 <li>Internal Id: {metaInformation.id}</li>
-                <li>Short-Name: {metaInformation.shortName}</li>
+                <li>Short-Name: {metaInformation.spdxName}</li>
                 <li>Link: <a href={metaInformation.sourceLink} target="_blank">{metaInformation.sourceLink}↗</a></li>
             </ul>
             {(metaInformation.description !== '') ? <p>{metaInformation.description}</p> : "" }

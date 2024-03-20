@@ -2,7 +2,7 @@
   "metaInformation": {
     "id": 17,
     "name": "Community Data License Agreement - Permissive - Version 2.0",
-    "shortName": "CDLA-Permissive-2.0",
+    "spdxName": "CDLA-Permissive-2.0",
     "sourceLink": "https://cdla.dev/permissive-2-0/",
     "description": null
   },

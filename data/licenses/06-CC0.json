@@ -2,7 +2,7 @@
     "metaInformation": {
       "id": 6,
       "name": "Creative Commons Zero",
-      "shortName": "CC0",
+      "spdxName": "CC0",
       "sourceLink": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.de",
       "description": null
     },
