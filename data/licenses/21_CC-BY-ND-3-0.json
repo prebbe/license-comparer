@@ -1,0 +1,13 @@
+{
+    "metaInformation": {
+      "id": 21,
+      "name": "Creative Commons Attribution-NoDerivatives License 3.0",
+      "spdxName": "CC-BY-ND-3.0",
+      "sourceLink": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.de",
+      "description": null
+    },
+    "permissions": [ 0, 2, 3, 4, 15, 16 ],
+    "prohibitions": [ 1, 12, 13, 14, 27, 28 ],
+    "duties": [ 6, 7, 8, 9, 10 ],
+    "shareAlikes": []
+  }

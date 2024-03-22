@@ -1,0 +1,13 @@
+{
+    "metaInformation": {
+      "id": 27,
+      "name": "Open Government License (for Public Sector Information) v2.0",
+      "spdxName": "OGL-UK-2.0",
+      "sourceLink": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/",
+      "description": null
+    },
+    "permissions": [ 0, 1, 2, 3, 4, 15, 16, 27 ],
+    "prohibitions": [ 12, 13, 14, 19, 22, 24, 25, 26 ],
+    "duties": [ 6, 7, 9, 10 ],
+    "shareAlikes": []
+  }

@@ -1,0 +1,13 @@
+{
+    "metaInformation": {
+      "id": 24,
+      "name": "Public Domain Mark 1.0",
+      "spdxName": "",
+      "sourceLink": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "description": null
+    },
+    "permissions": [ 0, 1, 2, 3, 4, 15, 16, 27, 28 ],
+    "prohibitions": [ 14, 12, 13, 19, 21, 22 ],
+    "duties": [],
+    "shareAlikes": []
+  }
