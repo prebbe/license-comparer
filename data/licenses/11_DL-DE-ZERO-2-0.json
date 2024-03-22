@@ -6,8 +6,8 @@
       "sourceLink": "https://www.govdata.de/dl-de/zero-2-0",
       "description": null
     },
-    "permissions": [ 0, 1, 2, 3, 4 ],
-    "prohibitions": [ 27 ],
+    "permissions": [ 0, 1, 2, 3, 4, 15, 16, 27 ],
+    "prohibitions": [ ],
     "duties": [],
     "shareAlikes": []
   }

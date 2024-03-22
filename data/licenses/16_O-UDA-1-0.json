@@ -6,7 +6,7 @@
       "sourceLink": "https://cdla.dev/open-use-of-data-agreement-v1-0/",
       "description": null
     },
-    "permissions": [ 0, 1, 2, 3, 4, 27 ],
+    "permissions": [ 0, 1, 2, 3, 4, 27, 28 ],
     "prohibitions": [ 12, 13 ],
     "duties": [ 6, 7, 8, 9, 10 ],
     "shareAlikes": []

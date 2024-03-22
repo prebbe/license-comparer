@@ -6,8 +6,8 @@
       "sourceLink": "https://beta.data.gov.sg/open-data-license",
       "description": null
     },
-    "permissions": [ 0, 1, 2, 3, 4, 15, 16 ],
-    "prohibitions": [ 12, 13, 14, 19, 22, 24, 25, 26, 27 ],
-    "duties": [ 9, 10 ],
-    "shareAlikes": []
+    "permissions": [ 0, 1, 2, 3, 4, 15, 16, 27 ],
+    "prohibitions": [ 12, 13, 14, 19, 22, 24, 25, 26, 28 ],
+    "duties": [ 5, 9, 10 ],
+    "shareAlikes": [ 13 ]
   }

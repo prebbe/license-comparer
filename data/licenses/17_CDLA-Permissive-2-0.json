@@ -6,7 +6,7 @@
     "sourceLink": "https://cdla.dev/permissive-2-0/",
     "description": null
   },
-  "permissions": [ 0, 1, 2, 3, 27 ],
+  "permissions": [ 0, 1, 2, 3, 4, 15, 16, 27 ],
   "prohibitions": [ 12, 13 ],
   "duties": [ 9 ],
   "shareAlikes": []

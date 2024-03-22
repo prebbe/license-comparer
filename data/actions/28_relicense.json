@@ -1,0 +1,6 @@
+{
+    "id": 28,
+    "name": "Relicense",
+    "displayName": "Change license of the original",
+    "description": "The license of the unchanged dataset can be changed to another license"
+}

@@ -6,7 +6,7 @@
       "sourceLink": "https://opendatacommons.org/licenses/pddl/1-0/",
       "description": null
     },
-    "permissions": [ 0, 1, 2, 3, 4, 14, 15, 16, 27 ],
+    "permissions": [ 0, 1, 2, 3, 4, 14, 15, 16, 27, 28 ],
     "prohibitions": [ 12, 13, 19, 22 ],
     "duties": [],
     "shareAlikes": []
