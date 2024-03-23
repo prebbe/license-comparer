@@ -21,8 +21,12 @@ class Recommender {
             let comparisonResult = this.compareStandardWithSyntheticLicense(license, compositeLicense);
 
             if (comparisonResult.isEqual || comparisonResult.isMoreRestrictive) {
-                let result = { comparisonResult, name: license.metaInformation.name };
-                results.push(result);
+                let shareAlikeCheck = this.runShareAlikeCheck(compositeLicense, license);
+                
+                if(shareAlikeCheck) {
+                    let result = { comparisonResult, name: license.metaInformation.name };
+                    results.push(result);    
+                }
             }
         }
 
@@ -75,6 +79,44 @@ class Recommender {
         
         return areMoreRestrictive;
     }
+    
+    private requiresShareAlikeCheck(duties: Action[]): boolean {
+        return duties.findIndex((duty) => duty.id === 5) >= 0;
+    }
+
+    private containsShareAlike(shareAlikes: number[], id: number): boolean {
+        return shareAlikes.findIndex((shareAlike: number) => shareAlike == id) >= 0;
+    }
+
+    private areShareAlikeConform(license1: License, license2: License) {
+        let l1requiresShareAlike = this.requiresShareAlikeCheck(license1.duties);
+
+        if (!l1requiresShareAlike) {
+            return true;
+        }
+
+        return this.containsShareAlike(license1.shareAlikes, license2.metaInformation.id);
+    }
+
+    private runShareAlikeCheck(compositeLicense: CompositeLicense, license: License) : boolean {
+        let result = true;
+        for(let i = 0; i < compositeLicense.numberOfLicenses; i++) {
+            let includedLicense = this.licenseFinder.getLicense(compositeLicense.metainformations[i].name);
+
+            if (includedLicense == undefined) {
+                continue;
+            }
+
+            let singleResult = this.areShareAlikeConform(includedLicense, license);
+            if (singleResult === false) {
+                result = false;
+                break;
+            }
+        }
+
+        return result;
+    }
+
 }
 
 export default Recommender;
