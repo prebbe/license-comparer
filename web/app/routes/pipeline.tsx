@@ -140,7 +140,7 @@ const CompositeLicenseOverview: FunctionComponent<{
               <p>Overall-Result: <CheckIcon value={checkResult.result} /></p>
               <ul>
                 {checkResult.checks.map((check) => (
-                    <li>{`${check.name1} x ${check.name2} = `}<CheckIcon value={check.areCompatible} />{`(Less Restrictive: `}<CheckIcon value={(check.restrictivenessCheck1 && check.restrictivenessCheck2)} />{`, composable: `}<CheckIcon value={check.canBeComposed} />{` ,share-alike: `}<CheckIcon value={check.areShareAlikeConform} />{`)`}</li>
+                    <li>{`${check.name1} x ${check.name2} = `}<CheckIcon value={check.areCompatible} />{`(Less Restrictive: `}<CheckIcon value={(check.lessRestrictive)} />{`, composable: `}<CheckIcon value={check.canBeComposed} />{`)`}</li>
                 ))}
               </ul>
           </div>

@@ -31,7 +31,22 @@ export default function Compatibility() {
       <h2>License-Compatibility</h2>
       <p>This part of the website shows how different licenses are compatible with each other.</p>
       <p>This check compares if two licenses are compatible.</p>
+
       <CompatibilityTable metaInformations={metaInformations} results={fullCheck}/>
+
+      <h3>Legend</h3>
+      {
+        metaInformations.length? (
+          <ul>
+            {metaInformations.map((info) => (
+              <li key={info.id}>{`${info.id} - ${info.name}`}</li>
+            ))
+            }
+          </ul>
+        ) : (
+          <p>No licenses found</p>
+        )
+      }   
     </div>
   )
 }
@@ -50,12 +65,12 @@ const CompatibilityTable: FunctionComponent<{
       <tr>
         <th className="license-compatibility-table-entry"></th>
         {metaInformations.map((metaInformation) => (
-          <th className="license-compatibility-table-entry">{!metaInformation.spdxName ? metaInformation.name : metaInformation.spdxName}</th>
+          <th className="license-compatibility-table-entry">{metaInformation.id}</th>
         ))}
       </tr>
       {metaInformations.map((metaInformation1) => (
         <tr>
-          <td className="license-compatibility-table-entry">{!metaInformation1.spdxName ? metaInformation1.name : metaInformation1.spdxName}</td>
+          <td className="license-compatibility-table-entry">{metaInformation1.id}</td>
           {metaInformations.map((metaInformation2) => (
             <CompatibilityTableEntry result={findResult(results, metaInformation1.name, metaInformation2.name)} />
           ))}
@@ -73,8 +88,12 @@ const CompatibilityTableEntry: FunctionComponent<{
     return (<td className="license-compatibility-table-entry license-compatibility-table-unknown">?</td>);
   }
 
-  if (result.areCompatible) {
+  if (result.lessRestrictive && result.canBeComposed && result.allowCombination) {
     return (<td className="license-compatibility-table-entry license-compatibility-table-valid">✓</td>);
+  }
+
+  if (result.canBeComposed && result.allowCombination) {
+    return (<td className="license-compatibility-table-entry license-compatibility-table-composable">✓</td>);
   }
 
   return (<td className="license-compatibility-table-entry license-compatibility-table-invalid">✕</td>);

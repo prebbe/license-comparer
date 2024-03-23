@@ -62,6 +62,10 @@
     background-color: lightblue;
 }
 
+.license-compatibility-table-composable {
+    background-color: lightyellow;
+}
+
 .license-compatibility-table-valid {
     background-color: lightgreen;
 }

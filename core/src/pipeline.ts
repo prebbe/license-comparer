@@ -77,7 +77,7 @@ class Pipeline {
                     continue;
                 }
 
-                let checkResult = this.checker.AreCompatible(license1, license2);
+                let checkResult = this.checker.areCompatible(license1, license2);
 
                 checkResults.push(checkResult);
 
