@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/prebbe/license-comparison-reasoner#readme",
   "devDependencies": {
+    "@jest/globals": "^29.7.0",
     "@remix-run/dev": "^2.5.1",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.11.0",
