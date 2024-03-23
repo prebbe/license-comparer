@@ -64,7 +64,7 @@ function isSubsetOf(actions1: Action[], actions2: Action[]) : boolean {
 function contains(actions: Action[], action: Action) : boolean {
     let index = actions.findIndex((a) => areEqual(a, action));
 
-    return index > 0;
+    return index >= 0;
 }
 
 function areDistinct(actions1: Action[], actions2: Action[]) : boolean {

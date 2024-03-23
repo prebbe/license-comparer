@@ -1,5 +1,5 @@
 import Action from '../src/entities/Action';
-import {areEqual, join, union } from '../src/helpers';
+import {areDistinct, areEqual, contains, isSubsetOf, join, union } from '../src/helpers';
 import { createAction } from './typehelper';
 
 describe("Testing areEqual", () => {
@@ -183,5 +183,213 @@ describe("Testing union", () => {
         ];
 
         expect(union(l1, l2)).toEqual(expectedResult);
+    })
+})
+
+describe("Testing isSubsetOf", () => {
+    test("If both licenses are empty return true", () => {
+        let l1: Action[] = [];
+        let l2: Action[] = [];
+
+        expect(isSubsetOf(l1, l2)).toEqual(true);
+    })
+
+    test("If license 1 is empty, return true", () => {
+        let l1: Action[] = [];
+
+        let l2: Action[] = [ 
+            createAction(0, 'test0'),
+            createAction(1, 'test1'),
+            createAction(2, 'test2') 
+        ];
+
+        expect(isSubsetOf(l1, l2)).toEqual(true);
+    })
+
+    test("If license 2 is empty, return false", () => {
+        let l1: Action[] = [ 
+            createAction(0, 'test0'),
+            createAction(1, 'test1'),
+            createAction(2, 'test2') 
+        ];
+
+        let l2: Action[] = [];
+
+        expect(isSubsetOf(l1, l2)).toEqual(false);
+    })
+
+    test("If both arrays are the same, return true", () => {
+        let l1: Action[] = [ 
+            createAction(0, 'test0'),
+            createAction(1, 'test1'),
+            createAction(2, 'test2') 
+        ];
+
+        let l2: Action[] = [ 
+            createAction(0, 'test0'),
+            createAction(1, 'test1'),
+            createAction(2, 'test2') 
+        ];
+
+        expect(isSubsetOf(l1, l2)).toEqual(true);
+    })
+
+    test("If array 1 is completely included, return true", () => {
+        let l1: Action[] = [ 
+            createAction(0, 'test0'),
+            createAction(1, 'test1')
+        ];
+
+        let l2: Action[] = [ 
+            createAction(0, 'test0'),
+            createAction(1, 'test1'),
+            createAction(2, 'test2')
+        ];
+
+        expect(isSubsetOf(l1, l2)).toEqual(true);
+    })
+
+    test("If array 1 is not completely included, return false", () => {
+        let l1: Action[] = [ 
+            createAction(0, 'test0'),
+            createAction(1, 'test1'),
+            createAction(2, 'test2') 
+        ];
+
+        let l2: Action[] = [ 
+            createAction(2, 'test2'),
+            createAction(3, 'test3'),
+            createAction(4, 'test4'),
+        ];
+
+        expect(isSubsetOf(l1, l2)).toEqual(false);
+    })
+})
+
+describe("Testing contains", () => {
+    test("If the list is empty return false", () => {
+        let l1: Action[] = [];
+
+        let action: Action = createAction(0, 'test0');
+
+        expect(contains(l1, action)).toEqual(false);
+    })
+
+    test("If the list contains the action, return true", () => {
+        let l1: Action[] = [
+            createAction(0, 'test0'),
+            createAction(1, 'test1'),
+            createAction(2, 'test2') 
+        ];
+
+        let action: Action = createAction(0, 'test0');
+
+        expect(contains(l1, action)).toEqual(true);
+    })
+
+    test("If the list does not contain the action, return false", () => {
+        let l1: Action[] = [
+            createAction(1, 'test1'),
+            createAction(2, 'test2') 
+        ];
+
+        let action: Action = createAction(0, 'test0')
+
+        expect(contains(l1, action)).toEqual(false);
+    })
+})
+
+describe("Testing areDistinct", () => {
+    test("If both licenses are empty return true", () => {
+        let l1: Action[] = [];
+        let l2: Action[] = [];
+
+        expect(areDistinct(l1, l2)).toEqual(true);
+    })
+
+    test("If license 1 is empty, return true", () => {
+        let l1: Action[] = [];
+
+        let l2: Action[] = [ 
+            createAction(0, 'test0'),
+            createAction(1, 'test1'),
+            createAction(2, 'test2') 
+        ];
+
+        expect(areDistinct(l1, l2)).toEqual(true);
+    })
+
+    test("If license 2 is empty, return true", () => {
+        let l1: Action[] = [ 
+            createAction(0, 'test0'),
+            createAction(1, 'test1'),
+            createAction(2, 'test2') 
+        ];
+
+        let l2: Action[] = [];
+
+        expect(areDistinct(l1, l2)).toEqual(true);
+    })
+
+    test("If both arrays are the same, return false", () => {
+        let l1: Action[] = [ 
+            createAction(0, 'test0'),
+            createAction(1, 'test1'),
+            createAction(2, 'test2') 
+        ];
+
+        let l2: Action[] = [ 
+            createAction(0, 'test0'),
+            createAction(1, 'test1'),
+            createAction(2, 'test2') 
+        ];
+
+        expect(areDistinct(l1, l2)).toEqual(false);
+    })
+
+    test("If array 1 is completely included, return false", () => {
+        let l1: Action[] = [ 
+            createAction(0, 'test0'),
+            createAction(1, 'test1')
+        ];
+
+        let l2: Action[] = [ 
+            createAction(0, 'test0'),
+            createAction(1, 'test1'),
+            createAction(2, 'test2')
+        ];
+
+        expect(areDistinct(l1, l2)).toEqual(false);
+    })
+
+    test("If array 1 is partially included, return false", () => {
+        let l1: Action[] = [ 
+            createAction(0, 'test0'),
+            createAction(1, 'test1'),
+            createAction(2, 'test2') 
+        ];
+
+        let l2: Action[] = [ 
+            createAction(2, 'test2'),
+            createAction(3, 'test3'),
+            createAction(4, 'test4'),
+        ];
+
+        expect(areDistinct(l1, l2)).toEqual(false);
+    })
+
+    test("If arrays are completely distinct, return true", () => {
+        let l1: Action[] = [ 
+            createAction(0, 'test0'),
+            createAction(1, 'test1')
+        ];
+
+        let l2: Action[] = [ 
+            createAction(2, 'test2'),
+            createAction(3, 'test3'),
+            createAction(4, 'test4'),
+        ];
+
+        expect(areDistinct(l1, l2)).toEqual(true);
     })
 })
