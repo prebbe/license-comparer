@@ -3,6 +3,7 @@
       "id": 6,
       "name": "Creative Commons Zero",
       "spdxName": "CC0",
+      "dcatName": "cc-zero",
       "sourceLink": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.de",
       "description": null
     },

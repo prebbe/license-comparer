@@ -3,6 +3,7 @@
       "id": 8,
       "name": "Open Data Commons Public Domain Dedication and License v1.0",
       "spdxName": "PDDL-1.0",
+      "dcatName": "odcpddl",
       "sourceLink": "https://opendatacommons.org/licenses/pddl/1-0/",
       "description": null
     },

@@ -3,6 +3,7 @@
       "id": 10,
       "name": "Data licence Germany - attribution - version 2.0",
       "spdxName": "DL-DE-BY-2.0",
+      "dcatName": "dl-by-de/2.0",
       "sourceLink": "https://www.govdata.de/dl-de/by-2-0",
       "description": null
     },
