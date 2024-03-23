@@ -1,6 +1,6 @@
 {
     "id": 3,
     "name": "Distribution",
-    "displayName": "Distribute",
+    "displayName": "Distribute a modified version of the data",
     "description": "Distribute a modified version of the data"
   }

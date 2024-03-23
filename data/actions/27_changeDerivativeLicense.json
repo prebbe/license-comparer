@@ -2,5 +2,5 @@
     "id": 27,
     "name": "ChangeDerivativeLicense",
     "displayName": "Change license for a derivative",
-    "description": "The license of a derived dataset can be changed to another license"
+    "description": "The license of a derivative can be changed to another license"
 }
