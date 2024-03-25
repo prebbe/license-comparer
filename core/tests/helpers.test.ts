@@ -1,7 +1,7 @@
 import { describe, test, expect } from '@jest/globals';
 
 import Action from '../src/entities/Action';
-import {areDistinct, areEqual, contains, isSubsetOf, join, union } from '../src/helpers';
+import {areDistinct, areEqual, isSubsetOf, join, union } from '../src/helpers';
 import { createAction } from './typehelper';
 
 describe("Testing areEqual", () => {
@@ -265,39 +265,6 @@ describe("Testing isSubsetOf", () => {
         ];
 
         expect(isSubsetOf(l1, l2)).toEqual(false);
-    })
-})
-
-describe("Testing contains", () => {
-    test("If the list is empty return false", () => {
-        let l1: Action[] = [];
-
-        let action: Action = createAction(0, 'test0');
-
-        expect(contains(l1, action)).toEqual(false);
-    })
-
-    test("If the list contains the action, return true", () => {
-        let l1: Action[] = [
-            createAction(0, 'test0'),
-            createAction(1, 'test1'),
-            createAction(2, 'test2') 
-        ];
-
-        let action: Action = createAction(0, 'test0');
-
-        expect(contains(l1, action)).toEqual(true);
-    })
-
-    test("If the list does not contain the action, return false", () => {
-        let l1: Action[] = [
-            createAction(1, 'test1'),
-            createAction(2, 'test2') 
-        ];
-
-        let action: Action = createAction(0, 'test0')
-
-        expect(contains(l1, action)).toEqual(false);
     })
 })
 

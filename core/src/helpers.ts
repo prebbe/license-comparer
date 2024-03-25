@@ -61,12 +61,6 @@ function isSubsetOf(actions1: Action[], actions2: Action[]) : boolean {
     return result;
 }
 
-function contains(actions: Action[], action: Action) : boolean {
-    let index = actions.findIndex((a) => areEqual(a, action));
-
-    return index >= 0;
-}
-
 function areDistinct(actions1: Action[], actions2: Action[]) : boolean {
     let result = true;
     for(let i = 0; i < actions1.length; i++) {
@@ -96,4 +90,4 @@ function areDistinct(actions1: Action[], actions2: Action[]) : boolean {
 
 
 
-export { areEqual, join, union, isSubsetOf, contains, areDistinct }
+export { areEqual, join, union, isSubsetOf, areDistinct }
