@@ -95,7 +95,7 @@ class Checker {
         let license1AllowsRelicensing = this.allowsRelicensing(license1, license2);
         let license2AllowsRelicensing = this.allowsRelicensing(license2, license1);
 
-        return license1AllowsRelicensing && license1AllowsRelicensing;
+        return license1AllowsRelicensing && license2AllowsRelicensing;
     }
 
     private canBeComposed(license1: License, license2: License): boolean {
