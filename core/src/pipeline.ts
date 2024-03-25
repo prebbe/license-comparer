@@ -107,7 +107,19 @@ class Pipeline {
     }
 
     toJson() {
-        return this.result == null ? '' : JSON.stringify(this.result, null, 4);
+        if (this.result == null)
+            return '';
+        
+        let checkResult = this.checkLicenses();
+        let recommendations = this.getRecommendations();
+
+        let summary = {
+            check: checkResult,
+            aggregation: this.result,
+            recommendations: recommendations
+        }
+
+        return JSON.stringify(summary, null, 4);
     }
 }
 
