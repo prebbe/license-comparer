@@ -29,30 +29,11 @@ class Aggregator {
     
         return result;
     }
-
-    private removeDuplicates(actionsToCheck: Action[], actionsToRemove: Action[]): Action[] {
-        let result = actionsToCheck.map((p) => p);
-        for (let i = 0; i < actionsToRemove.length; i++) {
-            let actionToRemove = actionsToRemove[i];
-    
-            let index = actionsToCheck.findIndex((a:Action) => a.id == actionToRemove.id);
-            if (index < 0) {
-                continue;
-            }
-                
-            result.splice(index, 1);
-        }
-    
-        return result;
-    }
     
     createCompositeLicense(license1: License, license2: License) : CompositeLicense {
+        let permissions = this.combinePermissions(license1.permissions, license2.permissions);
         let prohibitions = this.combineProhibitions(license1.prohibitions, license2.prohibitions);
         let duties = this.combineDuties(license1.duties, license2.duties);
-    
-        let combinedPermissions = this.combinePermissions(license1.permissions, license2.permissions);
-        let permissionsWithoutProhibitions = this.removeDuplicates(combinedPermissions, prohibitions);
-        let permissions = this.removeDuplicates(permissionsWithoutProhibitions, duties);
          
         let metainformations: MetaInformation[] = [license1.metaInformation, license2.metaInformation];
 
@@ -66,13 +47,10 @@ class Aggregator {
     }
 
     extendCompositeLicense(composite: CompositeLicense, license: License) : CompositeLicense {
+        let permissions = this.combinePermissions(composite.permissions, license.permissions);
         let prohibitions = this.combineProhibitions(composite.prohibitions, license.prohibitions);
         let duties = this.combineDuties(composite.duties, license.duties);
     
-        let combinedPermissions = this.combinePermissions(composite.permissions, license.permissions);
-        let permissionsWithoutProhibitions = this.removeDuplicates(combinedPermissions, prohibitions);
-        let permissions = this.removeDuplicates(permissionsWithoutProhibitions, duties);
-         
         let metainformations: MetaInformation[] = composite.metainformations;
         metainformations.push(license.metaInformation);
 
