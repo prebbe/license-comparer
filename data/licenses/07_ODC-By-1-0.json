@@ -7,8 +7,8 @@
       "sourceLink": "https://opendatacommons.org/licenses/by/1-0/",
       "description": null
     },
-    "permissions": [ 0, 1, 2, 3, 4, 15, 16 ],
-    "prohibitions": [ 12, 13, 20, 21, 22, 23, 27, 28 ],
-    "duties": [ 6, 7, 8, 9, 10 ],
-    "shareAlikes": []
+    "permissions": [ 0, 1, 2, 3, 4, 15, 16, 27 ],
+    "prohibitions": [ 12, 13, 19, 20, 21, 22, 23, 28 ],
+    "duties": [ 5, 6, 7, 8, 9, 10 ],
+    "shareAlikes": [7]
   }
