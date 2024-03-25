@@ -1,5 +1,4 @@
 import * as fs from 'fs';
-import MetaInformation from './entities/MetaInformation';
 import Action from './entities/Action';
 import License from './entities/License';
 import LicenseDto from './entities/LicenseDto';
