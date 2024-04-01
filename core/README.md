@@ -13,3 +13,8 @@ npm install
 ```pwsh
 npm run build
 ```
+
+## Run the unittests
+```pwsh
+npm run test
+```

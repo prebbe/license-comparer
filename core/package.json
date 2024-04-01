@@ -1,5 +1,5 @@
 {
-  "name": "jvalue-lc",
+  "name": "license-comparer",
   "version": "0.0.1",
   "description": "A simple license-checker, that checks for compatibility and can create aggregated licenses",
   "main": "/dist/index.js",
@@ -22,7 +22,7 @@
     "license-compatibility"
   ],
   "author": "Philip Rebbe",
-  "license": "GPL-3.0-or-later",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/prebbe/license-comparison-reasoner/issues"
   },

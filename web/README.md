@@ -1,6 +1,5 @@
-# Welcome to Remix!
-
-- [Remix Docs](https://remix.run/docs)
+# Web
+This folder contains the web-based demonstrator for the core-library
 
 ## Development
 
