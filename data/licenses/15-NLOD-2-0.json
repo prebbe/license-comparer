@@ -6,7 +6,7 @@
       "sourceLink": "https://data.norge.no/nlod/en/2.0",
       "description": null
     },
-    "permissions": [ 0, 1, 2, 3, 15, 16, 27 ],
+    "permissions": [ 0, 1, 2, 3, 4, 15, 16, 27 ],
     "prohibitions": [ 12, 13, 14, 19, 22, 23, 24, 25, 26, 28 ],
     "duties": [ 5, 6, 7, 9, 10, 11 ],
     "shareAlikes": [ 0, 12, 15 ]
