@@ -1,4 +1,6 @@
 # Master-Thesis - Integrating Open-Data-License-Information in Open-Data-Pipelines
+[![DOI](https://zenodo.org/badge/733428189.svg)](https://zenodo.org/doi/10.5281/zenodo.10903803)
+
 This repo includes the source-code that accompanies my master-thesis. 
 
 > [!IMPORTANT]
