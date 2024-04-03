@@ -34,9 +34,7 @@ class Checker {
     private prohibitionsAreLessRestrictive(license1: License, license2: License) : boolean {
         let prohibitionsAreSubset = isSubsetOf(license1.prohibitions, license2.prohibitions);
 
-        let prohibitionsAreNotRestricted = areDistinct(license1.prohibitions, license2.permissions);
-
-        return prohibitionsAreSubset && prohibitionsAreNotRestricted;
+        return prohibitionsAreSubset;
     }
 
     private dutiesAreLessRestrictive(license1: License, license2: License) : boolean {
