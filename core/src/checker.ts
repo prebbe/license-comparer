@@ -28,9 +28,7 @@ class Checker {
     private permissionsAreLessRestrictive(license1: License, license2: License) : boolean {
         let permissionsAreSubset = isSubsetOf(license2.permissions, license1.permissions);
 
-        let permissionsAreNotRestricted = areDistinct(license2.permissions, license1.prohibitions);
-
-        return permissionsAreSubset && permissionsAreNotRestricted;
+        return permissionsAreSubset;
     }
 
     private prohibitionsAreLessRestrictive(license1: License, license2: License) : boolean {
@@ -99,10 +97,11 @@ class Checker {
         return permissionsAreDistinct === false;
     }
 
-    private dutiesAreNotProhibited(license1: License, license2: License): boolean {
-        let dutiesAreNotProhibited = join(license1.duties, license2.prohibitions).length == 0;
+    private permissionsAreNotProhibited(license1: License, license2: License): boolean {
+        let joinedPermissions = join(license1.permissions, license2.permissions);
+        let permissionsAreAllowed = join(joinedPermissions, license2.prohibitions).length < joinedPermissions.length;
 
-        return dutiesAreNotProhibited;
+        return permissionsAreAllowed;
     }
 
     private bothAllowRelicense(license1: License, license2: License): boolean {
@@ -113,11 +112,13 @@ class Checker {
     }
 
     private canBeComposed(license1: License, license2: License): boolean {
-        let haveCommonPermissions = this.haveCommonPermissions(license1, license2);
-        let dutiesAreNotProhibited = this.dutiesAreNotProhibited(license1, license2);
+        let haveCommonPermissions = this.haveCommonPermissions(license1, license2) 
+            && this.permissionsAreNotProhibited(license1, license2) 
+            && this.permissionsAreNotProhibited(license2, license1);
+
         let bothAllowRelicense = this.bothAllowRelicense(license1, license2);
 
-        return haveCommonPermissions && dutiesAreNotProhibited && bothAllowRelicense;
+        return haveCommonPermissions && bothAllowRelicense;
     }
 
     private allowCombination(license1: License, license2: License): boolean {
