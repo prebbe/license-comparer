@@ -95,13 +95,6 @@ class Checker {
         return permissionsAreDistinct === false;
     }
 
-    private permissionsAreNotProhibited(license1: License, license2: License): boolean {
-        let joinedPermissions = join(license1.permissions, license2.permissions);
-        let permissionsAreAllowed = join(joinedPermissions, license2.prohibitions).length < joinedPermissions.length;
-
-        return permissionsAreAllowed;
-    }
-
     private bothAllowRelicense(license1: License, license2: License): boolean {
         let license1AllowsRelicensing = this.allowsRelicensing(license1, license2);
         let license2AllowsRelicensing = this.allowsRelicensing(license2, license1);
@@ -110,9 +103,7 @@ class Checker {
     }
 
     private canBeComposed(license1: License, license2: License): boolean {
-        let haveCommonPermissions = this.haveCommonPermissions(license1, license2) 
-            && this.permissionsAreNotProhibited(license1, license2) 
-            && this.permissionsAreNotProhibited(license2, license1);
+        let haveCommonPermissions = this.haveCommonPermissions(license1, license2);
 
         let bothAllowRelicense = this.bothAllowRelicense(license1, license2);
 
