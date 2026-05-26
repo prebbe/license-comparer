@@ -1,3 +1,6 @@
+> [!WARNING]
+> This repository is archived and no longer actively maintained. 
+
 # Master-Thesis - Integrating Open-Data-License-Information in Open-Data-Pipelines
 [![DOI](https://zenodo.org/badge/733428189.svg)](https://zenodo.org/doi/10.5281/zenodo.10903803)
 
